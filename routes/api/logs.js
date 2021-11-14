@@ -6,6 +6,7 @@ const passport = require('passport');
 const Log = require('../../models/Log');
 
 router.get('/', (req, res) => {
+    passport.authenticate('jwt', { session: false }),
     Log.find()
         .sort({ date: -1 })
         .then(logs => res.json(logs))
