@@ -6,7 +6,7 @@ const LogSchema = new Schema({
         type: Schema.Types.ObjectId,
         ref: 'users'
     },
-    body: {
+    description: {
         type: String,
         required: false
     },
