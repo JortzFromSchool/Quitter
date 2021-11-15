@@ -6,8 +6,16 @@ const LogSchema = new Schema({
         type: Schema.Types.ObjectId,
         ref: 'users'
     },
+    habit: {
+        type: String,
+        required: true
+    },
     description: {
         type: String,
+        required: false
+    },
+    logTime: {
+        type: Date,
         required: false
     },
     date: { 
