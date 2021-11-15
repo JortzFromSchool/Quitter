@@ -5,8 +5,9 @@ const passport = require('passport');
 
 const Log = require('../../models/Log');
 
-router.get('/', (req, res) => {
-    passport.authenticate('jwt', { session: false }),
+router.get('/', 
+  passport.authenticate('jwt', { session: false }), 
+  (req, res) => {
     Log.find()
         .sort({ date: -1 })
         .then(logs => res.json(logs))
@@ -31,15 +32,29 @@ router.get('/:id', (req, res) => {
 router.post('/',
     passport.authenticate('jwt', { session: false }),
     (req, res) => {
-  
       const newLog = new Log({
         description: req.body.description,
-        logTime: req.body.logTime,
-        user: req.user.id
+        user: req.user.id,
+        habit: '619279705b8ea8f877de736a', // req.params.habitId
+        logTime: req.body.logTime
       });
   
       newLog.save().then(log => res.json(log));
     }
   );
+
+router.delete('/:id', function(req, res, next){
+  Log.findByIdAndRemove({_id: req.params.id}).then(function(log){
+    res.send(log);
+  });
+});
+
+router.put('/:id', function(req, res){
+  Log.findByIdAndUpdate({_id: req.params.id}, req.body).then(function(){
+    Log.findOne({_id: req.params.id}).then(function(log){
+      res.send(log);
+    });
+  });
+});
 
 module.exports = router;

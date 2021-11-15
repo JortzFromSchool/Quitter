@@ -1,18 +1,23 @@
 import React from 'react';
 import { AuthRoute, ProtectedRoute } from '../util/route_util';
 import { Switch } from 'react-router-dom';
+import NavBarContainer from './nav/navbar_container';
 
 import MainPage from './main/main_page';
-import LogsContainer from './logs/logs_container';
-import CreateLogFormContainer from './logs/create_log_form_container';
+import LoginFormContainer from './session/login_form_container';
+import SignupFormContainer from './session/signup_form_container';
 
 const App = () => (
+  <div>
+    <NavBarContainer />
     <Switch>
         <AuthRoute exact path="/" component={MainPage} />
-        
         <ProtectedRoute exact path='/logs' component={LogsContainer} />
         <ProtectedRotue exact path='/users/:userId/' component={CreateLogFormContainer} />
+        <AuthRoute exact path="/login" component={LoginFormContainer} />
+        <AuthRoute exact path="/signup" component={SignupFormContainer} />
     </Switch>
+  </div>
 );
 
 export default App;
