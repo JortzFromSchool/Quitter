@@ -9,6 +9,7 @@ const mapStateToProps = ({session, errors}, ownProps) => {
   return {
     errors: errors.session,
     user: session.user,
+    habit: ownProps.habit,
     formType: 'Create Log'
   };
 };

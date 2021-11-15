@@ -5,9 +5,13 @@ export const getLogs = () => {
 };
 
 export const getUserLogs = id => {
-    return axios.get('/api/logs/user/${id}')
+    return axios.get(`/api/logs/user/${id}`)
 };
 
-export const createLog = data => {
+export const makeLog = data => {
     return axios.post('/api/logs/', data)
 };
+
+export const getLogsByUserAndHabit = (userId, habitId) => {
+    return axios.get(`/api/logs/user/${userId}/habit/${habitId}`)
+}
