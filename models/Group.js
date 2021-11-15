@@ -3,14 +3,18 @@ const Schema = mongoose.Schema;
 
 const GroupSchema = new Schema({
     name: {
-        type: String,
-        required: true
+      type: String,
+      required: true
     },
     users: [],
     habitId: {
-        type: String,
-        required: true
-      },  
+      type: String,
+      required: true
+    },
+    admin: {
+      type: String,
+      required: true
+    } 
 }, {
     timestamps: true 
 });
