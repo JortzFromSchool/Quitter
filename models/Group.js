@@ -9,8 +9,8 @@ const GroupSchema = new Schema({
     users: [],
     habitId: {
         type: String,
-        required: true 
-    }
+        required: true
+      },  
 }, {
     timestamps: true 
 });
