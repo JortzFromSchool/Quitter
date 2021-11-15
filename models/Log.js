@@ -7,8 +7,8 @@ const LogSchema = new Schema({
         ref: 'users'
     },
     habit: {
-        type: Schema.Types.ObjectId,
-        ref: 'habits'
+        type: String,
+        required: true
     },
     description: {
         type: String,

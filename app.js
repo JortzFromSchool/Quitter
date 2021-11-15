@@ -32,5 +32,13 @@ app.use(bodyParser.json());
 app.use("/api/users", users);
 app.use("/api/logs", logs);
 app.use("/api/habits", habits);
+// app.delete("/api/logs/619150a0c81b5bf5331b56ba", (req, res) => {
+//   // debugger
+//   res.send("log deleted");
+//   console.log("yooo")
+// });
+// app.get("/api/logs/", (req,res) => {
+
+// })
 
 app.listen(port, () => console.log(`Server is running on port ${port}`));

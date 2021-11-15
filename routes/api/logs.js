@@ -36,19 +36,25 @@ router.post('/',
       const newLog = new Log({
         description: req.body.description,
         user: req.user.id,
-        habit: req.habit.id
+        habit: '619279705b8ea8f877de736a'
       });
   
       newLog.save().then(log => res.json(log));
     }
   );
 
-router.delete('/:id', 
-  passport.authenticate('jwt', { session: false }), 
-  (req, res) => {
-    Log.findOneAndRemove({_id: req.params.id}, (err) => {
-      res.status(404).json({ nologsfound: 'No logs found from that user' });
-    })
+router.delete('/:id', function(req, res, next){
+  Log.findByIdAndRemove({_id: req.params.id}).then(function(log){
+    res.send(log);
+  });
+});
+
+router.put('/:id', function(req, res){
+  Log.findByIdAndUpdate({_id: req.params.id}, req.body).then(function(){
+    Log.findOne({_id: req.params.id}).then(function(log){
+      res.send(log);
+    });
+  });
 });
 
 module.exports = router;
