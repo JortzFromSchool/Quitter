@@ -5,8 +5,9 @@ const passport = require('passport');
 
 const Log = require('../../models/Log');
 
-router.get('/', (req, res) => {
-    passport.authenticate('jwt', { session: false }),
+router.get('/', 
+  passport.authenticate('jwt', { session: false }), 
+  (req, res) => {
     Log.find()
         .sort({ date: -1 })
         .then(logs => res.json(logs))
@@ -34,11 +35,20 @@ router.post('/',
   
       const newLog = new Log({
         description: req.body.description,
-        user: req.user.id
+        user: req.user.id,
+        habit: req.habit.id
       });
   
       newLog.save().then(log => res.json(log));
     }
   );
+
+router.delete('/:id', 
+  passport.authenticate('jwt', { session: false }), 
+  (req, res) => {
+    Log.findOneAndRemove({_id: req.params.id}, (err) => {
+      res.status(404).json({ nologsfound: 'No logs found from that user' });
+    })
+});
 
 module.exports = router;
