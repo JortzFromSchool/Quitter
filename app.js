@@ -5,6 +5,7 @@ const db = require('./config/keys').mongoURI;
 const users = require("./routes/api/users");
 const logs = require("./routes/api/logs");
 const habits = require("./routes/api/habits");
+const groups = require("./routes/api/groups");
 const bodyParser = require('body-parser');
 const passport = require('passport');
 
@@ -32,13 +33,6 @@ app.use(bodyParser.json());
 app.use("/api/users", users);
 app.use("/api/logs", logs);
 app.use("/api/habits", habits);
-// app.delete("/api/logs/619150a0c81b5bf5331b56ba", (req, res) => {
-//   // debugger
-//   res.send("log deleted");
-//   console.log("yooo")
-// });
-// app.get("/api/logs/", (req,res) => {
-
-// })
+app.use("/api/groups", groups);
 
 app.listen(port, () => console.log(`Server is running on port ${port}`));

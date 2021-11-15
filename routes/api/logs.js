@@ -21,6 +21,14 @@ router.get('/user/:user_id', (req, res) => {
             res.status(404).json({ nologsfound: 'No logs found from that user' }));
 });
 
+// router.get('/user/:user_id', (req, res) => {
+//     Log.find({user: req.params.user_id})
+//         .then(logs => res.json(logs))
+//         .catch(err => 
+//             res.status(404).json({ nologsfound: 'No logs found from that user' }));
+// });
+
+
 router.get('/:id', (req, res) => {
     Log.findById(req.params.id)
         .then(log => res.json(log))
@@ -35,7 +43,7 @@ router.post('/',
       const newLog = new Log({
         description: req.body.description,
         user: req.user.id,
-        habit: '619279705b8ea8f877de736a', // req.params.habitId
+        habitId: req.body.habitId, 
         logTime: req.body.logTime
       });
   
@@ -48,6 +56,12 @@ router.delete('/:id', function(req, res, next){
     res.send(log);
   });
 });
+
+router.get('/user/:user_id/habit/:habit_id', (req, res) => {
+  Log.find({user: req.params.user_id})
+    .then(userLogs => Log.find({habitId: req.params.habit_id})
+    .then(habitLogs => res.send(habitLogs))) 
+})
 
 router.put('/:id', function(req, res){
   Log.findByIdAndUpdate({_id: req.params.id}, req.body).then(function(){
