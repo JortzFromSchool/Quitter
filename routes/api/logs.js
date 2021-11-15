@@ -34,6 +34,7 @@ router.post('/',
   
       const newLog = new Log({
         description: req.body.description,
+        logTime: req.body.logTime,
         user: req.user.id
       });
   
