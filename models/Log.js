@@ -14,6 +14,10 @@ const LogSchema = new Schema({
         type: String,
         required: false
     },
+    logTime: {
+        type: Date,
+        required: false
+    },
     date: { 
         type: Date,
         default: Date.now

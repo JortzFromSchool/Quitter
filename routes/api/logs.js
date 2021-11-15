@@ -32,11 +32,11 @@ router.get('/:id', (req, res) => {
 router.post('/',
     passport.authenticate('jwt', { session: false }),
     (req, res) => {
-  
       const newLog = new Log({
         description: req.body.description,
         user: req.user.id,
-        habit: '619279705b8ea8f877de736a'
+        habit: '619279705b8ea8f877de736a', // req.params.habitId
+        logTime: req.body.logTime
       });
   
       newLog.save().then(log => res.json(log));
