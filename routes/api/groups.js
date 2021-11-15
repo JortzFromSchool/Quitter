@@ -25,7 +25,7 @@ router.post('/',
   
       const newGroup = new Group({
         name: req.body.name,
-        habit: req.body.habit
+        habitId: req.body.habitId
       });
   
       newGroup.save().then(group => res.json(group));
