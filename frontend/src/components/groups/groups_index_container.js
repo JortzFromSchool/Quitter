@@ -4,7 +4,7 @@ import { fetchGroups, destroyGroup } from '../../actions/group_actions';
 import GroupsIndex from './groups_index';
 
 const mSTP = state => ({
-  groups: state.entities.groups.data
+  groups: state.entities.groups
 });
 
 const mDTP = dispatch => ({

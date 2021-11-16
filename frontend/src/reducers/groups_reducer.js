@@ -4,23 +4,18 @@ import {
 
 const GroupsReducer = (state = {}, action) => {
   Object.freeze(state);
-
+  let newState = Object.assign({}, state);
   switch (action.type) {
     case RECEIVE_GROUPS:
-      return {
-        ...state, ...action.groups
-      }
-
+      newState = action.groupsByGroupId;
+      return newState;
     case RECEIVE_GROUP:
-      return {
-        ...state, [action.group.id]: action.group
-      }
-
+      newState = action.group;
+      return newState;
     case REMOVE_GROUP:
       let nextState = Object.assign({}, state);
       delete nextState[action.groupId]
       return nextState;
-  
     default:
       return state;
   }

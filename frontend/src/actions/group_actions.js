@@ -7,10 +7,16 @@ export const RECEIVE_GROUPS = 'RECEIVE_GROUPS';
 export const RECEIVE_GROUP = 'RECEIVE_GROUP';
 export const REMOVE_GROUP = 'REMOVE_GROUP';
 
-const receiveGroups = groups => ({
+const receiveGroups = groups => {
+  let groupsByGroupId = {};
+  groups.data.forEach(group => (
+    groupsByGroupId[group._id] = group
+  ))
+  return {
   type: RECEIVE_GROUPS,
-  groups
-});
+  groupsByGroupId
+  }
+};
 
 const receiveGroup = group => ({
   type: RECEIVE_GROUP,

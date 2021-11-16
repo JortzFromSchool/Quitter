@@ -1,6 +1,5 @@
 import React from 'react';
 import GroupIndexItem from './group_index_item';
-import GroupFormContainer from './group_form_container';
 
 class GroupsIndex extends React.Component{
 
@@ -14,7 +13,7 @@ class GroupsIndex extends React.Component{
     return (
       <div className="groups-index">
         {
-          groups.map(group => <GroupIndexItem 
+          Object.values(groups).map(group => <GroupIndexItem 
                                 key={`group-index-${group._id}`}
                                 group={group}
                                 destroyGroup={destroyGroup}
@@ -23,7 +22,6 @@ class GroupsIndex extends React.Component{
         }
         <div>
           { groupForm } 
-          {/* <GroupFormContainer /> */}
         </div>
       </div>
     )
