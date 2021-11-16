@@ -6,7 +6,10 @@ class Logs extends React.Component {
 
     render() {
         if (this.props.logs.data.length === 0) {
-            return (<div>There are no logs</div>)
+            return (<div>
+                        <div>There are no logs</div>
+                        {this.props.logForm(this.props.habitId)}
+                    </div>)
         } else {
             return (
                 <div>
