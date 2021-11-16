@@ -1,10 +1,10 @@
 import { getLogs, getUserLogs, makeLog , getLogsByUserAndHabit} from '../util/log_api_util';
-import { receiveHabits } from './habit_actions';
 
 export const RECEIVE_LOGS = "RECEIVE_LOGS";
 export const RECEIVE_USER_LOGS = "RECEIVE_USER_LOGS";
-export const RECEIVE_NEW_LOG = "RECEIEVE_NEW_LOG";
+export const RECEIVE_NEW_LOG = "RECEIVE_NEW_LOG";
 export const RECEIVE_USER_LOGS_BY_HABIT = "RECEIVE_USER_LOGS_BY_HABIT";
+export const WIPE_LOGS_BY_HABIT = "WIPE_LOGS_BY_HABIT";
 
 export const receiveLogs = logs => ({
     type: RECEIVE_LOGS,
@@ -20,6 +20,10 @@ export const receiveNewLog = log => ({
     type: RECEIVE_NEW_LOG,
     log
 });
+
+export const wipeLogsByHabit = () => ({
+    type: WIPE_LOGS_BY_HABIT
+})
 
 export const receiveUserLogsByHabit = (habitId, logs) => ({
     type: RECEIVE_USER_LOGS_BY_HABIT,

@@ -1,8 +1,8 @@
 import { connect } from 'react-redux';
-import React from 'react';
 
-import { openModal, closeModal } from '../../actions/modal_actions';
+import { closeModal } from '../../actions/modal_actions';
 import {createLog} from '../../actions/log_actions';
+import { fetchUserLogsByHabit } from '../../actions/log_actions';
 import LogForm from './log_form';
 
 const mapStateToProps = ({session, errors}, ownProps) => {
@@ -16,6 +16,7 @@ const mapStateToProps = ({session, errors}, ownProps) => {
 
 const mapDispatchToProps = dispatch => {
   return {
+    fetchUserLogsByHabit: (userId, habitId) => dispatch(fetchUserLogsByHabit(userId, habitId)),
     processForm: (log) => dispatch(createLog(log)),
     closeModal: () => dispatch(closeModal())
   };

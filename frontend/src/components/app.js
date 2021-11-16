@@ -24,5 +24,3 @@ const App = () => (
 );
 
 export default App;
-
-// removed: <ProtectedRoute exact path='/logs' component={LogsContainer} />

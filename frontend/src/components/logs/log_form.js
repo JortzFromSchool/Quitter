@@ -22,7 +22,7 @@ class LogForm extends React.Component {
   handleSubmit(e) {
     e.preventDefault();
     const log = Object.assign({}, this.state);
-    this.props.processForm(log).then(this.props.closeModal);
+    this.props.processForm(log).then(() => (this.props.fetchUserLogsByHabit(this.state.user, this.state.habitId))).then(this.props.closeModal);
   }
 
   renderErrors() {

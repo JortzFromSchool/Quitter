@@ -2,23 +2,20 @@ import React from 'react';
 import Logs from '../logs/logs';
 
 class Profile extends React.Component {
-    constructor(props) {
-        super(props);
-
-        // this.state = {
-        //     logs: this.props.logs,
-        //     habits: this.props.habits
-        // }
-    }
 
     componentDidMount() {
         this.props.fetchHabits()
         .then((action) => {
             action.habits.data.forEach(habit => {
+                console.log(this.props.currentUser.id);
                 this.props.fetchUserLogsByHabit(this.props.currentUser.id, habit._id);
             });
         });
     };
+
+    UNSAFE_componentWillUnmount() {
+        this.props.wipeLogsByHabit();
+    }
 
     render() {
         if(!this.props.logsByHabit){
