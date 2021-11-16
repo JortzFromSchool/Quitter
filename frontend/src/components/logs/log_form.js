@@ -5,8 +5,8 @@ class LogForm extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-        user: this.props.session.user.id,
-        habit: this.props.habitId,
+        user: this.props.user.id,
+        habitId: this.props.habitId,
         description: '',
         logTime: ''
     };

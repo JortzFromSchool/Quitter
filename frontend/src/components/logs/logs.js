@@ -1,6 +1,7 @@
 import React from 'react';
 import { withRouter } from 'react-router-dom';
 import LogShow from './log_show';
+import CreateLogFormContainer from './create_log_form_container';
 
 class Logs extends React.Component {
     constructor(props) {
@@ -18,8 +19,10 @@ class Logs extends React.Component {
                         <LogShow 
                         key={log._id} 
                         description={log.description}
-                        logTime={log.logTime} />
+                        logTime={log.logTime}
+                        />
                     ))}
+                    {this.props.logForm(this.props.habitId)}
                 </div>
             );
         }
