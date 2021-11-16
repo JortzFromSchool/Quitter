@@ -15,35 +15,27 @@ class Profile extends React.Component {
         this.props.fetchHabits()
         .then((action) => {
             action.habits.data.forEach(habit => {
-                console.log(this.props.currentUser.id);
-                console.log(habit._id);
+                // console.log(this.props.currentUser.id);
+                // console.log(habit._id);
                 this.props.fetchUserLogsByHabit(this.props.currentUser.id, habit._id);
             });
-        }).then(console.log(this.props));
+        });
     };
-
-    // componentDidUpdate(prevProps) {
-    //     if(this.props != prevProps) {
-    //         this.forceUpdate();
-    //     }
-    // }
 
     render() {
         if(!this.props.logsByHabit){
             return null;
         }
-        if (!this.props.logsByHabit) {
+        if (Object.values(this.props.logsByHabit).length === 0) {
             return (<div>This user has no Logs</div>)
         } else {
-            console.log(this.props.logsByHabit);
             return (
                 <div>
                     <h2>Logs by Habit</h2>
-                    {this.props.logsByHabit.map(habit => (
+                    {Object.keys(this.props.logsByHabit).map(key => (
                         <Logs
-                        key={habit.id}
-                        habit={this.props.habits[habit.id]}
-                        logs={habit.logs} />
+                        key={key}
+                        logs={this.props.logsByHabit[key]} />
                     ))}
                     {this.props.logForm}
                 </div>

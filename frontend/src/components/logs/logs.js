@@ -8,17 +8,16 @@ class Logs extends React.Component {
     }
 
     render() {
-        console.log("inside Logs component");
-        if (this.props.logs.length === 0) {
+        if (this.props.logs.data.length === 0) {
             return (<div>There are no logs</div>)
         } else {
             return (
                 <div>
-                    <h2>All Logs for {this.props.habit.name}</h2>
-                    {this.props.logs.map((log, index) => (
+                    {/* <h2>All Logs for {this.props.habit.name}</h2> */}
+                    {this.props.logs.data.map((log, index) => (
                         <LogShow 
                         key={log._id} 
-                        desciption={log.desciption}
+                        description={log.description}
                         logTime={log.logTime} />
                     ))}
                 </div>
