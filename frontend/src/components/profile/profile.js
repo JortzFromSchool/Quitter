@@ -13,9 +13,24 @@ class Profile extends React.Component {
         });
     };
 
+<<<<<<< HEAD
     UNSAFE_componentWillUnmount() {
         this.props.wipeLogsByHabit();
     }
+=======
+//     componentDidUpdate(prevProps) {
+//         console.log(prevProps);
+//         if (prevProps.currentUser !== this.props.currentUser) {
+//             console.log("I hit this")
+//             this.props.fetchHabits()
+//                 .then((action) => {
+//                     action.habits.data.forEach(habit => {
+//                         this.props.fetchUserLogsByHabit(this.props.currentUser.id, habit._id);
+//                     });
+//                 });
+//         }
+//     }
+>>>>>>> eb4546c6759d6e69fc8e11c9a2a98daa4f387b94
 
     render() {
         if(!this.props.logsByHabit){
