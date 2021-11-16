@@ -9,7 +9,6 @@ const mSTP = state => ({
 
 const mDTP = dispatch => ({
   fetchGroups: () => dispatch(fetchGroups()),
-  createGroup: group => dispatch(createGroup(group)),
   groupForm: (
     <button 
       className="create-group-btn" 

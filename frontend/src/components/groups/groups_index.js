@@ -1,5 +1,6 @@
 import React from 'react';
 import GroupIndexItem from './group_index_item';
+import GroupFormContainer from './group_form_container';
 
 class GroupsIndex extends React.Component{
 
@@ -8,7 +9,8 @@ class GroupsIndex extends React.Component{
   };
 
   render() {
-    const { groups, createGroup, groupForm } = this.props
+    const { groups, groupForm } = this.props
+    if (!groups) return null; 
     return (
       <div className="groups-index">
         {
@@ -19,7 +21,8 @@ class GroupsIndex extends React.Component{
                     )
         }
         <div>
-          { groupForm } 
+          {/* { groupForm }  */}
+          <GroupFormContainer />
         </div>
       </div>
     )

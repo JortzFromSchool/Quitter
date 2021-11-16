@@ -2,6 +2,7 @@ import React from 'react';
 import { closeModal } from '../../actions/modal_actions';
 import { connect } from 'react-redux';
 import CreateLoginFormContainer from "../logs/log_form_container";
+import  GroupFormContainer from '../groups/create_group_form_container';
 
 function Modal({modal, closeModal}) {
   if (!modal) {
@@ -13,14 +14,16 @@ function Modal({modal, closeModal}) {
       component = <CreateLogFormContainer />
     
     case 'group':
-      component = <CreateGroupFormContainer /> 
+      component = <GroupFormContainer /> 
+      
     default:
       return null;
   }
   return (
     <div className="modal-background" onClick={closeModal}>
       <div className="modal-child" onClick={e => e.stopPropagation()}>
-        { component }
+        {/* { component } */}
+        <GroupFormContainer />
       </div>
     </div>
   );
