@@ -1,16 +1,17 @@
 import React from 'react';
 import { closeModal } from '../../actions/modal_actions';
 import { connect } from 'react-redux';
-import CreateLoginFormContainer from "../logs/log_form_container";
+import CreateLogFormContainer from "../logs/create_log_form_container";
 
 function Modal({modal, closeModal}) {
   if (!modal) {
     return null;
   }
   let component;
-  switch (modal) {
+  switch (modal.type) {
     case 'log':
-        component = <CreateLogFormContainer />
+        component = <CreateLogFormContainer habitId={modal.habitId} />
+        break;
     default:
       return null;
   }

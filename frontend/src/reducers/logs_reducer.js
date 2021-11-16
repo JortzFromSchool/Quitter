@@ -15,10 +15,8 @@ const LogsReducer = (state = { all: {}, user: {}, new: undefined }, action) => {
             return newState;
         case RECEIVE_USER_LOGS_BY_HABIT:
             if(action.habitLogs) {
-                // console.log(`action.habitlogs =${action.habitLogs}`);
                 const newLogsByHabit = { [action.habitLogs.habitId]: action.habitLogs.logsByHabit};
                 let newAll = Object.assign({}, state.all, newLogsByHabit);
-                // console.log(`newAll = ${newAll}`);
                 newState.all = newAll;
             }
             return newState;

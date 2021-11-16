@@ -18,8 +18,8 @@ const mapDispatchToProps = dispatch => {
         fetchUserLogsByHabit: (userId, habitId) => dispatch(fetchUserLogsByHabit(userId, habitId)),
         fetchUserLogs: id => dispatch(fetchUserLogs(id)),
         fetchHabits: () => dispatch(fetchHabits()),
-        logForm: (
-            <button onClick={() => dispatch(openModal('log'))}>
+        logForm: (habitId) => (
+            <button onClick={() => dispatch(openModal('log', habitId))}>
               Create Log
             </button>
           )
