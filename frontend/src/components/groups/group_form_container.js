@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import { createGroup } from '../../actions/group_actions';
+import { createGroup, fetchGroups } from '../../actions/group_actions';
 import { fetchHabits } from '../../actions/habit_actions';
 import { closeModal } from '../../actions/modal_actions';
 import GroupForm from './group_form';
@@ -14,6 +14,7 @@ const mSTP = state => ({
 });
 
 const mDTP = dispatch => ({
+  fetchGroups: () => dispatch(fetchGroups()),
   fetchHabits: () => dispatch(fetchHabits()), 
   processForm: group => dispatch(createGroup(group)),
   closeModal: () => dispatch(closeModal())

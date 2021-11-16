@@ -17,9 +17,16 @@ class GroupForm extends React.Component{
     })
   }
 
+  updateHabitId(){
+    return e => (this.setState({
+      habitId: e.target[e.target.selectedIndex].value
+    }))
+  }
+
   handleSubmit(e){
     e.preventDefault();
-    this.props.processForm(this.state);
+    console.log(this.state);
+    this.props.processForm(this.state).then(() => (this.props.fetchGroups()));
   }
 
   render() {
@@ -39,10 +46,10 @@ class GroupForm extends React.Component{
             />
           </label>
           <label>Habit:
-            <select name="habit" onChange={this.update('habitId')}>
+            <select name="habit" onChange={this.updateHabitId()}>
               {
                habits.map(habit => {
-                return(<option value={habit._id}>{habit.name}</option>)})
+                return(<option key={`habit-option-${habit._id}`} value={habit._id}>{habit.name}</option>)})
               }
             </select>
           </label>

@@ -15,14 +15,14 @@ class GroupsIndex extends React.Component{
       <div className="groups-index">
         {
           groups.map(group => <GroupIndexItem 
-                                key={group.id}
+                                key={`group-index-${group._id}`}
                                 group={group}
                               />
                     )
         }
         <div>
-          {/* { groupForm }  */}
-          <GroupFormContainer />
+          { groupForm } 
+          {/* <GroupFormContainer /> */}
         </div>
       </div>
     )

@@ -10,14 +10,12 @@ function Modal({modal, closeModal}) {
   }
   let component;
   switch (modal.type) {
-  case 'log':
-    component = <CreateLogFormContainer habitId={modal.habitId} />
-    break;
-    
+    case 'log':
+      component = <CreateLogFormContainer habitId={modal.habitId} />
+      break;
     case 'group':
       component = <GroupFormContainer /> 
       break;
-
     default:
       return null;
   }
@@ -25,7 +23,6 @@ function Modal({modal, closeModal}) {
     <div className="modal-background" onClick={closeModal}>
       <div className="modal-child" onClick={e => e.stopPropagation()}>
         { component }
-        <GroupFormContainer />
       </div>
     </div>
   );

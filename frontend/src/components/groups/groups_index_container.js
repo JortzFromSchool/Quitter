@@ -12,7 +12,7 @@ const mDTP = dispatch => ({
   groupForm: (
     <button 
       className="create-group-btn" 
-      onClick={() => dispatch(openModal('group'))}
+      onClick={() => dispatch(openModal('group', null))}
     >
       Create Group
     </button>

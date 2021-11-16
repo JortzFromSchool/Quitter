@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 
 const GroupIndexItem = ({ group }) => {
   return (
-    <Link to="/groups/${group.id}" className="group-index-item">
+    <Link to={`/groups/${group.id}`} className="group-index-item">
       <div className="group-name">
         {group.name}
       </div>
