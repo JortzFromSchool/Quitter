@@ -1,9 +1,10 @@
 import React from 'react';
 import { withRouter } from 'react-router-dom';
 import LogShow from './log_show';
+// import rd3 from 'react-d3-library';
 
 class Logs extends React.Component {
-
+    
     countLogsPerDay(logs) {
         const count = {};
         for (let i = 0; i < logs.length; i++) {
@@ -16,7 +17,7 @@ class Logs extends React.Component {
     }
 
     formatData(countHash) {
-        const data = [];
+        const dataset = [];
         const uniqueDates = [];
         for (let i = 0; i < this.props.logs.data.length; i++) {
             let logDate = this.props.logs.data[i].logTime.slice(0,10);
@@ -25,10 +26,12 @@ class Logs extends React.Component {
             }
         }
         const numOfLogs = Object.values(countHash);
+        // const formatTime = rd3.timeFormat("%d-%b-%y");
         for (let i = 0; i < numOfLogs.length; i++) {
-            data.push({date: new Date(uniqueDates[i].replace(/-/g, '\/')), value: numOfLogs[i]})
+            dataset.push({time: new Date(uniqueDates[i].replace(/-/g, '\/')), value: numOfLogs[i]})
         }
-        return data;
+        console.log(dataset);
+        // export const dataset;
     }
 
     render() {
