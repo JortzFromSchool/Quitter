@@ -13,7 +13,7 @@ class Logs extends React.Component {
         } else {
             return (
                 <div>
-                    {/* <h2>All Logs for {this.props.habit.name}</h2> */}
+                    <h2>All Logs for {this.props.habit.name}</h2>
                     {this.props.logs.data.map((log, index) => (
                         <LogShow 
                         key={log._id} 

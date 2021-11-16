@@ -5,7 +5,7 @@ const HabitsReducer = (state = { all: {} }, action) => {
     let newState = Object.assign({}, state);
     switch (action.type) {
         case RECEIVE_HABITS:
-            newState.all = action.habits.data;
+            newState.all = action.habitsByKey;
             return newState;
         default:
             return state;
