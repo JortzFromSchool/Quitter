@@ -10,7 +10,10 @@ function Modal({modal, closeModal}) {
   let component;
   switch (modal) {
     case 'log':
-        component = <CreateLogFormContainer />
+      component = <CreateLogFormContainer />
+    
+    case 'group':
+      component = <CreateGroupFormContainer /> 
     default:
       return null;
   }

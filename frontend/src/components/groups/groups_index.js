@@ -8,19 +8,18 @@ class GroupsIndex extends React.Component{
   };
 
   render() {
-    const { groups, createGroup } = this.props
-    console.log(groups)
+    const { groups, createGroup, groupForm } = this.props
     return (
       <div className="groups-index">
         {
           groups.map(group => <GroupIndexItem 
-                                    key={group.id}
-                                    group={group}
-                                  />
-                        )
+                                key={group.id}
+                                group={group}
+                              />
+                    )
         }
         <div>
-          <button>Create Group</button>
+          { groupForm } 
         </div>
       </div>
     )
