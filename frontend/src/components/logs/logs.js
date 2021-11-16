@@ -16,6 +16,7 @@ class Logs extends React.Component {
     }
 
     formatData(countHash) {
+        debugger
         const data = [];
         const uniqueDates = [];
         for (let i = 0; i < this.props.logs.data.length; i++) {
