@@ -20,6 +20,19 @@ class Profile extends React.Component {
         });
     };
 
+//     componentDidUpdate(prevProps) {
+//         console.log(prevProps);
+//         if (prevProps.currentUser !== this.props.currentUser) {
+//             console.log("I hit this")
+//             this.props.fetchHabits()
+//                 .then((action) => {
+//                     action.habits.data.forEach(habit => {
+//                         this.props.fetchUserLogsByHabit(this.props.currentUser.id, habit._id);
+//                     });
+//                 });
+//         }
+//     }
+
     render() {
         if(!this.props.logsByHabit){
             return null;
