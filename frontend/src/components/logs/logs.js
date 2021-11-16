@@ -1,12 +1,8 @@
 import React from 'react';
 import { withRouter } from 'react-router-dom';
 import LogShow from './log_show';
-import CreateLogFormContainer from './create_log_form_container';
 
 class Logs extends React.Component {
-    constructor(props) {
-        super(props);
-    }
 
     render() {
         if (this.props.logs.data.length === 0) {

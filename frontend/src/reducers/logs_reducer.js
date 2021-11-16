@@ -1,4 +1,8 @@
-import { RECEIVE_LOGS, RECEIVE_USER_LOGS, RECEIVE_NEW_LOG, RECEIVE_USER_LOGS_BY_HABIT } from '../actions/log_actions';
+import { RECEIVE_LOGS, 
+    RECEIVE_USER_LOGS, 
+    RECEIVE_NEW_LOG, 
+    RECEIVE_USER_LOGS_BY_HABIT, 
+    WIPE_LOGS_BY_HABIT } from '../actions/log_actions';
 
 const LogsReducer = (state = { all: {}, user: {}, new: undefined }, action) => {
     Object.freeze(state);
@@ -12,6 +16,7 @@ const LogsReducer = (state = { all: {}, user: {}, new: undefined }, action) => {
             return newState;
         case RECEIVE_NEW_LOG:
             newState.new = action.log.data
+            // const newLogByHabit = {[action.log.data.habitId] : action.log.data}
             return newState;
         case RECEIVE_USER_LOGS_BY_HABIT:
             if(action.habitLogs) {
@@ -19,6 +24,9 @@ const LogsReducer = (state = { all: {}, user: {}, new: undefined }, action) => {
                 let newAll = Object.assign({}, state.all, newLogsByHabit);
                 newState.all = newAll;
             }
+            return newState;
+        case WIPE_LOGS_BY_HABIT:
+            newState.all = {};
             return newState;
         default:
             return state;
