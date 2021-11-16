@@ -16,6 +16,17 @@ class NavBar extends React.Component {
 
   // Selectively render links dependent on whether the user is logged in
   getLinks() {
+      if (this.props.location.pathname === '/login') {
+        return (
+          <div className='nav-bar-session'>
+            <Link to={'/signup'}>Signup</Link>
+          </div>
+        )
+      } else if (this.props.location.pathname === '/signup') {
+        return (
+          
+        )
+      }
       if (this.props.loggedIn) {
         return (
             <div className='nav-bar-session'>
@@ -33,6 +44,7 @@ class NavBar extends React.Component {
   }
 
   render() {
+    debugger
       return (
         <div id='nav-bar-container'>
             <h1>Quitter</h1>
