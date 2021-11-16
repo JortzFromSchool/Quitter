@@ -5,31 +5,19 @@ import LogShow from './log_show';
 class Logs extends React.Component {
     constructor(props) {
         super(props);
-
-        this.state = {
-            logs: []
-        }
-    }
-
-    componentWillMount() {
-        this.props.fetchLogs();
-    }
-
-    componentWillReceiveProps(newState) {
-        this.setState({logs: newState.logs});
     }
 
     render() {
-        if (this.state.logs.length === 0) {
+        if (this.props.logs.data.length === 0) {
             return (<div>There are no logs</div>)
         } else {
             return (
                 <div>
-                    <h2>All Logs</h2>
-                    {this.state.logs.map((log, index) => (
+                    {/* <h2>All Logs for {this.props.habit.name}</h2> */}
+                    {this.props.logs.data.map((log, index) => (
                         <LogShow 
-                        key={index} 
-                        desciption={log.desciption}
+                        key={log._id} 
+                        description={log.description}
                         logTime={log.logTime} />
                     ))}
                 </div>
