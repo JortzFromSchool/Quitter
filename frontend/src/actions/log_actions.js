@@ -23,7 +23,7 @@ export const receiveNewLog = log => ({
 
 export const receiveUserLogsByHabit = (habitId, logs) => ({
     type: RECEIVE_USER_LOGS_BY_HABIT,
-    habitLogs: {id: habitId, logs: logs}
+    habitLogs: {habitId: habitId, logsByHabit: logs}
 })
 
 export const fetchLogs = () => dispatch => (

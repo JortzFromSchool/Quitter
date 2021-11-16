@@ -11,7 +11,7 @@ class Profile extends React.Component {
         // }
     }
 
-    componentWillMount() {
+    componentDidMount() {
         this.props.fetchHabits()
         .then((action) => {
             action.habits.data.forEach(habit => {
@@ -19,21 +19,27 @@ class Profile extends React.Component {
                 console.log(habit._id);
                 this.props.fetchUserLogsByHabit(this.props.currentUser.id, habit._id);
             });
-        });
+        }).then(console.log(this.props));
     };
 
+    // componentDidUpdate(prevProps) {
+    //     if(this.props != prevProps) {
+    //         this.forceUpdate();
+    //     }
+    // }
+
     render() {
-        debugger;
-        if(!this.props.logs){
+        if(!this.props.logsByHabit){
             return null;
         }
-        if (this.props.logs.length === 0) {
+        if (!this.props.logsByHabit) {
             return (<div>This user has no Logs</div>)
         } else {
+            console.log(this.props.logsByHabit);
             return (
                 <div>
                     <h2>Logs by Habit</h2>
-                    {this.props.logs.map(habit => (
+                    {this.props.logsByHabit.map(habit => (
                         <Logs
                         key={habit.id}
                         habit={this.props.habits[habit.id]}

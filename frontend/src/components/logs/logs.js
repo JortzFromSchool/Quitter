@@ -8,6 +8,7 @@ class Logs extends React.Component {
     }
 
     render() {
+        console.log("inside Logs component");
         if (this.props.logs.length === 0) {
             return (<div>There are no logs</div>)
         } else {
