@@ -9,7 +9,7 @@ class GroupsIndex extends React.Component{
   };
 
   render() {
-    const { groups, groupForm } = this.props
+    const { groups, groupForm, destroyGroup } = this.props
     if (!groups) return null; 
     return (
       <div className="groups-index">
@@ -17,6 +17,7 @@ class GroupsIndex extends React.Component{
           groups.map(group => <GroupIndexItem 
                                 key={`group-index-${group._id}`}
                                 group={group}
+                                destroyGroup={destroyGroup}
                               />
                     )
         }
