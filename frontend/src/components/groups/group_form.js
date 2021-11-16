@@ -7,6 +7,10 @@ class GroupForm extends React.Component{
     this.handleSubmit = this.handleSubmit.bind(this)
   }
 
+  componentDidMount(){
+    this.props.fetchHabits();
+  }
+
   update(field) {
     return e => this.setState({
       [field]: e.currentTarget.value
@@ -19,7 +23,7 @@ class GroupForm extends React.Component{
   }
 
   render() {
-    const { formType, closeModal } = this.props;
+    const { formType, closeModal, habits } = this.props;
     return (
       <div className="create-group-modal">
         <div className="create-group-header">
@@ -35,8 +39,11 @@ class GroupForm extends React.Component{
             />
           </label>
           <label>Habit:
-            <select name="habit">
-              <option></option>
+            <select name="habit" onChange={this.update('habitId')}>
+              {
+               habits.map(habit => {
+                return(<option value={habit._id}>{habit.name}</option>)})
+              }
             </select>
           </label>
           <input 

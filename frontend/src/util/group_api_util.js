@@ -5,7 +5,7 @@ export const getGroups = () => {
 };
 
 export const getGroup = groupId => {
-  return axios.get('/api/groups/${groupId}')
+  return axios.get(`/api/groups/${groupId}`)
 };
 
 export const makeGroup = group => {
@@ -13,9 +13,9 @@ export const makeGroup = group => {
 };
 
 export const updateGroup = group => {
-  return axios.put('/api/groups/${group.id}')
+  return axios.put(`/api/groups/${group.id}`)
 };
 
 export const deleteGroup = groupId => {
-  return axios.delete('/api/groups/${groupId}')
+  return axios.delete(`/api/groups/${groupId}`)
 }

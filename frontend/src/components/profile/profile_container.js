@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import { fetchUserLogs, fetchUserLogsByHabit } from '../../actions/log_actions';
+import { fetchUserLogs, fetchUserLogsByHabit, wipeLogsByHabit } from '../../actions/log_actions';
 import { fetchHabits } from '../../actions/habit_actions';
 import { openModal } from '../../actions/modal_actions';
 import Profile from './profile';
@@ -18,8 +18,9 @@ const mapDispatchToProps = dispatch => {
         fetchUserLogsByHabit: (userId, habitId) => dispatch(fetchUserLogsByHabit(userId, habitId)),
         fetchUserLogs: id => dispatch(fetchUserLogs(id)),
         fetchHabits: () => dispatch(fetchHabits()),
-        logForm: (
-            <button onClick={() => dispatch(openModal('log'))}>
+        wipeLogsByHabit: () => dispatch(wipeLogsByHabit()),
+        logForm: (habitId) => (
+            <button onClick={() => dispatch(openModal('log', habitId))}>
               Create Log
             </button>
           )

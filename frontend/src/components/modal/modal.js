@@ -1,28 +1,30 @@
 import React from 'react';
 import { closeModal } from '../../actions/modal_actions';
 import { connect } from 'react-redux';
-import CreateLoginFormContainer from "../logs/log_form_container";
-import  GroupFormContainer from '../groups/create_group_form_container';
+import  GroupFormContainer from '../groups/group_form_container';
+import CreateLogFormContainer from "../logs/create_log_form_container";
 
 function Modal({modal, closeModal}) {
   if (!modal) {
     return null;
   }
   let component;
-  switch (modal) {
-    case 'log':
-      component = <CreateLogFormContainer />
+  switch (modal.type) {
+  case 'log':
+    component = <CreateLogFormContainer habitId={modal.habitId} />
+    break;
     
     case 'group':
       component = <GroupFormContainer /> 
-      
+      break;
+
     default:
       return null;
   }
   return (
     <div className="modal-background" onClick={closeModal}>
       <div className="modal-child" onClick={e => e.stopPropagation()}>
-        {/* { component } */}
+        { component }
         <GroupFormContainer />
       </div>
     </div>

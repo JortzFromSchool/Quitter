@@ -5,8 +5,8 @@ class LogForm extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-        user: this.props.session.user.id,
-        habit: this.props.habitId,
+        user: this.props.user.id,
+        habitId: this.props.habitId,
         description: '',
         logTime: ''
     };
@@ -22,7 +22,7 @@ class LogForm extends React.Component {
   handleSubmit(e) {
     e.preventDefault();
     const log = Object.assign({}, this.state);
-    this.props.processForm(log).then(this.props.closeModal);
+    this.props.processForm(log).then(() => (this.props.fetchUserLogsByHabit(this.state.user, this.state.habitId))).then(this.props.closeModal);
   }
 
   renderErrors() {

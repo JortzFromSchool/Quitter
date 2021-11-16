@@ -5,6 +5,7 @@ import { closeModal } from '../../actions/modal_actions';
 import GroupForm from './group_form';
 
 const mSTP = state => ({
+  habits: Object.values(state.entities.habits.all),
   group: {
     name: '',
     habitId: ''

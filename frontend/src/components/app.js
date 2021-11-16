@@ -8,11 +8,13 @@ import LoginFormContainer from './session/login_form_container';
 import SignupFormContainer from './session/signup_form_container';
 import ProfileContainer from './profile/profile_container';
 import GroupsIndexContainer from './groups/groups_index_container';
+import Modal from './modal/modal';
 
 
 const App = () => (
   <div>
     <NavBarContainer />
+    <Modal/>
     <Switch>
         <AuthRoute exact path="/" component={MainPage} />
         <ProtectedRoute exact path='/users/:userId/' component={ProfileContainer} />
@@ -25,5 +27,3 @@ const App = () => (
 );
 
 export default App;
-
-// removed: <ProtectedRoute exact path='/logs' component={LogsContainer} />

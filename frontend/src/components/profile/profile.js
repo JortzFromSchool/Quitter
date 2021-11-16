@@ -2,25 +2,20 @@ import React from 'react';
 import Logs from '../logs/logs';
 
 class Profile extends React.Component {
-    constructor(props) {
-        super(props);
-
-        // this.state = {
-        //     logs: this.props.logs,
-        //     habits: this.props.habits
-        // }
-    }
 
     componentDidMount() {
         this.props.fetchHabits()
         .then((action) => {
-            action.habits.data.forEach(habit => {
-                // console.log(this.props.currentUser.id);
-                // console.log(habit._id);
+            Object.values(action.habitsByKey).forEach(habit => {
+                console.log(this.props.currentUser.id);
                 this.props.fetchUserLogsByHabit(this.props.currentUser.id, habit._id);
             });
         });
     };
+
+    UNSAFE_componentWillUnmount() {
+        this.props.wipeLogsByHabit();
+    }
 
     render() {
         if(!this.props.logsByHabit){
@@ -35,9 +30,12 @@ class Profile extends React.Component {
                     {Object.keys(this.props.logsByHabit).map(key => (
                         <Logs
                         key={key}
-                        logs={this.props.logsByHabit[key]} />
+                        habit={this.props.habits.all[key]}
+                        logs={this.props.logsByHabit[key]}
+                        logForm={this.props.logForm}
+                        fetchUserLogsByHabit={this.props.fetchUserLogsByHabit}/>
                     ))}
-                    {this.props.logForm}
+                    
                 </div>
             );
         }
