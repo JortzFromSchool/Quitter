@@ -6,6 +6,7 @@ import Plot from 'react-plotly.js';
 class Logs extends React.Component {
     
     countLogsPerDay(logs) {
+        console.log(logs);
         const count = {};
         for (let i = 0; i < logs.length; i++) {
             if (!count[(new Date(logs[i].logTime)).getDate()]) {
@@ -38,7 +39,7 @@ class Logs extends React.Component {
         if (this.props.logs.data.length === 0) {
             return (<div>
                         <div>There are no logs</div>
-                        {this.props.logForm(this.props.habitId)}
+                        {this.props.logForm(this.props.habit._id)}
                     </div>)
         } else {
             const countHash = this.countLogsPerDay(this.props.logs.data)
