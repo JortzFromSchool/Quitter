@@ -17,7 +17,7 @@ const validateLoginInput = require('../../validation/login');
 // below gets the admin for group index page
 router.get('/:id', (req, res) => {
   User.findById(req.params.id)
-    .then(user => res.json(user))
+    .then(user => res.json({id: user.id, handle: user.handle}))
 })
 
 router.get('/current', passport.authenticate('jwt', {session: false}), (req, res) => {

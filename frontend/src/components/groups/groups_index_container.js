@@ -5,7 +5,6 @@ import { fetchUser } from '../../actions/user_actions';
 import GroupsIndex from './groups_index';
 
 const mSTP = state => {
-  console.log(state.entities.users[0])
   return {
     groups: state.entities.groups,
     admin: state.entities.users[0]
