@@ -14,4 +14,4 @@ export const makeLog = data => {
 
 export const getLogsByUserAndHabit = (userId, habitId) => {
     return axios.get(`/api/logs/user/${userId}/habit/${habitId}`)
-}
+};

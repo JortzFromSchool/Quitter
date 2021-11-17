@@ -63,7 +63,7 @@ class Logs extends React.Component {
                         ]}
                         layout={ {width: 320, height: 240, title: 'A Fancy Plot'} }
                     />
-                    {this.props.logForm(this.props.habitId)}
+                    {this.props.logForm(this.props.habit._id)}
                 </div>
             );
         }

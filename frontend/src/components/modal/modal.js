@@ -1,6 +1,7 @@
 import React from 'react';
 import { closeModal } from '../../actions/modal_actions';
 import { connect } from 'react-redux';
+import  GroupFormContainer from '../groups/group_form_container';
 import CreateLogFormContainer from "../logs/create_log_form_container";
 
 function Modal({modal, closeModal}) {
@@ -10,8 +11,11 @@ function Modal({modal, closeModal}) {
   let component;
   switch (modal.type) {
     case 'log':
-        component = <CreateLogFormContainer habitId={modal.habitId} />
-        break;
+      component = <CreateLogFormContainer habitId={modal.habitId} />
+      break;
+    case 'group':
+      component = <GroupFormContainer /> 
+      break;
     default:
       return null;
   }
