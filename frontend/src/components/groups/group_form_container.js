@@ -8,7 +8,8 @@ const mSTP = state => ({
   habits: Object.values(state.entities.habits.all),
   group: {
     name: '',
-    habitId: ''
+    habitId: '',
+    // currentUser: state.session.user
   },
   formType: 'Create Group'
 });

@@ -8,17 +8,11 @@ const passport = require('passport');
 const validateRegisterInput = require('../../validation/register');
 const validateLoginInput = require('../../validation/login');
 
-// router.get('/group/:group_id', 
-// (req, res) => {
-//   User.find({ group: req.params.group_id })
-//     .then(usersByGroup => res.send(usersByGroup))
-// })
-
 // below gets the admin for group index page
 router.get('/:id', (req, res) => {
   User.findById(req.params.id)
-    // .then(user => res.json({id: user.id, handle: user.handle, groups: }))
-    .then(user => res.json(user))
+    .then(user => res.json({id: user.id, handle: user.handle, groups: user.groups }))
+    // .then(user => res.json(user))
 })
 
 router.get('/current', passport.authenticate('jwt', {session: false}), (req, res) => {
