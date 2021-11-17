@@ -1,13 +1,13 @@
 import { connect } from 'react-redux';
 import { openModal } from '../../actions/modal_actions';
 import { fetchGroups, destroyGroup } from '../../actions/group_actions';
-import { fetchUser } from '../../actions/user_actions';
+import { fetchUser, fetchAdmin } from '../../actions/user_actions';
 import GroupsIndex from './groups_index';
 
 const mSTP = state => {
   return {
     groups: state.entities.groups,
-    admin: state.entities.users[0]
+    admin: state.entities.users.admin,
   }
 };
 
