@@ -20,16 +20,16 @@ router.get('/:id', (req, res) => {
         );
 });
 
-router.patch('/add_user', async (req, res) => {
+router.patch('/add_user/:user_id/group/:group_id', async (req, res) => {
     // const { errors, isValid } = validateAddUserInput(req.body);
 
     // if (!isValid) {
     //     return res.status(400).json(errors);
     // }
 
-    let user = await User.findOne({ _id: req.body.user_id }).then(user => user)
+    let user = await User.findOne({ _id: req.params.user_id }).then(user => user)
     
-    let group = await Group.findOne({ _id: req.body.group_id }).then(group => group)
+    let group = await Group.findOne({ _id: req.params.group_id }).then(group => group)
     group.users.push({ _id: user.id, handle: user.handle })
     group.save()
     user.groups.push({ _id: group.id, name: group.name })
@@ -38,13 +38,13 @@ router.patch('/add_user', async (req, res) => {
 
 })
 
-router.patch('/remove_user', async (req, res) => {
-  let user = await User.findOne({ _id: req.body.user_id }).then(user => user)
-  let group = await Group.findOne({ _id: req.body.group_id }).then(group => group)
+router.patch('/remove_user/:user_id/group/:group_id', async (req, res) => {
+  let user = await User.findOne({ _id: req.params.user_id }).then(user => user)
+  let group = await Group.findOne({ _id: req.params.group_id }).then(group => group)
   const user_index = group.users.indexOf({ _id: user.id, handle: user.handle })
   group.users.splice(user_index, 1)
   group.save()
-  const group_index = user.groups.indexOf({ _id: req.body.group_id })
+  const group_index = user.groups.indexOf({ _id: req.params.group_id })
   user.groups.splice(group_index, 1)
   user.save()
   res.json(group)

@@ -1,7 +1,7 @@
 import { 
   getGroups, getGroup, 
   makeGroup, updateGroup, deleteGroup,
-  removeUser 
+  removeUser, addUser
 } from '../util/group_api_util';
 
 export const RECEIVE_GROUPS = 'RECEIVE_GROUPS';
@@ -63,6 +63,12 @@ export const destroyGroup = groupId => dispatch => (
 
 export const removeUserFromGroup = (groupId, userId) => dispatch => {
   return removeUser(groupId, userId)
+    .then(revisedGroup => dispatch(receiveGroup(revisedGroup)))
+    .catch(err => console.log(err))
+};
+
+export const addUserToGroup = (groupId, userId) => dispatch => {
+  return addUser(groupId, userId)
     .then(revisedGroup => dispatch(receiveGroup(revisedGroup)))
     .catch(err => console.log(err))
 };

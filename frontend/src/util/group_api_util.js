@@ -21,5 +21,9 @@ export const deleteGroup = groupId => {
 }
 
 export const removeUser = (groupId, userId) => {
-  return axios.patch('/remove_user', {body: {user_id: userId, group_id: groupId}}, null)
+  return axios.patch(`api/groups/remove_user/${userId}/group/${groupId}`)
+}
+
+export const addUser = (groupId, userId) => {
+  return axios.patch(`api/groups/add_user/${userId}/group/${groupId}`)
 }
