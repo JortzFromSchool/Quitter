@@ -21,22 +21,17 @@ router.get('/:id', (req, res) => {
 });
 
 router.patch('/add_user', async (req, res) => {
-    // const { errors, isValid } = validateAddUserInput(req.body);
 
-    // if (!isValid) {
-    //     return res.status(400).json(errors);
-    // }
-
-    let user = await User.findOne({ _id: req.body.user_id }).then(user => user)
-    
-    let group = await Group.findOne({ _id: req.body.group_id }).then(group => group)
-    group.users.push({ _id: user.id, handle: user.handle })
-    group.save()
-    user.groups.push({ _id: group.id, name: group.name })
-    user.save()
-    res.json(group)
-
+  let user = await User.findOne({ _id: req.body.user_id }).then(user => user)
+  
+  let group = await Group.findOne({ _id: req.body.group_id }).then(group => group)
+  group.users = group.users.concat({ _id: user.id, handle: user.handle })
+  group.save()
+  user.groups = user.groups.concat({ _id: group.id, name: group.name })
+  user.save()
+  res.json(group)
 })
+
 
 router.post('/',
     passport.authenticate('jwt', { session: false }),
