@@ -48,6 +48,7 @@
     "validator": "^13.7.0"
   },
   "devDependencies": {
-    "nodemon": "^2.0.15"
+    "nodemon": "^2.0.15",
+    "postcss-normalize": "^10.0.1"
   }
 }

@@ -1,0 +1,30 @@
+#nav-bar-container{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-left: 20%;
+    margin-right: 20%;
+    height: 75px;
+    border-bottom: 1px solid #F7941C;
+}
+
+#nav-bar-logo {
+    height: auto;
+    width: 150px;
+}
+
+.nav-bar-link {
+    background: #F7941C;
+    border-radius: 10%;
+    border: none;
+    padding: 10px 10px;
+    color: white;
+    cursor: pointer;
+    font-weight: 300;
+    text-decoration: none;
+    font-size: 14px;
+}
+
+.nav-bar-link:hover {
+    background-color: orange;
+}
