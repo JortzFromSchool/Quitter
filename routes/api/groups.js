@@ -38,6 +38,18 @@ router.patch('/add_user', async (req, res) => {
 
 })
 
+router.patch('/remove_user', async (req, res) => {
+  let user = await User.findOne({ _id: req.body.user_id }).then(user => user)
+  let group = await Group.findOne({ _id: req.body.group_id }).then(group => group)
+  const user_index = group.users.indexOf({ _id: user.id, handle: user.handle })
+  group.users.splice(user_index, 1)
+  group.save()
+  const group_index = user.groups.indexOf({ _id: req.body.group_id })
+  user.groups.splice(group_index, 1)
+  user.save()
+  res.json(group)
+})
+
 router.post('/',
     passport.authenticate('jwt', { session: false }),
     (req, res) => {

@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import { fetchGroup } from '../../actions/group_actions';
+import { fetchGroup, removeUserFromGroup } from '../../actions/group_actions';
 import { fetchAdmin, fetchUser } from '../../actions/user_actions';
 import { fetchHabits } from '../../actions/habit_actions';
 import GroupShow from './group_show';
@@ -8,14 +8,16 @@ const mSTP = state => {
   return {
     group: state.entities.groups.data,
     admin: state.entities.users.admin,
-    habits: state.entities.habits.all
+    habits: state.entities.habits.all,
+    currentUser: state.session.user
   }
 };
 
 const mDTP = dispatch => ({
   fetchGroup: groupId => dispatch(fetchGroup(groupId)),
   fetchAdmin: adminId => dispatch(fetchAdmin(adminId)),
-  fetchHabits: () => dispatch(fetchHabits())
+  fetchHabits: () => dispatch(fetchHabits()),
+  removeUserFromGroup: (groupId, userId) => dispatch(removeUserFromGroup(groupId, userId))
 });
 
 export default connect(mSTP, mDTP)(GroupShow)
