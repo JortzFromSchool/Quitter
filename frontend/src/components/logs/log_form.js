@@ -12,7 +12,6 @@ class LogForm extends React.Component {
         date: '',
         time: ''
     };
-    console.log(this.props.habitId);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 

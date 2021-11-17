@@ -3,7 +3,6 @@ import React from 'react';
 class GroupShow extends React.Component{
     constructor(props){
         super(props);
-        console.log(this.props);
     }
 
     componentDidMount() {

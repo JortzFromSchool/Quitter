@@ -11,7 +11,6 @@ function Modal({modal, closeModal}) {
   let component;
   switch (modal.type) {
     case 'log':
-      console.log(modal.habitId);
       component = <CreateLogFormContainer habitId={modal.habitId} />
       break;
     case 'group':
