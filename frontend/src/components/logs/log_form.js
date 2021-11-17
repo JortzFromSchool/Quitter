@@ -8,7 +8,9 @@ class LogForm extends React.Component {
         user: this.props.user.id,
         habitId: this.props.habitId,
         description: '',
-        logTime: ''
+        logTime: '',
+        date: '',
+        time: ''
     };
     this.handleSubmit = this.handleSubmit.bind(this);
   }
@@ -19,9 +21,34 @@ class LogForm extends React.Component {
     });
   }
 
+  updateDateOrTime(field){
+    switch (field) {
+      case 'date':
+        return e => this.updateLogtime(e.currentTarget.value, this.state.time);
+      case 'time':
+        return e => this.updateLogtime(this.state.date, e.currentTarget.value);
+      default:
+        return null;
+    }
+  }
+
+  updateLogtime(date, time) {
+    let newDateTime = date + "T" + time + ":00.000Z";
+    console.log(newDateTime);
+    this.setState({logTime: newDateTime});
+    this.setState({time: time});
+    this.setState({date: date});
+  }
+
   handleSubmit(e) {
     e.preventDefault();
-    const log = Object.assign({}, this.state);
+    let newLog = {
+      user: this.state.user,
+      habitId: this.state.habitId,
+      description: this.state.description,
+      logTime: this.state.logTime
+    }
+    const log = Object.assign({}, newLog);
     this.props.processForm(log).then(() => (this.props.fetchUserLogsByHabit(this.state.user, this.state.habitId))).then(this.props.closeModal);
   }
 
@@ -54,9 +81,16 @@ class LogForm extends React.Component {
             </label>
             <br/>
             <label>Time:
-              <input type="datetime"
-                value={this.state.logTime}
-                onChange={this.update('logTime')}
+              <input type="time"
+                value={this.state.time}
+                onChange={this.updateDateOrTime('time')}
+                className="log-input"
+              />
+            </label>
+            <label>Date:
+              <input type="date"
+                value={this.state.date}
+                onChange={this.updateDateOrTime('date')}
                 className="log-input"
               />
             </label>
