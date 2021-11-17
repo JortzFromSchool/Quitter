@@ -4,6 +4,7 @@ const mongoose = require('mongoose');
 const passport = require('passport');
 
 const Group = require('../../models/Group');
+const User = require('../../models/User');
 
 router.get('/', (req, res) => {
     Group.find()
@@ -19,6 +20,24 @@ router.get('/:id', (req, res) => {
         );
 });
 
+router.patch('/add_user', async (req, res) => {
+    // const { errors, isValid } = validateAddUserInput(req.body);
+
+    // if (!isValid) {
+    //     return res.status(400).json(errors);
+    // }
+
+    let user = await User.findOne({ _id: req.body.user_id }).then(user => user)
+    
+    let group = await Group.findOne({ _id: req.body.group_id }).then(group => group)
+    group.users.push({ _id: user.id, handle: user.handle })
+    group.save()
+    user.groups.push({ _id: group.id, name: group.name })
+    user.save()
+    res.json(group)
+
+})
+
 router.post('/',
     passport.authenticate('jwt', { session: false }),
     (req, res) => {
@@ -26,7 +45,7 @@ router.post('/',
       const newGroup = new Group({
         name: req.body.name,
         habitId: req.body.habitId,
-        users: [req.user.id],
+        users: [{ _id: req.user.id, handle: req.user.handle }],
         admin: req.user.id
       });
   

@@ -1,4 +1,6 @@
 import React from 'react';
+import Moment from 'react-moment';
+import 'moment-timezone';
 
 class TimeUntil extends React.Component {
 
@@ -17,7 +19,7 @@ class TimeUntil extends React.Component {
         const diffs = [];
         let sumOfDiffs = 0;
         for (let i = 1; i < sortedTimes.length; i++) {
-            diffs.push((sortedTimes[i-1] - sortedTimes[i]) / 36e5)
+            diffs.push((sortedTimes[i-1] - sortedTimes[i]) / (1000 * 60))
         }
         for (let i = 0; i < diffs.length; i++) {
             sumOfDiffs += diffs[i];
@@ -27,19 +29,22 @@ class TimeUntil extends React.Component {
     }
 
     render() {
-        console.log(this.props)
-        const avgDiff = this.getAvgDiffBetweenLogs(this.props.logs)
-        const numHrsBetweenNowAndLastLog = (new Date() - this.mostRecentLog) / 36e5;
-        const numHrsToWait = parseInt(avgDiff) + 1 - numHrsBetweenNowAndLastLog;
-
-        if (numHrsToWait < 0) {
+        const avgDiffInMins = this.getAvgDiffBetweenLogs(this.props.logs)
+        let numberOfMinsToAdd = avgDiffInMins.toFixed(1) + 30;
+        const currentDate = new Date();
+        let newDateObj = new Date(currentDate.getTime() + numberOfMinsToAdd*60000);
+        const timeSinceLastLog = (currentDate - this.mostRecentLog) / (1000 * 60)
+        
+        if (timeSinceLastLog < avgDiffInMins) {
             return (
-                <div>You may {this.props.habitName}! </div>
+                <div>
+                    <div>If you hold off until </div><Moment date={newDateObj} /><div>you will be on pace to quitting!</div>
+                </div>
             )
         } else {
             return (
-                <div>Wait {numHrsToWait} hrs to {this.props.habitName}: </div>
-            )
+                <div>You are on pace to quitting!</div>
+            ) 
         }
     }
 };
