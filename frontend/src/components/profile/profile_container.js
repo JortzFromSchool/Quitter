@@ -5,7 +5,6 @@ import { openModal } from '../../actions/modal_actions';
 import Profile from './profile';
 
 const mapStateToProps = (state) => {
-    // console.log(state);
     return {
         logsByHabit: state.entities.logs.all,
         currentUser: state.session.user,
