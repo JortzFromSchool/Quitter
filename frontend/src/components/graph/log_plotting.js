@@ -1,0 +1,1 @@
+import {numOfLogs, uniqueDates} from '../logs/logs';
