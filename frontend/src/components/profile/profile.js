@@ -27,14 +27,14 @@ class Profile extends React.Component {
             return (
                 <div>
                     <h2>Logs by Habit</h2>
-                    {Object.keys(this.props.logsByHabit).map(key => (
-                        <Logs
+                    {Object.keys(this.props.logsByHabit).map(key => {
+                        return (<Logs
                         key={key}
                         habit={this.props.habits.all[key]}
                         logs={this.props.logsByHabit[key]}
                         logForm={this.props.logForm}
-                        fetchUserLogsByHabit={this.props.fetchUserLogsByHabit}/>
-                    ))}
+                        fetchUserLogsByHabit={this.props.fetchUserLogsByHabit}/>)
+                    })}
                     
                 </div>
             );

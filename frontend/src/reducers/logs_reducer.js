@@ -15,8 +15,7 @@ const LogsReducer = (state = { all: {}, user: {}, new: undefined }, action) => {
             newState.user = action.logs.data;
             return newState;
         case RECEIVE_NEW_LOG:
-            newState.new = action.log.data
-            // const newLogByHabit = {[action.log.data.habitId] : action.log.data}
+            newState.new = action.log.data;
             return newState;
         case RECEIVE_USER_LOGS_BY_HABIT:
             if(action.habitLogs) {
