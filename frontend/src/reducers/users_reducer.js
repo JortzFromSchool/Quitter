@@ -6,8 +6,9 @@ let newState = Object.assign({}, state);
 
 switch (action.type) {
   case RECEIVE_USER:
+    // console.log(action.user)
     return {
-      ...state, [action.user.id]: action.user
+      ...state, [action.user.data._id]: action.user.data
     }
 
   default:

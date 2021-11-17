@@ -8,8 +8,7 @@ class GroupIndexItem extends React.Component{
   }
 
   render(){
-    // console.log(adminId)
-    const { group, destroyGroup } = this.props 
+    const { group, destroyGroup, admin, adminId } = this.props 
 
   return (
       <Link to={`/groups/${group._id}`} className="group-index-item">
@@ -18,7 +17,7 @@ class GroupIndexItem extends React.Component{
         </div>
         <div className="group-info">
           <div className="group-admin">
-            Admin: 
+            Admin: {admin.handle}
           </div>
           <div className="group-size">
             Group Size: {group.users.length}

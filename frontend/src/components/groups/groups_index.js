@@ -9,7 +9,7 @@ class GroupsIndex extends React.Component{
 
   render() {
     const { 
-      groups, groupForm, destroyGroup, fetchUser
+      groups, groupForm, destroyGroup, fetchUser, admin
     } = this.props
     if (!groups) return null; 
     return (
@@ -21,6 +21,7 @@ class GroupsIndex extends React.Component{
                             group={group}
                             destroyGroup={destroyGroup}
                             fetchUser={fetchUser}
+                            admin={group.admin}
                             adminId={group.admin}
                           />
                 )
