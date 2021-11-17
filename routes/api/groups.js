@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 const mongoose = require('mongoose');
 const passport = require('passport');
-
+const validateGroupAdmission = require('../../validation/valid-group-admission');
 const Group = require('../../models/Group');
 const User = require('../../models/User');
 
@@ -22,14 +22,21 @@ router.get('/:id', (req, res) => {
 
 router.patch('/add_user', async (req, res) => {
 
-    let user = await User.findOne({ _id: req.body.user_id }).then(user => user)
-    
-    let group = await Group.findOne({ _id: req.body.group_id }).then(group => group)
-    group.users.push({ _id: user.id, handle: user.handle })
-    group.save()
-    user.groups.push({ _id: group.id, name: group.name })
-    user.save()
-    res.json(group)
+  let user = await User.findOne({ _id: req.body.user_id }).then(user => user)
+  
+  let group = await Group.findOne({ _id: req.body.group_id }).then(group => group)
+
+  const { errors, isValid } = validateGroupAdmission(user, group);
+
+  if (!isValid) {
+    return res.status(400).json(errors);
+  }
+
+  group.users.push({ _id: user.id, handle: user.handle })
+  group.save()
+  user.groups.push({ _id: group.id, name: group.name })
+  user.save()
+  res.json(group)
 
 })
 
