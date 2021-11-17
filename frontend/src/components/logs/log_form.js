@@ -12,6 +12,7 @@ class LogForm extends React.Component {
         date: '',
         time: ''
     };
+    console.log(this.props.habitId);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
@@ -34,7 +35,6 @@ class LogForm extends React.Component {
 
   updateLogtime(date, time) {
     let newDateTime = date + "T" + time + ":00.000Z";
-    console.log(newDateTime);
     this.setState({logTime: newDateTime});
     this.setState({time: time});
     this.setState({date: date});

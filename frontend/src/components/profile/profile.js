@@ -7,7 +7,6 @@ class Profile extends React.Component {
         this.props.fetchHabits()
         .then((action) => {
             Object.values(action.habitsByKey).forEach(habit => {
-                console.log(this.props.currentUser.id);
                 this.props.fetchUserLogsByHabit(this.props.currentUser.id, habit._id);
             });
         });
@@ -30,7 +29,7 @@ class Profile extends React.Component {
                     {Object.keys(this.props.logsByHabit).map(key => {
                         return (<Logs
                         key={key}
-                        habit={this.props.habits.all[key]._id}
+                        habit={this.props.habits.all[key]}
                         logs={this.props.logsByHabit[key]}
                         logForm={this.props.logForm}
                         fetchUserLogsByHabit={this.props.fetchUserLogsByHabit}/>)
