@@ -1,7 +1,7 @@
 import React from 'react';
 import { withRouter } from 'react-router-dom';
 import LogShow from './log_show';
-// import rd3 from 'react-d3-library';
+import Plot from 'react-plotly.js';
 
 class Logs extends React.Component {
     
@@ -26,15 +26,15 @@ class Logs extends React.Component {
             }
         }
         const numOfLogs = Object.values(countHash);
-        // const formatTime = rd3.timeFormat("%d-%b-%y");
-        for (let i = 0; i < numOfLogs.length; i++) {
-            dataset.push({time: new Date(uniqueDates[i].replace(/-/g, '\/')), value: numOfLogs[i]})
-        }
-        console.log(dataset);
-        // export const dataset;
+        // for (let i = 0; i < numOfLogs.length; i++) {
+        //     dataset.push({time: new Date(uniqueDates[i].replace(/-/g, '\/')), value: numOfLogs[i]})
+        // }
+
+        return [uniqueDates,numOfLogs]
     }
 
     render() {
+    
         if (this.props.logs.data.length === 0) {
             return (<div>
                         <div>There are no logs</div>
@@ -53,6 +53,16 @@ class Logs extends React.Component {
                         logTime={log.logTime}
                         />
                     ))}
+                    <Plot
+                        data={[
+                        {
+                            x: data[0],
+                            y: data[1],
+                            type: 'scatter',
+                        },
+                        ]}
+                        layout={ {width: 320, height: 240, title: 'A Fancy Plot'} }
+                    />
                     {this.props.logForm(this.props.habitId)}
                 </div>
             );
