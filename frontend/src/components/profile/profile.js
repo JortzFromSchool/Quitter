@@ -7,7 +7,6 @@ class Profile extends React.Component {
         this.props.fetchHabits()
         .then((action) => {
             Object.values(action.habitsByKey).forEach(habit => {
-                console.log(this.props.currentUser.id);
                 this.props.fetchUserLogsByHabit(this.props.currentUser.id, habit._id);
             });
         });

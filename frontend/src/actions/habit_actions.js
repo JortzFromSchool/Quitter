@@ -3,7 +3,6 @@ import {getHabits} from '../util/habit_api_util';
 export const RECEIVE_HABITS = "RECEIVE_HABITS";
 
 export const receiveHabits = habits => {
-    console.log(habits);
     let habitsByKey = {};
     habits.data.forEach((value) => (
         habitsByKey[value._id] = value

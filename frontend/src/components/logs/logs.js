@@ -2,11 +2,11 @@ import React from 'react';
 import { withRouter } from 'react-router-dom';
 import LogShow from './log_show';
 import Plot from 'react-plotly.js';
+import TimeUntil from './time_until';
 
 class Logs extends React.Component {
     
     countLogsPerDay(logs) {
-        console.log(logs);
         const count = {};
         for (let i = 0; i < logs.length; i++) {
             if (!count[(new Date(logs[i].logTime)).getDate()]) {
@@ -65,6 +65,9 @@ class Logs extends React.Component {
                         layout={ {width: 320, height: 240, title: 'A Fancy Plot'} }
                     />
                     {this.props.logForm(this.props.habit._id)}
+                    <TimeUntil 
+                    logs={this.props.logs.data}
+                    habitName={this.props.habit.name}/>
                 </div>
             );
         }
