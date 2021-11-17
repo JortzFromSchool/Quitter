@@ -1,13 +1,18 @@
 import { connect } from 'react-redux';
 import { openModal } from '../../actions/modal_actions';
 import { fetchGroups, destroyGroup } from '../../actions/group_actions';
+import { fetchUser } from '../../actions/user_actions';
 import GroupsIndex from './groups_index';
 
-const mSTP = state => ({
-  groups: state.entities.groups
-});
+const mSTP = state => {
+  return {
+    groups: state.entities.groups,
+    admin: state.entities.users[0]
+  }
+};
 
 const mDTP = dispatch => ({
+  fetchUser: userId => dispatch(fetchUser(userId)),
   fetchGroups: () => dispatch(fetchGroups()),
   destroyGroup: groupId => dispatch(destroyGroup(groupId)),
   groupForm: (

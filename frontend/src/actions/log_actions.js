@@ -1,4 +1,7 @@
-import { getLogs, getUserLogs, makeLog , getLogsByUserAndHabit} from '../util/log_api_util';
+import { 
+  getLogs, getUserLogs, 
+  makeLog , getLogsByUserAndHabit
+} from '../util/log_api_util';
 
 export const RECEIVE_LOGS = "RECEIVE_LOGS";
 export const RECEIVE_USER_LOGS = "RECEIVE_USER_LOGS";
