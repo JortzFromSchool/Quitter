@@ -17,7 +17,7 @@ class GroupIndexItem extends React.Component{
         </div>
         <div className="group-info">
           <div className="group-admin">
-            Admin: {admin.handle}
+            {/* Admin: {admin.handle} */}
           </div>
           <div className="group-size">
             Group Size: {group.users.length}
