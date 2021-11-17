@@ -9,8 +9,8 @@ class GroupIndexItem extends React.Component{
 
   render(){
     const { group, destroyGroup, admin, adminId } = this.props 
-
-  return (
+  if (group.users) {
+    return (
       <Link to={`/groups/${group._id}`} className="group-index-item">
         <div className="group-name">
           {group.name}
@@ -20,7 +20,7 @@ class GroupIndexItem extends React.Component{
             {/* Admin: {admin.handle} */}
           </div>
           <div className="group-size">
-            Group Size: {group.users.length}
+            Group Size: {Object.values(group.users).length}
           </div>
         </div>
         <button 
@@ -30,7 +30,10 @@ class GroupIndexItem extends React.Component{
           Delete Group
         </button>
       </Link>
-    )
+      )
+  } else {
+    return null;
+    }
   }
 };
 

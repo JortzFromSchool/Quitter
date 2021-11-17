@@ -26,7 +26,7 @@ class GroupForm extends React.Component{
   handleSubmit(e){
     e.preventDefault();
     this.props.processForm(this.state)
-      .then(() => (this.props.fetchGroups()));
+      .then(() => (this.props.fetchGroups())).then(this.props.closeModal);
   }
 
   render() {
