@@ -40,3 +40,12 @@ footer {
     align-items: center;
     margin-bottom: 2%;
 }
+
+#q-main {
+    height: auto;
+    width: 200px;
+    margin-top: 10%;
+    -webkit-filter: drop-shadow( 3px 3px 2px rgba(0, 0, 0, .7));
+    filter: drop-shadow( 3px 3px 2px rgba(0, 0, 0, .7));
+  /* Similar syntax to box-shadow */
+}
