@@ -29,7 +29,7 @@ const mDTP = dispatch => ({
   wipeUsers: () => dispatch(wipeUsers()),
   logForm: (habitId) => (
     <button onClick={() => dispatch(openModal('log', habitId))}>
-      Create Log
+      Log Session
     </button>
   )
 });
