@@ -29,15 +29,20 @@
 
 .delete-group-btn{
   margin-top: 5px;
-  background: #F7941C;
-  border-radius: 10%;
-  border: 1px solid white;
+  background: #d37807;
+  border-radius: 13%;
+  border: 2px solid white;
   padding: 5px 5px;
   color: white;
   cursor: pointer;
   font-weight: 300;
   text-decoration: none;
   font-size: 14px;
+}
+
+.delete-group-btn:hover{
+  background-color:#f5a646;
+  box-shadow: 2px 2px orange;
 }
 
 .create-group-btn{

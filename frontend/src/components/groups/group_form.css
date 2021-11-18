@@ -5,9 +5,58 @@
   height: 500px;
   display:flex;
   flex-direction: column;
+  border-radius: 10px;
+  box-shadow: 3px 3px lightgray;
 }
 
 .create-group-header{
   display: flex;
   justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid gray;
+  margin: 15px;
+}
+
+.create-group-form{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 200px;
+}
+
+.create-group-input{
+  font-family: 'Montserrat', sans-serif;
+  padding: 10px;
+  margin-bottom: 5%;
+}
+
+.create-group-select{
+  background: white;
+  /* border-radius: 10%; */
+  border: 1px solid gray;
+  padding: 5px 5px;
+  color: orange;
+  cursor: pointer;
+  font-weight: 300;
+  text-decoration: none;
+  font-size: 14px;
+}
+
+.create-group-submit{
+  background: white;
+  /* border-radius: 10%; */
+  border: 1px solid gray;
+  padding: 5px 5px;
+  color: orange;
+  cursor: pointer;
+  font-weight: 300;
+  text-decoration: none;
+  font-size: 14px;
+}
+
+.create-group-select:focus, 
+.create-group-submit:focus, 
+.create-group-input:focus {
+  outline: none;
 }

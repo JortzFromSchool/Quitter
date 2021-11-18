@@ -38,15 +38,16 @@ class GroupForm extends React.Component{
           <div>{formType}</div>
           <div onClick={closeModal}>X</div>
         </div>
-        <form onSubmit={this.handleSubmit}>
-          <label>Name:
-            <input 
-              type="text" 
-              onChange={this.update('name')} 
-              value={this.state.name}
-            />
-          </label>
-          <select name="habit" onChange={this.updateHabitId()}>
+        <form className="create-group-form" onSubmit={this.handleSubmit}>
+          <input
+            className="create-group-input" 
+            type="text" 
+            onChange={this.update('name')} 
+            value={this.state.name}
+            placeholder="Group Name Here!"
+          />
+              
+          <select className="create-group-select"name="habit" onChange={this.updateHabitId()}>
             <option selected disabled>
               -- Please Select a Habit --
             </option>
@@ -62,7 +63,8 @@ class GroupForm extends React.Component{
                       )
             }
           </select>
-          <input 
+          <input
+            className="create-group-submit" 
             type="submit" 
             onClick={this.handleSubmit} 
             value={formType}
