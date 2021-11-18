@@ -16,17 +16,35 @@ class GroupShow extends React.Component{
         .then(() => (this.props.fetchGroup(this.props.match.params.groupId)))
     }
 
+    joinGroup(groupId, currentUserId) {
+        this.props.addUserToGroup(groupId, currentUserId)
+        .then(() => (this.props.fetchGroup(this.props.match.params.groupId)))
+    }
+
+    whichButton() {
+        const {group, currentUser} = this.props;
+        let flag = false;
+        group.users.forEach(elem => {
+            if(elem._id === currentUser.id) {
+                flag = true;
+            }
+        });
+        if (flag){
+            return (<button onClick={() => (this.leaveGroup(group._id, currentUser.id))}>Leave Group</button>)
+        } else {
+            return (<button onClick={() => (this.joinGroup(group._id, currentUser.id))}>Join Group</button>)
+        }
+    }
+
     render() {
         const {group, admin, habits, currentUser} = this.props;
         console.log(group)
         const groupButton = <button onClick={() => (this.leaveGroup(group._id, currentUser.id))}>Leave Group</button>
 
         if(group && admin && habits) {
-            console.log(group);
-            const groupButton = (<button onClick={() => (this.leaveGroup(group._id, currentUser.id))}>Leave Group</button>)
             return(<div>
                 <div className="group-show-name">{group.name}</div>
-                {groupButton}
+                {this.whichButton()}
             </div>);
         }
         else {
