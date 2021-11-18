@@ -72,28 +72,30 @@ class LogForm extends React.Component {
           {this.renderErrors()}
           <div className="log-form">
             <br/>
-            <label>Description:
-              <input type="text"
-                value={this.state.description}
-                onChange={this.update('description')}
-                className="log-input"
-              />
-            </label>
-            <br/>
-            <label>Time:
-              <input type="time"
-                value={this.state.time}
-                onChange={this.updateDateOrTime('time')}
-                className="log-input"
-              />
-            </label>
-            <label>Date:
-              <input type="date"
-                value={this.state.date}
-                onChange={this.updateDateOrTime('date')}
-                className="log-input"
-              />
-            </label>
+            <div className="log-inputs">
+              <label className="log-input-header">Description:
+                <input type="text"
+                  value={this.state.description}
+                  onChange={this.update('description')}
+                  className="log-input"
+                />
+              </label>
+              <br/>
+              <label className="log-input-header">Time:
+                <input type="time"
+                  value={this.state.time}
+                  onChange={this.updateDateOrTime('time')}
+                  className="log-input"
+                />
+              </label>
+              <label className="log-input-header">Date:
+                <input type="date"
+                  value={this.state.date}
+                  onChange={this.updateDateOrTime('date')}
+                  className="log-input"
+                />
+              </label>
+            </div>
             <br/>
             <input className="log-submit" type="submit" value={this.props.formType} />
           </div>
