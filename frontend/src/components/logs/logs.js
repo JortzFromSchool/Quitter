@@ -19,7 +19,6 @@ class Logs extends React.Component {
     }
 
     formatData(countHash) {
-        const data = [];
         const uniqueDates = [];
         for (let i = 0; i < this.props.logs.data.length; i++) {
             let logDate = this.props.logs.data[i].logTime.slice(0,10);
@@ -28,9 +27,6 @@ class Logs extends React.Component {
             }
         }
         const numOfLogs = Object.values(countHash);
-        // for (let i = 0; i < numOfLogs.length; i++) {
-        //     dataset.push({time: new Date(uniqueDates[i].replace(/-/g, '\/')), value: numOfLogs[i]})
-        // }
 
         return [uniqueDates,numOfLogs]
     }
@@ -44,18 +40,7 @@ class Logs extends React.Component {
         } else {
             const countHash = this.countLogsPerDay(this.props.logs.data)
             const data = this.formatData(countHash);
-            let habitName = this.props.habit.name;
-            let habitIcon;
-            switch (habitName) {
-                case 'smoking':
-                    habitIcon = <i class="fas fa-smoking-ban"></i>
-                    break;
-                case 'drinking':
-                    habitIcon = <i class="fas fa-beer"></i>
-                default:
-                    break;
-            }
-
+            console.log(data);
             return (
                 <div className="habit-log-container">
                     <div className="plot-logs-container">
@@ -90,7 +75,7 @@ class Logs extends React.Component {
                         </div>
                         <div className="log-container">
                             <h2 className="log-container-header">Your most recent {this.props.habit.name} sessions:</h2>
-                            {this.props.logs.data.reverse().slice(0,3).map((log, index) => (
+                            {this.props.logs.data.slice(-4, -1).map((log, index) => (
                                 <LogShow 
                                 key={log._id} 
                                 description={log.description}
