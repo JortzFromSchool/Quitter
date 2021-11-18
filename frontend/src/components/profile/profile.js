@@ -12,7 +12,7 @@ class Profile extends React.Component {
         });
     };
 
-    UNSAFE_componentWillUnmount() {
+    componentWillUnmount() {
         this.props.wipeLogsByHabit();
     }
 

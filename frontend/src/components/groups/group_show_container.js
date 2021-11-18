@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 import { fetchGroup, removeUserFromGroup, addUserToGroup } from '../../actions/group_actions';
-import { fetchAdmin, fetchUser } from '../../actions/user_actions';
-import { fetchUserLogsByHabit } from '../../actions/log_actions';
+import { fetchAdmin, fetchUser, wipeUsers } from '../../actions/user_actions';
+import { fetchUserLogsByHabit, wipeLogsByHabit } from '../../actions/log_actions';
 import { fetchHabits } from '../../actions/habit_actions';
 import { openModal } from '../../actions/modal_actions';
 import GroupShow from './group_show';
@@ -25,6 +25,8 @@ const mDTP = dispatch => ({
   addUserToGroup: (groupId, userId) => dispatch(addUserToGroup(groupId, userId)),
   fetchUserLogsByHabit: (userId, habitId) => dispatch(fetchUserLogsByHabit(userId, habitId)),
   fetchUser: (userId) => dispatch(fetchUser(userId)),
+  wipeLogsByHabit: () => dispatch(wipeLogsByHabit()),
+  wipeUsers: () => dispatch(wipeUsers()),
   logForm: (habitId) => (
     <button onClick={() => dispatch(openModal('log', habitId))}>
       Create Log
