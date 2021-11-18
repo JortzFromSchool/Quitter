@@ -20,7 +20,7 @@ const mapDispatchToProps = dispatch => {
         wipeLogsByHabit: () => dispatch(wipeLogsByHabit()),
         logForm: (habitId) => (
             <button onClick={() => dispatch(openModal('log', habitId))}>
-              Create Log
+                Log Session
             </button>
           )
     };

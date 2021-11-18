@@ -1,5 +1,6 @@
 import React from 'react';
 import Logs from '../logs/logs';
+import './group_show.css'
 
 class GroupShow extends React.Component{
     constructor(props){
@@ -42,9 +43,9 @@ class GroupShow extends React.Component{
             }
         });
         if (flag){
-            return (<button onClick={() => (this.leaveGroup(group._id, currentUser.id))}>Leave Group</button>)
+            return (<button onClick={() => (this.leaveGroup(group._id, currentUser.id))} className="group-admission-btn leave">Leave Group</button>)
         } else {
-            return (<button onClick={() => (this.joinGroup(group._id, currentUser.id))}>Join Group</button>)
+            return (<button onClick={() => (this.joinGroup(group._id, currentUser.id))} className="group-admission-btn join">Join Group</button>)
         }
     }
 
@@ -55,9 +56,13 @@ class GroupShow extends React.Component{
         console.log(Object.keys(users));
         if(group && admin && habits && logs && usersLoaded) {
             return(<div>
-                    <div className="group-show-name">{group.name}</div>
-                    {this.whichButton()}
-                    <h2>Logs by User</h2>
+                    <div className="group-show-name">
+                        {group.name}
+                    </div>
+                    <div className="group-show-btn">
+                        {this.whichButton()}
+                    </div>
+                    <h2 className="logs-by-user" >Logs by User</h2>
                     {Object.keys(this.props.logs).map(key => {
 
                         const userId = this.props.logs[key].data[0].user;

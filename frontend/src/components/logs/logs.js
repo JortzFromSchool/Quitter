@@ -33,9 +33,11 @@ class Logs extends React.Component {
 
     render() {
         if (this.props.logs.data.length === 0) {
-            return (<div>
-                        <div>There are no logs</div>
-                        {this.props.logForm(this.props.habit._id)}
+            return (<div className="no-logs-container">
+                        <div>There are no logs for {this.props.habit.name}.</div>
+                        <div className="log-form-btn">
+                            {this.props.logForm(this.props.habit._id)}
+                        </div>
                     </div>)
         } else {
             const sortedData = this.props.logs.data.sort((a,b) => (a.logTime > b.logTime) ? 1 : -1)

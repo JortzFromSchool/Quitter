@@ -80,3 +80,12 @@
     color:#F7941C;
     font-size: 20px;
 }
+
+.no-logs-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    margin-left: 20%;
+    margin-bottom: 3%;
+    line-height: 2.5;
+}

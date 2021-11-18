@@ -15,6 +15,7 @@
 }
 
 .group-index-item{
+  position: relative;
   width: 300px;
   height: 150px;
   margin: 8% 2%;
@@ -37,6 +38,8 @@
 }
 
 .delete-group-btn{
+  position: absolute;
+  bottom: 5%;
   margin-top: 5px;
   background: #d37807;
   border-radius: 13%;
