@@ -75,7 +75,7 @@ class Logs extends React.Component {
                         </div>
                         <div className="log-container">
                             <h2 className="log-container-header">Your most recent {this.props.habit.name} sessions:</h2>
-                            {this.props.logs.data.reverse().slice(0,3).map((log, index) => (
+                            {this.props.logs.data.slice(-4, -1).map((log, index) => (
                                 <LogShow 
                                 key={log._id} 
                                 description={log.description}
