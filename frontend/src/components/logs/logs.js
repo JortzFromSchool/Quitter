@@ -18,7 +18,6 @@ class Logs extends React.Component {
     }
 
     formatData(countHash) {
-        const data = [];
         const uniqueDates = [];
         for (let i = 0; i < this.props.logs.data.length; i++) {
             let logDate = this.props.logs.data[i].logTime.slice(0,10);
@@ -27,9 +26,6 @@ class Logs extends React.Component {
             }
         }
         const numOfLogs = Object.values(countHash);
-        // for (let i = 0; i < numOfLogs.length; i++) {
-        //     dataset.push({time: new Date(uniqueDates[i].replace(/-/g, '\/')), value: numOfLogs[i]})
-        // }
 
         return [uniqueDates,numOfLogs]
     }
@@ -43,6 +39,7 @@ class Logs extends React.Component {
         } else {
             const countHash = this.countLogsPerDay(this.props.logs.data)
             const data = this.formatData(countHash);
+            console.log(data);
             return (
                 <div>
                     <h2>All Logs for {this.props.habit.name}</h2>
@@ -59,9 +56,23 @@ class Logs extends React.Component {
                             x: data[0],
                             y: data[1],
                             type: 'scatter',
+                            mode: 'lines',
+                            line: {
+                                color: 'rgb(247,148,28)',
+                                width: 3
+                            }
                         },
                         ]}
-                        layout={ {width: 320, height: 240, title: 'A Fancy Plot'} }
+                        layout={ {
+                            width: 700, 
+                            height: 500, 
+                            title: {
+                                text: `${this.props.habit.name.slice(0,1).toUpperCase() + this.props.habit.name.slice(1)}`,
+                                font: {size: 35, color: 'rgb(247,148,28)'}
+                            },
+                            xaxis: {tickformat: '%m/%d'},
+                            yaxis: {dtick: 1},
+                        } }
                     />
                     {this.props.logForm(this.props.habit._id)}
                     <TimeUntil 
