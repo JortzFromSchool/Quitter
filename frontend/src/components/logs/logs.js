@@ -75,7 +75,7 @@ class Logs extends React.Component {
                         </div>
                         <div className="log-container">
                             <h2 className="log-container-header">Your most recent {this.props.habit.name} sessions:</h2>
-                            {this.props.logs.data.sort((a,b) => (a.logTime > b.logTime) ? 1 : -1).slice(-4, -1).map((log, index) => (
+                            {sortedData.slice(-3).map((log, index) => (
                                 <LogShow 
                                 key={log._id} 
                                 description={log.description}
