@@ -1,4 +1,5 @@
 import React from 'react';
+import Logs from '../logs/logs';
 
 class GroupShow extends React.Component{
     constructor(props){
@@ -7,8 +8,14 @@ class GroupShow extends React.Component{
 
     componentDidMount() {
         this.props.fetchGroup(this.props.match.params.groupId)
-            .then(() => (this.props.fetchAdmin(this.props.group.admin)));
-        this.props.fetchHabits();
+            .then(() => (this.props.fetchAdmin(this.props.group.admin)))
+        .then(() => this.props.fetchHabits())
+        .then(() =>(
+            this.props.group.users.forEach(user => {
+                this.props.fetchUserLogsByHabit(user._id, this.props.group.habitId);
+                this.props.fetchUser(user._id);
+            })
+        ));
     }
 
     leaveGroup(groupId, currentUserId) {
@@ -37,15 +44,29 @@ class GroupShow extends React.Component{
     }
 
     render() {
-        const {group, admin, habits, currentUser} = this.props;
-        console.log(group)
-        const groupButton = <button onClick={() => (this.leaveGroup(group._id, currentUser.id))}>Leave Group</button>
+        const {group, admin, habits, users, logs} = this.props;
 
-        if(group && admin && habits) {
+        if(group && admin && habits && logs) {
             return(<div>
-                <div className="group-show-name">{group.name}</div>
-                {this.whichButton()}
-            </div>);
+                    <div className="group-show-name">{group.name}</div>
+                    {this.whichButton()}
+                    <h2>Logs by User</h2>
+                    {Object.keys(this.props.logs).map(key => {
+                        console.log(key);
+                        console.log(this.props.users);
+                        return (
+                        <div>
+                            {/* <div className="log-show-title">{this.props.users[key].handle}</div> */}
+                            <Logs
+                                key={key}
+                                habit={this.props.habits[this.props.group.habitId]}
+                                logs={this.props.logs[key]}
+                                logForm={this.props.logForm}
+                            />
+                        </div>
+                        )
+                    })}
+                 </div>);
         }
         else {
             return(<div>Loading Data...</div>)
