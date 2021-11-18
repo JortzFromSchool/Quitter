@@ -36,11 +36,18 @@ class TimeUntil extends React.Component {
         const currentDate = new Date();
         console.log(this.mostRecentLog);
         let timeUntilLog = new Date(this.mostRecentLog.getTime() + numberOfMinsToAdd*60000);
+        let avgDiffDisplay = null;
+        if (avgDiffInMins > 60) {
+            avgDiffDisplay = <div>Average difference between logs: {parseInt(avgDiffInMins / 60)} hrs and {(avgDiffInMins % 60).toFixed()} mins </div>
+        } else {
+            avgDiffDisplay = <div>Average difference between logs: {avgDiffInMins.toFixed()} </div>
+        }
         
         if (currentDate < timeUntilLog) {
             return (
                 <div>
                     <div>If you hold off until </div><Moment date={timeUntilLog} /><div>you will be on pace to quitting!</div>
+                    {avgDiffDisplay}
                 </div>
             )
         } else {
