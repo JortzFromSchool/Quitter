@@ -25,7 +25,7 @@
     font-size: 14px;
 }
 
-.nav-bar-link:hover {
+.nav-bar-link.logout:hover {
     background-color: #FFD68A;
 }
 
@@ -36,5 +36,25 @@
 .nav-bar-session {
     display: flex;
     justify-content: flex-end;
+    align-items: center;
     width: 200px;
+}
+
+.nav-bar-link.logout {
+    padding: 7px 10px;
+}
+
+.profile,.groups {
+    color: orange;
+    background: white;
+    font-size: 15px;
+}
+
+.profile:hover,.groups:hover {
+    background-color: none;
+    font-weight: 900;
+}
+
+.nav-bar-link {
+    margin-left: 3%;
 }
