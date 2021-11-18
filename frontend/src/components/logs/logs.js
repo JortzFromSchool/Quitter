@@ -43,6 +43,9 @@ class Logs extends React.Component {
             const sortedData = this.props.logs.data.sort((a,b) => (a.logTime > b.logTime) ? 1 : -1)
             const countHash = this.countLogsPerDay(sortedData);
             const data = this.formatData(countHash, sortedData);
+            if(!this.props.habit) {
+                return null;
+            }
             return (
                 <div className="habit-log-container">
                     <div className="plot-logs-container">

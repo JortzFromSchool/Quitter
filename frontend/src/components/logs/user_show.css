@@ -81,6 +81,10 @@
     font-size: 20px;
 }
 
+.log-show-label {
+    font-weight: 600;
+}
+
 .no-logs-container {
     display: flex;
     flex-direction: column;

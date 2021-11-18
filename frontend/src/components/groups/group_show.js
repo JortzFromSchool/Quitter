@@ -69,8 +69,12 @@ class GroupShow extends React.Component{
 
     render() {
         const {group, admin, habits, users, logs} = this.props;
-        let usersLoaded = Object.keys(users).length > 0;
-        if(group && admin && habits && logs && usersLoaded) {
+        if(!group){
+            return null;
+        }
+        let usersLoaded = (Object.keys(users).length === this.props.group.users.length);
+        let logsLoaded = (Object.keys(logs).length === this.props.group.users.length);
+        if(group && admin && habits && logsLoaded && usersLoaded) {
             return(<div>
                     <div className="group-show-name">
                         {group.name}

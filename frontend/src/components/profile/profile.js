@@ -18,10 +18,8 @@ class Profile extends React.Component {
     }
 
     render() {
-        if(!this.props.logsByHabit){
-            return null;
-        }
-        if (Object.values(this.props.logsByHabit).length === 0) {
+        const logsLoaded = Object.keys(this.props.logsByHabit).length > 0
+        if (!logsLoaded) {
             return (<div>This user has no Logs</div>)
         } else {
             return (
