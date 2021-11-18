@@ -3,6 +3,7 @@ import { closeModal } from '../../actions/modal_actions';
 import { connect } from 'react-redux';
 import  GroupFormContainer from '../groups/group_form_container';
 import CreateLogFormContainer from "../logs/create_log_form_container";
+import './modal.css'
 
 function Modal({modal, closeModal}) {
   if (!modal) {

@@ -1,0 +1,13 @@
+.create-group-modal{
+  background-color: white;
+  color: #f7941c;
+  width: 500px;
+  height: 500px;
+  display:flex;
+  flex-direction: column;
+}
+
+.create-group-header{
+  display: flex;
+  justify-content: space-between;
+}

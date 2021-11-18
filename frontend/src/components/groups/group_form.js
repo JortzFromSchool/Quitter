@@ -1,4 +1,5 @@
 import React from 'react'
+import './group_form.css'
 
 class GroupForm extends React.Component{
   constructor(props){
