@@ -7,7 +7,7 @@ class GroupShow extends React.Component{
 
     componentDidMount() {
         this.props.fetchGroup(this.props.match.params.groupId)
-            .then(() => (this.props.fetchAdmin(this.props.group.admin)));
+            // .then(() => (this.props.fetchAdmin(this.props.group.admin)));
         this.props.fetchHabits();
     }
 
@@ -18,7 +18,6 @@ class GroupShow extends React.Component{
 
     render() {
         const {group, admin, habits, currentUser} = this.props;
-        console.log(group)
         const groupButton = <button onClick={() => (this.leaveGroup(group._id, currentUser.id))}>Leave Group</button>
 
         if(group && admin && habits) {
@@ -26,6 +25,7 @@ class GroupShow extends React.Component{
             const groupButton = (<button onClick={() => (this.leaveGroup(group._id, currentUser.id))}>Leave Group</button>)
             return(<div>
                 <div className="group-show-name">{group.name}</div>
+                {/* <div className="group-admin">{admin}</div> */}
                 {groupButton}
             </div>);
         }
