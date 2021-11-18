@@ -28,3 +28,13 @@
 .nav-bar-link:hover {
     background-color: #FFD68A;
 }
+
+.nav-bar-link.login {
+    margin-left: 2%;
+}
+
+.nav-bar-session {
+    display: flex;
+    justify-content: flex-end;
+    width: 200px;
+}

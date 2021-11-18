@@ -33,6 +33,8 @@ class NavBar extends React.Component {
       if (this.props.loggedIn) {
         return (
             <div className='nav-bar-session'>
+                <Link to={`/users/${this.props.user.id}`}>Profile</Link>
+                <Link to={'/groups'}>Groups</Link>
                 <button onClick={this.logoutUser}>Logout</button>
             </div>
         );
@@ -40,7 +42,7 @@ class NavBar extends React.Component {
         return (
             <div className='nav-bar-session'>
                 <Link className="nav-bar-link" to={'/signup'}>Sign up</Link>
-                <Link className="nav-bar-link" to={'/login'}>Login</Link>
+                <Link className="nav-bar-link login" to={'/login'}>Login</Link>
             </div>
         );
       }
@@ -49,7 +51,6 @@ class NavBar extends React.Component {
   render() {
       return (
         <div id="nav-bar-container">
-            {/* <h1>Quitter</h1> */}
             <img id="nav-bar-logo" src={NavLogo}/>
             { this.getLinks() }
         </div>
