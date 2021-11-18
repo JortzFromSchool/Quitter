@@ -18,10 +18,10 @@ class Logs extends React.Component {
         return count;
     }
 
-    formatData(countHash) {
+    formatData(countHash, sortedData) {
         const uniqueDates = [];
-        for (let i = 0; i < this.props.logs.data.length; i++) {
-            let logDate = this.props.logs.data[i].logTime.slice(0,10);
+        for (let i = 0; i < sortedData.length; i++) {
+            let logDate = sortedData[i].logTime.slice(0,10);
             if (!uniqueDates.includes(logDate)) {
                 uniqueDates.push(logDate)
             }
@@ -38,9 +38,9 @@ class Logs extends React.Component {
                         {this.props.logForm(this.props.habit._id)}
                     </div>)
         } else {
-            const countHash = this.countLogsPerDay(this.props.logs.data)
-            const data = this.formatData(countHash);
-            console.log(data);
+            const sortedData = this.props.logs.data.sort((a,b) => (a.logTime > b.logTime) ? 1 : -1)
+            const countHash = this.countLogsPerDay(sortedData);
+            const data = this.formatData(countHash, sortedData);
             return (
                 <div className="habit-log-container">
                     <div className="plot-logs-container">
@@ -75,7 +75,7 @@ class Logs extends React.Component {
                         </div>
                         <div className="log-container">
                             <h2 className="log-container-header">Your most recent {this.props.habit.name} sessions:</h2>
-                            {this.props.logs.data.slice(-4, -1).map((log, index) => (
+                            {sortedData.slice(-3).map((log, index) => (
                                 <LogShow 
                                 key={log._id} 
                                 description={log.description}
