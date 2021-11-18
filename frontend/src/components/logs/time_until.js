@@ -36,23 +36,24 @@ class TimeUntil extends React.Component {
         const currentDate = new Date();
         console.log(this.mostRecentLog);
         let timeUntilLog = new Date(this.mostRecentLog.getTime() + numberOfMinsToAdd*60000);
+        let stringTimeUntilLog = timeUntilLog.toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: '2-digit',  hour: 'numeric', hour12: true, minute: 'numeric' })
         let avgDiffDisplay = null;
         if (avgDiffInMins > 60) {
-            avgDiffDisplay = <div>Average difference between logs: {parseInt(avgDiffInMins / 60)} hrs and {(avgDiffInMins % 60).toFixed()} mins </div>
+            avgDiffDisplay = <div>Average time between sessions:<br/>{parseInt(avgDiffInMins / 60)} hrs and {(avgDiffInMins % 60).toFixed()} mins </div>
         } else {
-            avgDiffDisplay = <div>Average difference between logs: {avgDiffInMins.toFixed()} </div>
+            avgDiffDisplay = <div>Average time between sessions: {avgDiffInMins.toFixed()} </div>
         }
         
         if (currentDate < timeUntilLog) {
             return (
-                <div>
-                    <div>If you hold off until </div><Moment date={timeUntilLog} /><div>you will be on pace to quitting!</div>
+                <div className="log-time-msg bad">
+                    <p>If you hold off until:<br/><span className="time-until-date">{stringTimeUntilLog}</span><br/> You will be on pace to quitting!</p><br/>
                     {avgDiffDisplay}
                 </div>
             )
         } else {
             return (
-                <div>You are on pace to quitting!</div>
+                <div className="log-time-msg good">You are on pace to quitting! Keep it up, quitter!</div>
             ) 
         }
     }
