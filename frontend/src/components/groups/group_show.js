@@ -11,12 +11,12 @@ class GroupShow extends React.Component{
         this.props.fetchGroup(this.props.match.params.groupId)
             .then(() => (this.props.fetchAdmin(this.props.group.admin)))
             .then(() => this.props.fetchHabits())
-            .then(() =>(
-                this.props.group.users.forEach(user => {
-                this.props.fetchUserLogsByHabit(user._id, this.props.group.habitId);
+            .then(() =>{
+                return this.props.group.users.forEach(user => {
+                this.props.fetchUserLogsByUser(user._id, this.props.group.habitId);
                 this.props.fetchUser(user._id);
             })
-        ));
+            });
     }
 
     componentWillUnmount() {
@@ -26,12 +26,30 @@ class GroupShow extends React.Component{
 
     leaveGroup(groupId, currentUserId) {
         this.props.removeUserFromGroup(groupId, currentUserId)
+        .then(() => (this.props.wipeUsers()))
+        .then(() => (this.props.wipeLogsByHabit()))
         .then(() => (this.props.fetchGroup(this.props.match.params.groupId)))
+        .then(() => {
+            return this.props.group.users.forEach(user => {
+            this.props.fetchUserLogsByUser(user._id, this.props.group.habitId);
+            this.props.fetchUser(user._id);
+            })
+        });
     }
 
     joinGroup(groupId, currentUserId) {
         this.props.addUserToGroup(groupId, currentUserId)
+        .then(() => (this.props.wipeUsers()))
+        .then(() => (this.props.wipeLogsByHabit()))
         .then(() => (this.props.fetchGroup(this.props.match.params.groupId)))
+        .then(() => {
+            return this.props.group.users.forEach(user => {
+            this.props.fetchUserLogsByUser(user._id, this.props.group.habitId);
+            this.props.fetchUser(user._id);
+            })
+        });
+        // .then(() => (this.props.fetchGroup(this.props.match.params.groupId)))
+        // .then(() => (this.props.fetchUserLogsByUser(currentUserId, groupId)))
     }
 
     whichButton() {
@@ -52,8 +70,6 @@ class GroupShow extends React.Component{
     render() {
         const {group, admin, habits, users, logs} = this.props;
         let usersLoaded = Object.keys(users).length > 0;
-        console.log(usersLoaded);
-        console.log(Object.keys(users));
         if(group && admin && habits && logs && usersLoaded) {
             return(<div>
                     <div className="group-show-name">
@@ -64,11 +80,11 @@ class GroupShow extends React.Component{
                     </div>
                     <h2 className="logs-by-user" >Logs by User</h2>
                     {Object.keys(this.props.logs).map(key => {
-
-                        const userId = this.props.logs[key].data[0].user;
+                        console.log(this.props.users);
+                        console.log(key);
                         return (
                         <div>
-                            <div className="log-show-title">{this.props.users[userId].handle}'s Stats</div>
+                            <div className="log-show-title">{this.props.users[key].handle}'s Stats</div>
                             <Logs
                                 key={key}
                                 habit={this.props.habits[this.props.group.habitId]}

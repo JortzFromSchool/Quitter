@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 import { fetchGroup, removeUserFromGroup, addUserToGroup } from '../../actions/group_actions';
 import { fetchAdmin, fetchUser, wipeUsers } from '../../actions/user_actions';
-import { fetchUserLogsByHabit, wipeLogsByHabit } from '../../actions/log_actions';
+import { fetchUserLogsByUser, wipeLogsByHabit } from '../../actions/log_actions';
 import { fetchHabits } from '../../actions/habit_actions';
 import { openModal } from '../../actions/modal_actions';
 import GroupShow from './group_show';
@@ -23,7 +23,7 @@ const mDTP = dispatch => ({
   fetchHabits: () => dispatch(fetchHabits()),
   removeUserFromGroup: (groupId, userId) => dispatch(removeUserFromGroup(groupId, userId)),
   addUserToGroup: (groupId, userId) => dispatch(addUserToGroup(groupId, userId)),
-  fetchUserLogsByHabit: (userId, habitId) => dispatch(fetchUserLogsByHabit(userId, habitId)),
+  fetchUserLogsByUser: (userId, habitId) => dispatch(fetchUserLogsByUser(userId, habitId)),
   fetchUser: (userId) => dispatch(fetchUser(userId)),
   wipeLogsByHabit: () => dispatch(wipeLogsByHabit()),
   wipeUsers: () => dispatch(wipeUsers()),
