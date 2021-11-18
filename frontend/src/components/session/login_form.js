@@ -65,7 +65,8 @@ class LoginForm extends React.Component {
           <h1 className="login-form-header">Welcome back, Quitter.</h1>
           <form onSubmit={this.handleSubmit}>
             <div>
-                <input type="text"
+                <input 
+                  type="text"
                   value={this.state.email}
                   onChange={this.update('email')}
                   placeholder="Email"

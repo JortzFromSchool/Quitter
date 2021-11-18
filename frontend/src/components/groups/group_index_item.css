@@ -1,0 +1,67 @@
+.groups-index-container{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.groups-index{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.group-index-item{
+  width: 300px;
+  margin: 8% 2%;
+  padding: 20px;
+  border: 0px solid black;
+  background-color: #f7941c;
+  border-radius: 5px;
+  color: white;
+  font-family: inherit;
+  line-height: 2em;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.group-name{
+  font-size: 25px;
+  font-weight: 900;
+  text-align: center;
+}
+
+.delete-group-btn{
+  margin-top: 5px;
+  background: #d37807;
+  border-radius: 13%;
+  border: 2px solid white;
+  padding: 5px 5px;
+  color: white;
+  cursor: pointer;
+  font-weight: 300;
+  text-decoration: none;
+  font-size: 14px;
+}
+
+.delete-group-btn:hover{
+  background-color:#f5a646;
+  box-shadow: 2px 2px orange;
+}
+
+.group-size {
+  font-weight: 400;
+}
+
+.create-group-btn{
+  background: #F7941C;
+  border-radius: 10%;
+  border: none;
+  padding: 5px 5px;
+  color: white;
+  cursor: pointer;
+  font-weight: 300;
+  text-decoration: none;
+  font-size: 17px;
+}

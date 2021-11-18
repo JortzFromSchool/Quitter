@@ -1,11 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom'
+import './group_index_item.css'
 
 class GroupIndexItem extends React.Component{
-
-  componentDidMount() {
-    this.props.fetchUser(this.props.adminId)
-  }
 
   render(){
     const { group, destroyGroup, admin, adminId } = this.props 
@@ -16,9 +13,9 @@ class GroupIndexItem extends React.Component{
           {group.name}
         </div>
         <div className="group-info">
-          <div className="group-admin">
-            {/* Admin: {admin.handle} */}
-          </div>
+          {/* <div className="group-admin">
+            
+          </div> */}
           <div className="group-size">
             Group Size: {Object.values(group.users).length}
           </div>

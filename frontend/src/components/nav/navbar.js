@@ -33,9 +33,9 @@ class NavBar extends React.Component {
       if (this.props.loggedIn) {
         return (
             <div className='nav-bar-session'>
-                <Link to={`/users/${this.props.user.id}`}>Profile</Link>
-                <Link to={'/groups'}>Groups</Link>
-                <button onClick={this.logoutUser}>Logout</button>
+                <Link className="nav-bar-link profile" to={`/users/${this.props.user.id}`}>Profile</Link>
+                <Link className="nav-bar-link groups" to={'/groups'}>Groups</Link>
+                <button className="nav-bar-link logout" onClick={this.logoutUser}>Logout</button>
             </div>
         );
       } else {
