@@ -9,13 +9,18 @@ class GroupShow extends React.Component{
     componentDidMount() {
         this.props.fetchGroup(this.props.match.params.groupId)
             .then(() => (this.props.fetchAdmin(this.props.group.admin)))
-        .then(() => this.props.fetchHabits())
-        .then(() =>(
-            this.props.group.users.forEach(user => {
+            .then(() => this.props.fetchHabits())
+            .then(() =>(
+                this.props.group.users.forEach(user => {
                 this.props.fetchUserLogsByHabit(user._id, this.props.group.habitId);
                 this.props.fetchUser(user._id);
             })
         ));
+    }
+
+    componentWillUnmount() {
+        this.props.wipeLogsByHabit();
+        this.props.wipeUsers();
     }
 
     leaveGroup(groupId, currentUserId) {
@@ -45,18 +50,20 @@ class GroupShow extends React.Component{
 
     render() {
         const {group, admin, habits, users, logs} = this.props;
-
-        if(group && admin && habits && logs) {
+        let usersLoaded = Object.keys(users).length > 0;
+        console.log(usersLoaded);
+        console.log(Object.keys(users));
+        if(group && admin && habits && logs && usersLoaded) {
             return(<div>
                     <div className="group-show-name">{group.name}</div>
                     {this.whichButton()}
                     <h2>Logs by User</h2>
                     {Object.keys(this.props.logs).map(key => {
-                        console.log(key);
-                        console.log(this.props.users);
+
+                        const userId = this.props.logs[key].data[0].user;
                         return (
                         <div>
-                            {/* <div className="log-show-title">{this.props.users[key].handle}</div> */}
+                            <div className="log-show-title">{this.props.users[userId].handle}'s Stats</div>
                             <Logs
                                 key={key}
                                 habit={this.props.habits[this.props.group.habitId]}
