@@ -32,7 +32,7 @@ router.patch('/add_user/:user_id/group/:group_id', async (req, res) => {
     let group = await Group.findOne({ _id: req.params.group_id }).then(group => group)
     group.users.push({ _id: user.id, handle: user.handle })
     group.save()
-    user.groups.push({ _id: group.id, name: group.name })
+    user.groups = user.groups.concat({ _id: group.id, name: group.name })
     user.save()
     res.json(group)
 

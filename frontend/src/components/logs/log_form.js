@@ -1,5 +1,6 @@
 import React from 'react';
 import { withRouter } from 'react-router-dom';
+import './create_log.css';
 
 class LogForm extends React.Component {
   constructor(props) {
@@ -69,7 +70,7 @@ class LogForm extends React.Component {
         <form onSubmit={this.handleSubmit} className="log-form-box">
           <div onClick={this.props.closeModal} className="close-x">X</div>
           {this.renderErrors()}
-          <div className="login-form">
+          <div className="log-form">
             <br/>
             <label>Description:
               <input type="text"

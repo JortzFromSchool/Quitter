@@ -1,0 +1,35 @@
+.log-form-container {
+  background-color: white;
+  color: #f7941c;
+  width: 450px;
+  height: 300px;
+  display:flex;
+  flex-direction: column;
+  border-radius: 10px;
+  box-shadow: 3px 3px lightgray;
+}
+
+.close-x {
+    display: flex;
+    justify-content: end;
+    margin: 2% 2% 0 0;
+    cursor: pointer;
+}
+
+.log-submit {
+    background: #F7941C;
+    border-radius: 30px;
+    border: none;
+    padding: 8px 8px;
+    color: white;
+    cursor: pointer;
+    font-weight: 600;
+    text-decoration: none;
+    font-size: 14px;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.log-form {
+    display: flex;
+    flex-direction: column;
+}
