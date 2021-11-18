@@ -1,0 +1,45 @@
+.splash-container {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 10%;
+    margin-left: 20%;
+    margin-right: 20%;
+}
+
+.splash-para {
+    font-size: 38px;
+    font-weight: 700;
+    color: #F7941C;
+    text-align: center;
+}
+
+.inner-splash-container {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    height: 90%;
+}
+
+footer {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 2%;
+}
+
+#q-main {
+    height: auto;
+    width: 200px;
+    margin-top: 10%;
+    -webkit-filter: drop-shadow( 3px 3px 2px rgba(0, 0, 0, .7));
+    filter: drop-shadow( 3px 3px 2px rgba(0, 0, 0, .7));
+  /* Similar syntax to box-shadow */
+}

@@ -13,22 +13,23 @@ class GroupsIndex extends React.Component{
     } = this.props
     if (!groups) return null; 
     return (
-      <div className="groups-index">
-        {
-          Object.values(groups)
-          .map(group => <GroupIndexItem 
-                            key={`group-index-${group._id}`}
-                            group={group}
-                            destroyGroup={destroyGroup}
-                            fetchUser={fetchUser}
-                            admin={group.admin}
-                            adminId={group.admin}
-                          />
-                )
-        }
-        <div>
-          { groupForm } 
+      <div className='groups-index-container'>
+        <div className="groups-index">
+          {
+            Object.values(groups)
+            .map(group => <GroupIndexItem 
+                              key={`group-index-${group._id}`}
+                              group={group}
+                              destroyGroup={destroyGroup}
+                              fetchUser={fetchUser}
+                              adminId={group.admin}
+                            />
+                  )
+          }
         </div>
+          <div className="create-group-btn">
+            { groupForm } 
+          </div>
       </div>
     )
   }

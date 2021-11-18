@@ -19,3 +19,11 @@ export const updateGroup = group => {
 export const deleteGroup = groupId => {
   return axios.delete(`/api/groups/${groupId}`)
 }
+
+export const removeUser = (groupId, userId) => {
+  return axios.patch(`api/groups/remove_user/${userId}/group/${groupId}`)
+}
+
+export const addUser = (groupId, userId) => {
+  return axios.patch(`api/groups/add_user/${userId}/group/${groupId}`)
+}

@@ -33,8 +33,7 @@ class LogForm extends React.Component {
   }
 
   updateLogtime(date, time) {
-    let newDateTime = date + "T" + time + ":00.000Z";
-    console.log(newDateTime);
+    let newDateTime = date + "T" + time + ":00.000";
     this.setState({logTime: newDateTime});
     this.setState({time: time});
     this.setState({date: date});

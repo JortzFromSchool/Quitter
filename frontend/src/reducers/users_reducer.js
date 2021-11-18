@@ -1,4 +1,4 @@
-import { RECEIVE_ADMIN, RECEIVE_USER } from "../actions/user_actions";
+import { RECEIVE_ADMIN, RECEIVE_USER, WIPE_USERS} from "../actions/user_actions";
 
 const UsersReducer = (state = {all: {}, admin: {}}, action) => {
 Object.freeze(state);
@@ -13,6 +13,9 @@ switch (action.type) {
   case RECEIVE_ADMIN:
     const newAdmin = {[action.admin.data._id]: action.admin.data}
     newState.admin = newAdmin;
+    return newState;
+  case WIPE_USERS:
+    newState.all = {};
     return newState;
   default:
     return state;

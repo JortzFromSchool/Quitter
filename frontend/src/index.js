@@ -1,6 +1,6 @@
 // src/index.js
 // import { fetchGroups } from './actions/group_actions';
-
+import './index.css';
 import React from 'react';
 import ReactDOM from 'react-dom';
 

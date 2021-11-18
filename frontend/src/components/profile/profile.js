@@ -1,5 +1,6 @@
 import React from 'react';
 import Logs from '../logs/logs';
+import '../logs/user_show.css';
 
 class Profile extends React.Component {
 
@@ -12,7 +13,7 @@ class Profile extends React.Component {
         });
     };
 
-    UNSAFE_componentWillUnmount() {
+    componentWillUnmount() {
         this.props.wipeLogsByHabit();
     }
 
@@ -25,7 +26,7 @@ class Profile extends React.Component {
         } else {
             return (
                 <div>
-                    <h2>Logs by Habit</h2>
+                    <h2 className="profile-header">It's quittin' time, {this.props.currentUser.handle}!</h2>
                     {Object.keys(this.props.logsByHabit).map(key => {
                         return (<Logs
                         key={key}

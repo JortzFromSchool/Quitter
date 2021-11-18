@@ -1,4 +1,5 @@
 import React from 'react'
+import './group_form.css'
 
 class GroupForm extends React.Component{
   constructor(props){
@@ -26,7 +27,7 @@ class GroupForm extends React.Component{
   handleSubmit(e){
     e.preventDefault();
     this.props.processForm(this.state)
-      .then(() => (this.props.fetchGroups()));
+      .then(() => (this.props.fetchGroups())).then(this.props.closeModal);
   }
 
   render() {
@@ -35,38 +36,44 @@ class GroupForm extends React.Component{
       <div className="create-group-modal">
         <div className="create-group-header">
           <div>{formType}</div>
-          <div onClick={closeModal}>X</div>
+          <div onClick={closeModal} className='x'>X</div>
         </div>
-        <form onSubmit={this.handleSubmit}>
-          <label>Name:
-            <input 
-              type="text" 
-              onChange={this.update('name')} 
-              value={this.state.name}
+          <div className='form-container'>
+            <form className="create-group-form" onSubmit={this.handleSubmit}>
+            <div className='input-select'>
+                <input
+                  className="create-group-input" 
+                  type="text" 
+                  onChange={this.update('name')} 
+                  value={this.state.name}
+                  placeholder="Group Name"
+                />
+                    
+                <select className="create-group-select"name="habit" onChange={this.updateHabitId()}>
+                  <option selected disabled>
+                    -- Please Select a Habit --
+                  </option>
+                  {
+                    habits.map(habit => {
+                                        return(
+                                          <option 
+                                            key={`habit-option-${habit._id}`} 
+                                            value={habit._id}>{habit.name}
+                                          </option>
+                                          )
+                                        }
+                            )
+                  }
+                </select>
+            </div>
+            <input
+              className="create-group-submit" 
+              type="submit" 
+              onClick={this.handleSubmit} 
+              value={formType}
             />
-          </label>
-          <select name="habit" onChange={this.updateHabitId()}>
-            <option selected disabled>
-              -- Please Select a Habit --
-            </option>
-            {
-              habits.map(habit => {
-                                  return(
-                                    <option 
-                                      key={`habit-option-${habit._id}`} 
-                                      value={habit._id}>{habit.name}
-                                    </option>
-                                    )
-                                  }
-                      )
-            }
-          </select>
-          <input 
-            type="submit" 
-            onClick={this.handleSubmit} 
-            value={formType}
-          />
-        </form>
+          </form>
+        </div>
       </div>
     )
   }
