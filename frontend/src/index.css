@@ -2,7 +2,7 @@
    v2.0 | 20110126
    License: none (public domain)
 */
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800;900&display=swap');
 /* @import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap'); */
 
 html, body, div, span, applet, object, iframe,
@@ -34,6 +34,9 @@ body {
     font-family: 'Montserrat', sans-serif;
     font-weight: 100;
 	line-height: 1;
+}
+strong {
+    font-weight: 400;
 }
 ol, ul {
 	list-style: none;

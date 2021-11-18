@@ -38,9 +38,9 @@ class TimeUntil extends React.Component {
         let timeUntilLog = new Date(this.mostRecentLog.getTime() + numberOfMinsToAdd*60000);
         let avgDiffDisplay = null;
         if (avgDiffInMins > 60) {
-            avgDiffDisplay = <div>Average difference between logs: {parseInt(avgDiffInMins / 60)} hrs and {(avgDiffInMins % 60).toFixed()} mins </div>
+            avgDiffDisplay = <div>Average time between sessions: {parseInt(avgDiffInMins / 60)} hrs and {(avgDiffInMins % 60).toFixed()} mins </div>
         } else {
-            avgDiffDisplay = <div>Average difference between logs: {avgDiffInMins.toFixed()} </div>
+            avgDiffDisplay = <div>Average time between sessions: {avgDiffInMins.toFixed()} </div>
         }
         
         if (currentDate < timeUntilLog) {

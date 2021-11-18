@@ -3,6 +3,7 @@ import { withRouter } from 'react-router-dom';
 import LogShow from './log_show';
 import Plot from 'react-plotly.js';
 import TimeUntil from './time_until';
+import './user_show.css';
 
 class Logs extends React.Component {
     
@@ -43,30 +44,70 @@ class Logs extends React.Component {
         } else {
             const countHash = this.countLogsPerDay(this.props.logs.data)
             const data = this.formatData(countHash);
+            let habitName = this.props.habit.name;
+            let habitIcon;
+            switch (habitName) {
+                case 'smoking':
+                    habitIcon = <i class="fas fa-smoking-ban"></i>
+                    break;
+                case 'drinking':
+                    habitIcon = <i class="fas fa-beer"></i>
+                default:
+                    break;
+            }
+
             return (
-                <div>
-                    <h2>All Logs for {this.props.habit.name}</h2>
-                    {this.props.logs.data.map((log, index) => (
-                        <LogShow 
-                        key={log._id} 
-                        description={log.description}
-                        logTime={log.logTime}
+                <div className="habit-log-container">
+                    <div className="plot-logs-container">
+                        <div className="plot-container">
+                        <Plot
+                            data={[
+                            {
+                                x: data[0],
+                                y: data[1],
+                                type: 'scatter',
+                                // mode: 'lines',
+                                line: {
+                                    color: 'rgb(247,148,28)',
+                                    width: 3
+                                }
+                            },
+                            ]}
+                            layout={ {
+                                width: 500, 
+                                height: 400, 
+                                title: {
+                                    text: `${this.props.habit.name.slice(0,1).toUpperCase() + this.props.habit.name.slice(1)}`,
+                                    // text: {habitIcon},
+                                    font: {size: 22, family: 'Montserrat, sans-serif'
+                                        // color: 'rgb(247,148,28)'
+                                    }
+                                },
+                                xaxis: {tickformat: '%m/%d'},
+                                yaxis: {dtick: 1},
+                            } }
                         />
-                    ))}
-                    <Plot
-                        data={[
-                        {
-                            x: data[0],
-                            y: data[1],
-                            type: 'scatter',
-                        },
-                        ]}
-                        layout={ {width: 320, height: 240, title: 'A Fancy Plot'} }
-                    />
-                    {this.props.logForm(this.props.habit._id)}
-                    <TimeUntil 
-                    logs={this.props.logs.data}
-                    habitName={this.props.habit.name}/>
+                        </div>
+                        <div className="log-container">
+                            <h2 className="log-container-header">Your most recent {this.props.habit.name} sessions:</h2>
+                            {this.props.logs.data.reverse().slice(0,3).map((log, index) => (
+                                <LogShow 
+                                key={log._id} 
+                                description={log.description}
+                                logTime={log.logTime}
+                                />
+                            ))}
+                        </div>
+                    </div>
+                        <div className="log-container-footer">
+                            <TimeUntil 
+                            logs={this.props.logs.data}
+                            habitName={this.props.habit.name} 
+                            className="time-until"/>
+                            <div className="log-form-btn">
+                                {this.props.logForm(this.props.habit._id)}
+                            </div>
+                    </div>
                 </div>
             );
         }

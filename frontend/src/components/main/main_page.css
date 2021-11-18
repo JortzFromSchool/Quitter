@@ -16,12 +16,6 @@
     text-align: center;
 }
 
-/* .page-div {
-    display: flex;
-    flex-direction: column;
-    height: 900px;
-} */
-
 .inner-splash-container {
     display: flex;
     align-items: center;
