@@ -40,7 +40,11 @@ router.post('/',
         logTime: req.body.logTime
       });
   
-      newLog.save().then(log => res.json(log));
+      newLog.save()
+        .then(log => res.json(log))
+        .catch(err =>
+          res.status(422).json({ blankFields: "Time and Date can't be blank"})
+          );
     }
   );
 
