@@ -53,3 +53,8 @@
 .log-input-header {
     font-weight: 900;
 }
+
+.log-errors {
+    color: red;
+    font-weight: 600;
+}

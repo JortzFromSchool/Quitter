@@ -66,7 +66,7 @@ class LogForm extends React.Component {
     return(
       <ul>
         {Object.values(this.props.errors.response.data).map((error, i) => (
-          <li key={`error-${i}`}>
+          <li key={`error-${i}`} className="log-errors">
             {error}
           </li>
           // Object.values(error.response.data).map((msg, msg_idx) => (
