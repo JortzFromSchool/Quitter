@@ -35,7 +35,18 @@ class Logs extends React.Component {
         return [uniqueDates,numOfLogs]
     }
 
+    logBtn() {
+      if (this.props.logs.data && this.props.currentUser){
+        if (this.props.logs.data[0].user === this.props.currentUser?.id) {
+            return  <div className="log-form-btn">
+                      {this.props.logForm(this.props.habit._id)}
+                    </div>
+        }  
+       }
+      }
+
     render() {
+      console.log(this.props.hey)
         if (this.props.logs.data.length === 0) {
             return (<div className="no-logs-container">
                         <div>There are no logs for {this.props.habit.name}.</div>
@@ -46,8 +57,6 @@ class Logs extends React.Component {
         } else {
             const sortedData = this.props.logs.data.sort((a,b) => (a.logTime > b.logTime) ? 1 : -1)
             const countHash = this.countLogsPerDay(sortedData);
-            console.log(sortedData)
-            console.log(countHash)
             const data = this.formatData(countHash, sortedData);
             if(!this.props.habit) {
                 return null;
@@ -97,12 +106,13 @@ class Logs extends React.Component {
                     </div>
                         <div className="log-container-footer">
                             <TimeUntil 
-                            logs={this.props.logs.data}
-                            habitName={this.props.habit.name} 
-                            className="time-until"/>
-                            <div className="log-form-btn">
-                                {this.props.logForm(this.props.habit._id)}
-                            </div>
+                              logs={this.props.logs.data}
+                              habitName={this.props.habit.name} 
+                              className="time-until"
+                            />
+                            {
+                             this.logBtn()
+                            }
                     </div>
                 </div>
             );

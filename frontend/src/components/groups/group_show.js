@@ -78,7 +78,7 @@ class GroupShow extends React.Component{
             Delete Group
           </button>
         ) : null
-        const {group, admin, habits, users, logs} = this.props;
+        const {group, admin, habits, users, logs, currentUser} = this.props;
         if(!group){
             return null;
         }
@@ -103,6 +103,7 @@ class GroupShow extends React.Component{
                                 habit={this.props.habits[this.props.group.habitId]}
                                 logs={this.props.logs[key]}
                                 logForm={this.props.logForm}
+                                currentUser={currentUser}
                             />
                         </div>
                         )
