@@ -10,9 +10,13 @@ class SignupForm extends React.Component {
       handle: '',
       password: '',
       password2: '',
-      errors: {}
+      errors: {},
+      demo_user: {
+        email: 'demo@demo.com',
+        password: 'demomode'
+      }
     };
-
+    this.handleDemo = this.handleDemo.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.clearedErrors = false;
   }
@@ -29,6 +33,10 @@ class SignupForm extends React.Component {
     return e => this.setState({
       [field]: e.currentTarget.value
     });
+  }
+
+   handleDemo() {
+    this.props.login(this.state.demo_user)
   }
 
   handleSubmit(e) {
@@ -92,6 +100,11 @@ class SignupForm extends React.Component {
                 />
               <br/>
               <input type="submit" value="Sign up" className="signup-form-submit-btn"/>
+              <button 
+                onClick={this.handleDemo}
+              >
+                Demo mode
+              </button>
               {this.renderErrors()}
             </div>
           </form>

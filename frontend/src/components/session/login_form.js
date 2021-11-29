@@ -9,9 +9,13 @@ class LoginForm extends React.Component {
     this.state = {
       email: '',
       password: '',
-      errors: {}
+      errors: {},
+      demo_user: {
+        email: 'demo@demo.com',
+        password: 'demomode'
+      }
     };
-
+    this.handleDemo = this.handleDemo.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.renderErrors = this.renderErrors.bind(this);
   }
@@ -47,6 +51,10 @@ class LoginForm extends React.Component {
     
   }
 
+  handleDemo() {
+    this.props.login(this.state.demo_user)
+  }
+
   // Render the session errors if there are any
   renderErrors() {
     return(
@@ -61,7 +69,6 @@ class LoginForm extends React.Component {
   }
 
   render() {
-    console.log(this.props.history)
     return (
       <div className="login-page-container">
         <div className="login-form-container">
@@ -84,6 +91,12 @@ class LoginForm extends React.Component {
                 />
               <br/>
               <input type="submit" value="Login" className="login-form-submit-btn" />
+              <button 
+                className="demo" 
+                onClick={this.handleDemo}
+              >
+                Demo mode
+              </button>
               {this.renderErrors()}
             </div>
           </form>
