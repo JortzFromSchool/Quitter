@@ -93,8 +93,6 @@ class GroupShow extends React.Component{
                         {this.whichButton()}
                     </div>
                     {deleteBtn}
-                    {/* {this.props.currentUser.id} */}
-                    {/* {admin.handle} */}
                     <h2 className="logs-by-user" >Logs by User</h2>
                     {Object.keys(this.props.logs).map(key => {
                         return (
