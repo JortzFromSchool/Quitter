@@ -9,6 +9,8 @@ export const RECEIVE_NEW_LOG = "RECEIVE_NEW_LOG";
 export const RECEIVE_USER_LOGS_BY_HABIT = "RECEIVE_USER_LOGS_BY_HABIT";
 export const RECEIVE_USER_LOGS_BY_USER = "RECEIVE_USER_LOGS_BY_USER";
 export const WIPE_LOGS_BY_HABIT = "WIPE_LOGS_BY_HABIT";
+export const RECEIVE_LOG_ERRORS = "RECEIVE_LOG_ERRORS";
+export const WIPE_LOG_ERRORS = "WIPE_LOG_ERRORS";
 
 export const receiveLogs = logs => ({
     type: RECEIVE_LOGS,
@@ -39,6 +41,15 @@ export const receiveUserLogsByUser = (userId, logs) => ({
     userLogs: {userId: userId, logsByHabit: logs}
 })
 
+export const receiveLogErrors = err => ({
+    type: RECEIVE_LOG_ERRORS,
+    err
+})
+
+export const wipeLogErrors = () => ({
+    type: WIPE_LOG_ERRORS
+})
+
 export const fetchLogs = () => dispatch => (
     getLogs()
     .then(logs => dispatch(receiveLogs(logs)))
@@ -66,5 +77,5 @@ export const fetchUserLogsByUser = (userId, habitId) => dispatch => (
 export const createLog = data => dispatch => (
     makeLog(data)
     .then(log => dispatch(receiveNewLog(log)))
-    .catch(err => console.log(err))
+    .catch(err => dispatch(receiveLogErrors(err)))
 );

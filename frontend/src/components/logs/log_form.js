@@ -14,6 +14,7 @@ class LogForm extends React.Component {
         time: ''
     };
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.renderErrors = this.renderErrors.bind(this);
   }
 
   update(field) {
@@ -49,16 +50,30 @@ class LogForm extends React.Component {
       logTime: this.state.logTime
     }
     const log = Object.assign({}, newLog);
-    this.props.processForm(log).then(() => (this.props.fetchUserLogsByHabit(this.state.user, this.state.habitId))).then(this.props.closeModal);
+    this.props.processForm(log).then(err => {
+      console.log(err);
+      if (err && err.type !== "RECEIVE_LOG_ERRORS" ) {
+        (this.props.fetchUserLogsByHabit(this.state.user, this.state.habitId)).then(this.props.closeModal).then(this.props.wipeLogErrors)
+      }
+    })
   }
 
   renderErrors() {
+    if (!this.props.errors || !this.props.errors.response) {
+      return null
+    }
+
     return(
       <ul>
-        {this.props.errors.map((error, i) => (
-          <li key={`error-${i}`}>
+        {Object.values(this.props.errors.response.data).map((error, i) => (
+          <li key={`error-${i}`} className="log-errors">
             {error}
           </li>
+          // Object.values(error.response.data).map((msg, msg_idx) => (
+          //   <li key={`error-${msg_idx}`}>
+          //     {msg}
+          //   </li>
+          // ))
         ))}
       </ul>
     );
