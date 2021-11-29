@@ -16,7 +16,7 @@ const LogSchema = new Schema({
     },
     logTime: {
         type: Date,
-        required: false
+        required: true
     },
     date: { 
         type: Date,

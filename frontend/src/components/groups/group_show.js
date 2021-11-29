@@ -84,8 +84,6 @@ class GroupShow extends React.Component{
                     </div>
                     <h2 className="logs-by-user" >Logs by User</h2>
                     {Object.keys(this.props.logs).map(key => {
-                        console.log(this.props.users);
-                        console.log(key);
                         return (
                         <div>
                             <div className="log-show-title">{this.props.users[key].handle}'s Stats</div>

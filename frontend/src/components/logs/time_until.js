@@ -33,8 +33,7 @@ class TimeUntil extends React.Component {
     render() {
         const avgDiffInMins = this.getAvgDiffBetweenLogs(this.props.logs)
         let numberOfMinsToAdd = avgDiffInMins.toFixed(1) + 30;
-        const currentDate = new Date();
-        console.log(this.mostRecentLog);
+        const currentDate = new Date()
         let timeUntilLog = new Date(this.mostRecentLog.getTime() + numberOfMinsToAdd*60000);
         let stringTimeUntilLog = timeUntilLog.toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: '2-digit',  hour: 'numeric', hour12: true, minute: 'numeric' })
         let avgDiffDisplay = null;
