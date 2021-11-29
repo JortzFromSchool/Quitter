@@ -11,8 +11,9 @@ switch (action.type) {
     newState.all = newAll;
     return newState;
   case RECEIVE_ADMIN:
-    const newAdmin = {[action.admin.data._id]: action.admin.data}
-    newState.admin = newAdmin;
+    // const newAdmin = {[action.admin.data._id]: action.admin.data}
+    // newState.admin = newAdmin;
+    newState.admin = action.admin.data
     return newState;
   case WIPE_USERS:
     newState.all = {};
