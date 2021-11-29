@@ -6,10 +6,6 @@ import TimeUntil from './time_until';
 import './user_show.css';
 
 class Logs extends React.Component {
-
-  // componentDidUpdate(prevProps) {
-  //   console.log(prevProps)
-  // }
     
     countLogsPerDay(logs) {
         const count = {};

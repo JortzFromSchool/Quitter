@@ -47,7 +47,6 @@ class LoginForm extends React.Component {
     };
 
     this.props.login(user)
-      // .then(() => {this.props.history.push(`/users/${this.props.currentUser.id}`)}); 
     
   }
 
@@ -69,6 +68,7 @@ class LoginForm extends React.Component {
   }
 
   render() {
+
     return (
       <div className="login-page-container">
         <div className="login-form-container">
