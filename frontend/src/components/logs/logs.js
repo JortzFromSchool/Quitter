@@ -6,10 +6,6 @@ import TimeUntil from './time_until';
 import './user_show.css';
 
 class Logs extends React.Component {
-
-  // componentDidUpdate(prevProps) {
-  //   console.log(prevProps)
-  // }
     
     countLogsPerDay(logs) {
         const count = {};
@@ -46,8 +42,6 @@ class Logs extends React.Component {
         } else {
             const sortedData = this.props.logs.data.sort((a,b) => (a.logTime > b.logTime) ? 1 : -1)
             const countHash = this.countLogsPerDay(sortedData);
-            console.log(sortedData)
-            console.log(countHash)
             const data = this.formatData(countHash, sortedData);
             if(!this.props.habit) {
                 return null;
