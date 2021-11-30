@@ -26,9 +26,17 @@ class LogForm extends React.Component {
   updateDateOrTime(field){
     switch (field) {
       case 'date':
-        return e => this.updateLogtime(e.currentTarget.value, this.state.time);
+        return e => {
+          console.log('below is datetime-local')
+          console.log(e.currentTarget.value)
+          this.updateLogtime(e.currentTarget.value, this.state.time)
+        }
       case 'time':
-        return e => this.updateLogtime(this.state.date, e.currentTarget.value);
+        return e => {
+          console.log('below is time')
+          console.log(e.currentTarget.value)
+          this.updateLogtime(this.state.date, e.currentTarget.value)
+        }
       default:
         return null;
     }
@@ -69,11 +77,6 @@ class LogForm extends React.Component {
           <li key={`error-${i}`} className="log-errors">
             {error}
           </li>
-          // Object.values(error.response.data).map((msg, msg_idx) => (
-          //   <li key={`error-${msg_idx}`}>
-          //     {msg}
-          //   </li>
-          // ))
         ))}
       </ul>
     );
@@ -104,7 +107,7 @@ class LogForm extends React.Component {
                 />
               </label>
               <label className="log-input-header">Date:
-                <input type="date"
+                <input type="datetime-local"
                   value={this.state.date}
                   onChange={this.updateDateOrTime('date')}
                   className="log-input"
