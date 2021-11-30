@@ -46,3 +46,19 @@
     justify-content: end;
     margin-right: 20%;
 }
+
+.delete-group-btn{
+  position: relative;
+  bottom: 25px;
+  margin-left: 20%;
+  background-color: #f7941c;
+  border-radius: 30px;
+  border: none;
+  padding: 8px 8px;
+  color: white;
+  cursor: pointer;
+  font-weight: 600;
+  text-decoration: none;
+  font-size: 14px;
+  font-family: 'Montserrat', sans-serif;
+}

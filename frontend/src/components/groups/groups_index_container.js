@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 import { openModal } from '../../actions/modal_actions';
-import { fetchGroups, destroyGroup } from '../../actions/group_actions';
-import { fetchUser, fetchAdmin } from '../../actions/user_actions';
+import { fetchGroups } from '../../actions/group_actions';
+import { fetchUser } from '../../actions/user_actions';
 import GroupsIndex from './groups_index';
 
 const mSTP = state => {
@@ -14,7 +14,6 @@ const mSTP = state => {
 const mDTP = dispatch => ({
   fetchUser: userId => dispatch(fetchUser(userId)),
   fetchGroups: () => dispatch(fetchGroups()),
-  destroyGroup: groupId => dispatch(destroyGroup(groupId)),
   groupForm: (
     <button 
       className="create-group-btn" 
