@@ -24,7 +24,12 @@ const mapDispatchToProps = dispatch => {
             <button onClick={() => dispatch(openModal('log', habitId))}>
                 Log Session
             </button>
-          )
+          ),
+        habitForm: () => (
+            <button onClick={() => dispatch(openModal('habit'))}>
+                Create Habit
+            </button>
+        )
     };
 };
 
