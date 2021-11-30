@@ -50,9 +50,9 @@ class GroupForm extends React.Component{
                   placeholder="Group Name"
                 />
                     
-                <select className="create-group-select"name="habit" onChange={this.updateHabitId()}>
+                <select className="create-group-select" name="habit" onChange={this.updateHabitId()}>
                   <option selected disabled>
-                    -- Please Select a Habit --
+                    Please Select a Habit 
                   </option>
                   {
                     habits.map(habit => {

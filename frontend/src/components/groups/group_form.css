@@ -35,7 +35,6 @@
   line-height: 1.3;
   text-align: center;
   z-index: 10;
-  /* text-shadow: 2px 2px lightgray; */
 }
 
 .quitting{
@@ -74,26 +73,26 @@
   padding: 10px;
   margin-bottom: 5%;
   width: 182px;
-  
+  font-weight: 700;
 }
 
 .create-group-select{
   background: white;
-  /* border-radius: 10%; */
   border: 1px solid gray;
   padding: 5px 5px;
-  color: #f7941c;
+  color: black;
   cursor: pointer;
-  font-weight: 300;
+  font-weight: 700;
   text-decoration: none;
   font-size: 14px;
   font-family: 'Montserrat', sans-serif;
   height: 40px;
+  width: 206px;
 }
 
 .create-group-input::placeholder {
-  color: #f7941c;
-  opacity: 1; /* Firefox */
+  color: black;
+  opacity: 1;
 }
 
 .create-group-submit{
