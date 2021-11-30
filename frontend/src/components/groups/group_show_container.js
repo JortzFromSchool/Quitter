@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import { fetchGroup, removeUserFromGroup, addUserToGroup } from '../../actions/group_actions';
+import { fetchGroup, removeUserFromGroup, addUserToGroup, destroyGroup } from '../../actions/group_actions';
 import { fetchAdmin, fetchUser, wipeUsers } from '../../actions/user_actions';
 import { fetchUserLogsByUser, wipeLogsByHabit } from '../../actions/log_actions';
 import { fetchHabits } from '../../actions/habit_actions';
@@ -18,6 +18,7 @@ const mSTP = state => {
 };
 
 const mDTP = dispatch => ({
+  destroyGroup: groupId => dispatch(destroyGroup(groupId)),
   fetchGroup: groupId => dispatch(fetchGroup(groupId)),
   fetchAdmin: adminId => dispatch(fetchAdmin(adminId)),
   fetchHabits: () => dispatch(fetchHabits()),

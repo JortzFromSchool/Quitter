@@ -20,12 +20,12 @@ class GroupIndexItem extends React.Component{
             Group Size: {Object.values(group.users).length}
           </div>
         </div>
-        <button 
+        {/* <button 
           className="delete-group-btn"
           onClick={() => (destroyGroup(group._id))}
         >
           Delete Group
-        </button>
+        </button> */}
       </Link>
       )
   } else {

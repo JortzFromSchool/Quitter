@@ -9,9 +9,9 @@ class LoginForm extends React.Component {
     this.state = {
       email: '',
       password: '',
-      errors: {}
+      errors: {},
     };
-
+    this.handleDemo = this.handleDemo.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.renderErrors = this.renderErrors.bind(this);
   }
@@ -44,6 +44,17 @@ class LoginForm extends React.Component {
 
     this.props.login(user)
     
+  }
+
+  handleDemo(e) {
+    this.setState({
+      email: 'demo@demo.com',
+      password: 'demomode'
+    }, () => {let demo = {
+      email: this.state.email,
+      password: this.state.password
+    }
+    this.props.login(demo)})  
   }
 
   // Render the session errors if there are any
@@ -83,6 +94,12 @@ class LoginForm extends React.Component {
                 />
               <br/>
               <input type="submit" value="Login" className="login-form-submit-btn" />
+              <button 
+                className="demo" 
+                onClick={this.handleDemo}
+              >
+                Demo mode
+              </button>
               {this.renderErrors()}
             </div>
           </form>

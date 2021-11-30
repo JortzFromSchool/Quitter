@@ -37,26 +37,6 @@
   text-align: center;
 }
 
-.delete-group-btn{
-  position: absolute;
-  bottom: 5%;
-  margin-top: 5px;
-  background: #d37807;
-  border-radius: 13%;
-  border: 2px solid white;
-  padding: 5px 5px;
-  color: white;
-  cursor: pointer;
-  font-weight: 300;
-  text-decoration: none;
-  font-size: 14px;
-}
-
-.delete-group-btn:hover{
-  background-color:#f5a646;
-  box-shadow: 2px 2px orange;
-}
-
 .group-size {
   font-weight: 400;
 }

@@ -68,7 +68,17 @@ class GroupShow extends React.Component{
     }
 
     render() {
-        const {group, admin, habits, users, logs} = this.props;
+          
+        const deleteBtn = this.props.currentUser.id === this.props.admin._id ? (
+          <button 
+            className="delete-group-btn"
+            onClick={() => (this.props.destroyGroup(group._id)
+              .then(() => this.props.history.push('/groups')))}
+          >
+            Delete Group
+          </button>
+        ) : null
+        const {group, admin, habits, users, logs, currentUser} = this.props;
         if(!group){
             return null;
         }
@@ -82,6 +92,7 @@ class GroupShow extends React.Component{
                     <div className="group-show-btn">
                         {this.whichButton()}
                     </div>
+                    {deleteBtn}
                     <h2 className="logs-by-user" >Logs by User</h2>
                     {Object.keys(this.props.logs).map(key => {
                         return (
@@ -92,6 +103,7 @@ class GroupShow extends React.Component{
                                 habit={this.props.habits[this.props.group.habitId]}
                                 logs={this.props.logs[key]}
                                 logForm={this.props.logForm}
+                                currentUser={currentUser}
                             />
                         </div>
                         )
