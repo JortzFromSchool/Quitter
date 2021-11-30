@@ -13,7 +13,6 @@ class TimeUntil extends React.Component {
         const justTimes = [];
         for (let i = 0; i < logs.length; i++) {
             let logTimeIntoDate = new Date(logs[i].logTime)
-            // let logTimeIntoDatePlusFive = new Date(logTimeIntoDate.getTime() + 5*60*60*1000)
             justTimes.push(logTimeIntoDate);
         }
         const sortedTimes = justTimes.sort((a, b) => b - a);
@@ -31,6 +30,94 @@ class TimeUntil extends React.Component {
     }
 
     displayAvgDiff(avgDiffInMins) {
+        if (avgDiffInMins >= 60*24*365.24) {
+
+            let remainingMinsAfterYrs = avgDiffInMins % (60 * 24 * 365.24)
+            let remainingMinsAfterMonths = remainingMinsAfterYrs % (60 * 24 * (365.24 / 12));
+            let remainingMinsAfterWeeks = remainingMinsAfterMonths % (60 * 24 * 7)
+            let remainingMinsAfterDays = remainingMinsAfterWeeks % (60 * 24);
+            let remainingMinsAfterHrs = remainingMinsAfterDays % (60);
+
+            let yrs = parseInt(avgDiffInMins / 60 / 24 / 365.24);
+            let months = parseInt(remainingMinsAfterYrs / 60 / 24 / (365.24 / 12))
+            let weeks = parseInt(remainingMinsAfterMonths / 60 / 24 / 7);
+            let days = parseInt(remainingMinsAfterWeeks / 60 / 24)
+            let hrs = parseInt(remainingMinsAfterDays / 60)
+
+            return <div>
+                Average time between sessions: <br/>
+                {yrs} years,&nbsp;
+                {months} months,&nbsp;
+                {weeks} weeks,&nbsp;
+                {days} days,&nbsp;
+                {hrs} hrs, and&nbsp;
+                {remainingMinsAfterHrs.toFixed()} mins
+            </div>
+        } else if (avgDiffInMins < 60*24*365.24 && avgDiffInMins >= 60 * 24 * 365.24 / 12) {
+            let remainingMinsAfterMonths = avgDiffInMins % (60 * 24 * (365.24 / 12));
+            let remainingMinsAfterWeeks = remainingMinsAfterMonths % (60 * 24 * 7);
+            let remainingMinsAfterDays = remainingMinsAfterMonths % (60 * 24);
+            let remainingMinsAfterHrs = remainingMinsAfterDays % (60);
+
+            let months = parseInt(avgDiffInMins / 60 / 24 / (365.24 / 12));
+            let weeks = parseInt(remainingMinsAfterMonths / 60 / 24 / 7);
+            let days = parseInt(remainingMinsAfterWeeks / 60 / 24)
+            let hrs = parseInt(remainingMinsAfterDays / 60)
+
+            return <div>
+                Average time between sessions: <br/> 
+                {months} months,&nbsp;
+                {weeks} weeks,&nbsp;
+                {days} days,&nbsp;
+                {hrs} hrs, and&nbsp;
+                {remainingMinsAfterHrs.toFixed()} mins
+            </div> 
+        } else if (avgDiffInMins < 60 * 24 * 365.24 / 12 && avgDiffInMins >= 60 * 24 * 7) {
+            let remainingMinsAfterWeeks = avgDiffInMins % (60 * 24 * 7);
+            let remainingMinsAfterDays = remainingMinsAfterWeeks % (60 * 24);
+            let remainingMinsAfterHrs = remainingMinsAfterDays % 60;
+
+            let weeks = parseInt(avgDiffInMins / 60 / 24 / 7);
+            let days = parseInt(remainingMinsAfterWeeks / 60 / 24)
+            let hrs = parseInt(remainingMinsAfterDays / 60);
+
+            return <div>
+                Average time between sessions: <br/>
+                {weeks} months,&nbsp;
+                {days} days,&nbsp;
+                {hrs} hrs, and&nbsp;
+                {remainingMinsAfterHrs.toFixed()} mins
+            </div>
+
+        }   else if (avgDiffInMins < 60 * 24 * 365.24 / 12 && avgDiffInMins >= 60 * 24) {
+            let remainingMinsAfterDays = avgDiffInMins % (60 * 24);
+            let remainingMinsAfterHrs = remainingMinsAfterDays % (60);
+
+            let days = parseInt(avgDiffInMins / 60 / 24)
+            let hrs = parseInt(remainingMinsAfterDays / 60)
+
+            return <div>
+                Average time between sessions: <br/> 
+                {days} days,&nbsp;
+                {hrs} hrs, and&nbsp;
+                {remainingMinsAfterHrs.toFixed()} mins
+            </div> 
+        } else if (avgDiffInMins < 60 * 24 && avgDiffInMins >= 60) {
+            let hrs = parseInt(avgDiffInMins / 60)
+
+            let remainingMinsAfterHrs = avgDiffInMins % (60);
+
+            return <div>
+                Average time between sessions: <br/> 
+                {hrs} hrs and&nbsp;
+                {remainingMinsAfterHrs.toFixed()} mins
+            </div>
+        } else {
+            return <div>
+                Average time between sessions: <br/> 
+                {avgDiffInMins.toFixed()} mins
+            </div>
+        }
         
     }
 
@@ -41,18 +128,11 @@ class TimeUntil extends React.Component {
         let timeUntilLog = new Date(this.mostRecentLog.getTime() + numberOfMinsToAdd*60000);
         let stringTimeUntilLog = timeUntilLog.toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: '2-digit',  hour: 'numeric', hour12: true, minute: 'numeric' })
 
-        let avgDiffDisplay = null;
-        if (avgDiffInMins > 60) {
-            avgDiffDisplay = <div>Average time between sessions:<br/>{parseInt(avgDiffInMins / 60)} hrs and {(avgDiffInMins % 60).toFixed()} mins </div>
-        } else {
-            avgDiffDisplay = <div>Average time between sessions: {avgDiffInMins.toFixed()} </div>
-        }
-        
         if (currentDate < timeUntilLog) {
             return (
                 <div className="log-time-msg bad">
                     <p>If you hold off until:<br/><span className="time-until-date">{stringTimeUntilLog}</span><br/> You will be on pace to quitting!</p><br/>
-                    {/* {this.displayAvgDiff(avgDiffInMins)} */}
+                    {this.displayAvgDiff(avgDiffInMins)}
                 </div>
             )
         } else {
