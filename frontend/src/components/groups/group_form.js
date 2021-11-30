@@ -1,5 +1,6 @@
 import React from 'react'
 import './group_form.css'
+import MainLogo from '../../assets/quitter-main-logo.svg';
 
 class GroupForm extends React.Component{
   constructor(props){
@@ -65,6 +66,13 @@ class GroupForm extends React.Component{
                             )
                   }
                 </select>
+            </div>
+            <div className="group-form-text">
+              <p>Set up a group around a habit 
+              creating accountability towards quitting<br />
+              <span className="together">together</span></p>
+
+              <img className="logo-group-form" src={MainLogo} />
             </div>
             <input
               className="create-group-submit" 
