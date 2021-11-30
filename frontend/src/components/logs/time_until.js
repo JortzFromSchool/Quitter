@@ -13,8 +13,8 @@ class TimeUntil extends React.Component {
         const justTimes = [];
         for (let i = 0; i < logs.length; i++) {
             let logTimeIntoDate = new Date(logs[i].logTime)
-            let logTimeIntoDatePlusFive = new Date(logTimeIntoDate.getTime() + 5*60*60*1000)
-            justTimes.push(logTimeIntoDatePlusFive);
+            // let logTimeIntoDatePlusFive = new Date(logTimeIntoDate.getTime() + 5*60*60*1000)
+            justTimes.push(logTimeIntoDate);
         }
         const sortedTimes = justTimes.sort((a, b) => b - a);
         this.mostRecentLog = sortedTimes[0];
@@ -30,12 +30,17 @@ class TimeUntil extends React.Component {
         return avgDiff;
     }
 
+    displayAvgDiff(avgDiffInMins) {
+        
+    }
+
     render() {
         const avgDiffInMins = this.getAvgDiffBetweenLogs(this.props.logs)
         let numberOfMinsToAdd = avgDiffInMins.toFixed(1) + 30;
         const currentDate = new Date()
         let timeUntilLog = new Date(this.mostRecentLog.getTime() + numberOfMinsToAdd*60000);
         let stringTimeUntilLog = timeUntilLog.toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: '2-digit',  hour: 'numeric', hour12: true, minute: 'numeric' })
+
         let avgDiffDisplay = null;
         if (avgDiffInMins > 60) {
             avgDiffDisplay = <div>Average time between sessions:<br/>{parseInt(avgDiffInMins / 60)} hrs and {(avgDiffInMins % 60).toFixed()} mins </div>
@@ -47,7 +52,7 @@ class TimeUntil extends React.Component {
             return (
                 <div className="log-time-msg bad">
                     <p>If you hold off until:<br/><span className="time-until-date">{stringTimeUntilLog}</span><br/> You will be on pace to quitting!</p><br/>
-                    {avgDiffDisplay}
+                    {/* {this.displayAvgDiff(avgDiffInMins)} */}
                 </div>
             )
         } else {
