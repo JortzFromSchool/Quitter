@@ -1,0 +1,11 @@
+#average-time {
+    display: flex;
+    align-items: center;
+    margin-top: 1%;
+}
+
+.arrow {
+    height: auto;
+    width: 5%;
+    margin-right: 1%;
+}

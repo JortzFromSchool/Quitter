@@ -1,6 +1,9 @@
 import React from 'react';
 import Moment from 'react-moment';
 import 'moment-timezone';
+import Up from '../../assets/up.png';
+import Down from '../../assets/down.png';
+import './time_until.css';
 
 class TimeUntil extends React.Component {
 
@@ -29,6 +32,26 @@ class TimeUntil extends React.Component {
         return avgDiff;
     }
 
+    getOldAvg(logs) {
+        const justTimes = [];
+        for (let i = 0; i < logs.length; i++) {
+            let logTimeIntoDate = new Date(logs[i].logTime)
+            justTimes.push(logTimeIntoDate);
+        }
+        const sortedTimes = justTimes.sort((a, b) => b - a);
+        this.mostRecentLog = sortedTimes[0];
+        const diffs = [];
+        let sumOfDiffs = 0;
+        for (let i = 2; i < sortedTimes.length; i++) {
+            diffs.push((sortedTimes[i-1] - sortedTimes[i]) / (1000 * 60))
+        }
+        for (let i = 0; i < diffs.length; i++) {
+            sumOfDiffs += diffs[i];
+        }
+        const avgDiff = sumOfDiffs / diffs.length;
+        return avgDiff;
+    }
+
     displayAvgDiff(avgDiffInMins) {
         if (avgDiffInMins >= 60*24*365.24) {
 
@@ -45,7 +68,6 @@ class TimeUntil extends React.Component {
             let hrs = parseInt(remainingMinsAfterDays / 60)
 
             return <div>
-                Average time between sessions: <br/>
                 {yrs} years,&nbsp;
                 {months} months,&nbsp;
                 {weeks} weeks,&nbsp;
@@ -65,7 +87,6 @@ class TimeUntil extends React.Component {
             let hrs = parseInt(remainingMinsAfterDays / 60)
 
             return <div>
-                Average time between sessions: <br/> 
                 {months} months,&nbsp;
                 {weeks} weeks,&nbsp;
                 {days} days,&nbsp;
@@ -82,7 +103,6 @@ class TimeUntil extends React.Component {
             let hrs = parseInt(remainingMinsAfterDays / 60);
 
             return <div>
-                Average time between sessions: <br/>
                 {weeks} months,&nbsp;
                 {days} days,&nbsp;
                 {hrs} hrs, and&nbsp;
@@ -97,7 +117,6 @@ class TimeUntil extends React.Component {
             let hrs = parseInt(remainingMinsAfterDays / 60)
 
             return <div>
-                Average time between sessions: <br/> 
                 {days} days,&nbsp;
                 {hrs} hrs, and&nbsp;
                 {remainingMinsAfterHrs.toFixed()} mins
@@ -108,13 +127,11 @@ class TimeUntil extends React.Component {
             let remainingMinsAfterHrs = avgDiffInMins % (60);
 
             return <div>
-                Average time between sessions: <br/> 
                 {hrs} hrs and&nbsp;
                 {remainingMinsAfterHrs.toFixed()} mins
             </div>
         } else {
             return <div>
-                Average time between sessions: <br/> 
                 {avgDiffInMins.toFixed()} mins
             </div>
         }
@@ -126,18 +143,35 @@ class TimeUntil extends React.Component {
         let numberOfMinsToAdd = avgDiffInMins.toFixed(1) + 30;
         const currentDate = new Date()
         let timeUntilLog = new Date(this.mostRecentLog.getTime() + numberOfMinsToAdd*60000);
-        let stringTimeUntilLog = timeUntilLog.toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: '2-digit',  hour: 'numeric', hour12: true, minute: 'numeric' })
+        let stringTimeUntilLog = timeUntilLog.toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: '2-digit',  hour: 'numeric', hour12: true, minute: 'numeric' });
+        let oldAvg = this.getOldAvg(this.props.logs)
+
+        console.log('below is oldAvg')
+        console.log(oldAvg)
+        console.log('below is current avg')
+        console.log(avgDiffInMins)
 
         if (currentDate < timeUntilLog) {
             return (
                 <div className="log-time-msg bad">
                     <p>If you hold off until:<br/><span className="time-until-date">{stringTimeUntilLog}</span><br/> You will be on pace to quitting!</p><br/>
-                    {this.displayAvgDiff(avgDiffInMins)}
+                    Average time between sessions: <br/>
+                    <div id='average-time'>
+                        {avgDiffInMins > oldAvg ?  <img className='arrow' src={Up} /> : <img className='arrow' src={Down} />}
+                        {this.displayAvgDiff(avgDiffInMins)}
+                    </div>
                 </div>
             )
         } else {
             return (
-                <div className="log-time-msg good">You are on pace to quitting! Keep it up, quitter!</div>
+                <div className="log-time-msg good">
+                    You are on pace to quitting! Keep it up, quitter!
+                    Average time between sessions: <br/>
+                    <div id='average-time'>
+                        {avgDiffInMins > oldAvg ?  <img className='arrow' src={Up} /> : <img className='arrow' src={Down} />}
+                        {this.displayAvgDiff(avgDiffInMins)}
+                    </div>
+                </div>
             ) 
         }
     }
