@@ -1,8 +1,10 @@
+@import url('https://fonts.googleapis.com/css2?family=Lobster&family=Open+Sans:wght@500&display=swap');
+
 .log-form-container {
   background-color: white;
   color: #f7941c;
-  width: 450px;
-  height: 150px;
+  width: 500px;
+  height: 300px;
   display:flex;
   flex-direction: column;
   border-radius: 10px;
@@ -10,32 +12,80 @@
   padding: 8px 15px;
 }
 
+.textarea-time-date-container{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.log-btn-container{
+  margin-top: 30px;
+}
+
+.log-form-header-container{
+  display: flex;
+  justify-content: end;
+  align-items: center;
+}
+
 .close-x {
-    display: flex;
-    justify-content: end;
-    margin: 2% 2% 0 0;
+    margin-top: 5px;
+    color:orange;
     cursor: pointer;
-    font-weight: 900;
-    
+    font-weight: 900;  
 }
 
 .close-x:hover {
     top: 1px;
-    color: orange;
+    color: rgb(255, 190, 70);
     position: relative;
 }
 
+.desc-textarea-container{
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.description{
+  /* font-family: 'Open Sans', sans-serif; */
+  font-weight: 800;
+  font-size: 20px;
+  margin-bottom: 10px;
+}
+
+.time-date-container{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.date-container{
+  margin-left: 15px;
+}
+
+.log-input{
+  margin-left: 10px;
+}
+
+.log-input-header{
+  font-weight: 700;
+}
+
 .log-submit {
-    background: #F7941C;
-    border-radius: 30px;
-    border: none;
-    padding: 8px 8px;
-    color: white;
-    cursor: pointer;
-    font-weight: 600;
-    text-decoration: none;
-    font-size: 14px;
-    font-family: 'Montserrat', sans-serif;
+  background: #F7941C;
+  border-radius: 30px;
+  border: none;
+  padding: 8px 8px;
+  color: white;
+  cursor: pointer;
+  font-weight: 600;
+  text-decoration: none;
+  font-size: 14px;
+  font-family: 'Montserrat', sans-serif;
 }
 
 .log-form {
@@ -47,12 +97,27 @@
 
 .log-inputs {
     display: flex;
-    /* flex-direction: column; */
+    flex-direction: column;
+    align-items: center;
+}
+
+.log-input{
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+
+
+.time-date-container{
+  display: flex;
+  justify-content: space-between;
+  margin-top: 30px;
+  margin-bottom: 30px;
 }
 
 .log-input-header {
     font-weight: 900;
-}
+} */
 
 .log-errors {
     color: red;
