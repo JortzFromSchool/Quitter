@@ -21,11 +21,6 @@ router.get('/:id', (req, res) => {
 });
 
 router.patch('/add_user/:user_id/group/:group_id', async (req, res) => {
-    // const { errors, isValid } = validateAddUserInput(req.body);
-
-    // if (!isValid) {
-    //     return res.status(400).json(errors);
-    // }
 
     let user = await User.findOne({ _id: req.params.user_id }).then(user => user)
     
@@ -35,7 +30,6 @@ router.patch('/add_user/:user_id/group/:group_id', async (req, res) => {
     user.groups = user.groups.concat({ _id: group.id, name: group.name })
     user.save()
     res.json(group)
-
 })
 
 router.patch('/remove_user/:user_id/group/:group_id', async (req, res) => {
