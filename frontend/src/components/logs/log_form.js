@@ -80,7 +80,7 @@ class LogForm extends React.Component {
         <div className="log-form-header-container">
           <div onClick={this.props.closeModal} className="close-x">X</div>
         </div>
-        <div className="textarea-time-date-container">
+        <form onSubmit={this.handleSubmit} className="textarea-time-date-container">
           <div className="desc-textarea-container">
             <p className="description">Description:</p>
             <textarea 
@@ -109,10 +109,11 @@ class LogForm extends React.Component {
               </label>
             </div>
           </div>
+          <div className="log-errors">{this.renderErrors()}</div>
           <div className="log-btn-container">
             <input className="log-submit" type="submit" value={this.props.formType} />
           </div>
-        </div>
+        </form>
       </div>
       // <div className="log-form-container">
       //   <form onSubmit={this.handleSubmit} className="log-form-box">

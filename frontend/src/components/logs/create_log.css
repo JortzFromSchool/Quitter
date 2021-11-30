@@ -19,7 +19,7 @@
 }
 
 .log-btn-container{
-  margin-top: 30px;
+  margin-top: 20px;
 }
 
 .log-form-header-container{
@@ -106,8 +106,6 @@
   margin-right: 10px;
 }
 
-
-
 .time-date-container{
   display: flex;
   justify-content: space-between;
@@ -117,9 +115,15 @@
 
 .log-input-header {
     font-weight: 900;
-} */
+}
 
 .log-errors {
     color: red;
     font-weight: 600;
+}
+
+.log-textarea{
+  border-radius: 10px;
+  width: 250px;
+  height: 60px;
 }
