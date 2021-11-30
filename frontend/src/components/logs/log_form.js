@@ -27,14 +27,10 @@ class LogForm extends React.Component {
     switch (field) {
       case 'date':
         return e => {
-          console.log('below is datetime-local')
-          console.log(e.currentTarget.value)
           this.updateLogtime(e.currentTarget.value, this.state.time)
         }
       case 'time':
         return e => {
-          console.log('below is time')
-          console.log(e.currentTarget.value)
           this.updateLogtime(this.state.date, e.currentTarget.value)
         }
       default:
@@ -59,7 +55,6 @@ class LogForm extends React.Component {
     }
     const log = Object.assign({}, newLog);
     this.props.processForm(log).then(err => {
-      console.log(err);
       if (err && err.type !== "RECEIVE_LOG_ERRORS" ) {
         (this.props.fetchUserLogsByHabit(this.state.user, this.state.habitId)).then(this.props.closeModal).then(this.props.wipeLogErrors)
       }
@@ -92,7 +87,7 @@ class LogForm extends React.Component {
           <div className="desc-textarea-container">
             <p className="description">Description:</p>
             <textarea
-              placeholder="log your bad habits here..." 
+              placeholder=" log your bad habits here..."
               value={this.state.description}
               onChange={this.update('description')}
               className="log-textarea"
