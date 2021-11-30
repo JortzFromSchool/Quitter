@@ -28,6 +28,7 @@ class Profile extends React.Component {
                     {Object.keys(this.props.logsByHabit).map(key => {
                         return (<Logs
                         key={key}
+                        currentUser={this.props.currentUser}
                         habit={this.props.habits.all[key]}
                         logs={this.props.logsByHabit[key]}
                         logForm={this.props.logForm}

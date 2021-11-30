@@ -9,7 +9,7 @@ const receiveUser = user => ({
   user
 });
 
-const receiveAdmin = admin => ({
+export const receiveAdmin = admin => ({
   type: RECEIVE_ADMIN,
   admin
 });

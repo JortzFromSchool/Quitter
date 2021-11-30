@@ -42,7 +42,6 @@ class Logs extends React.Component {
       }
 
     render() {
-      console.log(this.props.hey)
         if (this.props.logs.data.length === 0) {
             return (<div className="no-logs-container">
                         <div>There are no logs for {this.props.habit.name}.</div>
