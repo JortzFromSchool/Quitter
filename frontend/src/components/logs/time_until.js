@@ -154,6 +154,7 @@ class TimeUntil extends React.Component {
         if (currentDate < timeUntilLog) {
             return (
                 <div className="log-time-msg bad">
+                    {avgDiffInMins > oldAvg ?  <div>You are on pace to quitting! Keep it up, quitter!</div> : null}
                     <p>If you hold off until:<br/><span className="time-until-date">{stringTimeUntilLog}</span><br/> You will be on pace to quitting!</p><br/>
                     Average time between sessions: <br/>
                     <div id='average-time'>
@@ -162,12 +163,14 @@ class TimeUntil extends React.Component {
                     </div>
                 </div>
             )
+        } else if (this.props.logs.length < 3) {
+            return null;
         } else {
             return (
                 <div className="log-time-msg good">
                     You are on pace to quitting! Keep it up, quitter!
-                    Average time between sessions: <br/>
                     <div id='average-time'>
+                        Average time between sessions: <br/>
                         {avgDiffInMins > oldAvg ?  <img className='arrow' src={Up} /> : <img className='arrow' src={Down} />}
                         {this.displayAvgDiff(avgDiffInMins)}
                     </div>
