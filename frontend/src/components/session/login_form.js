@@ -10,10 +10,6 @@ class LoginForm extends React.Component {
       email: '',
       password: '',
       errors: {},
-      demo_user: {
-        email: 'demo@demo.com',
-        password: 'demomode'
-      }
     };
     this.handleDemo = this.handleDemo.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -50,8 +46,15 @@ class LoginForm extends React.Component {
     
   }
 
-  handleDemo() {
-    this.props.login(this.state.demo_user)
+  handleDemo(e) {
+    this.setState({
+      email: 'demo@demo.com',
+      password: 'demomode'
+    }, () => {let demo = {
+      email: this.state.email,
+      password: this.state.password
+    }
+    this.props.login(demo)})  
   }
 
   // Render the session errors if there are any

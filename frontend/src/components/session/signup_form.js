@@ -11,10 +11,6 @@ class SignupForm extends React.Component {
       password: '',
       password2: '',
       errors: {},
-      demo_user: {
-        email: 'demo@demo.com',
-        password: 'demomode'
-      }
     };
     this.handleDemo = this.handleDemo.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -36,8 +32,17 @@ class SignupForm extends React.Component {
     });
   }
 
-   handleDemo() {
-    this.props.login(this.state.demo_user)
+    handleDemo(e) {
+    this.setState({
+      email: 'demo@demo.com',
+      handle: 'hello',
+      password: 'demomode',
+      password2: 'demomode'
+    }, () => {let demo = {
+      email: this.state.email,
+      password: this.state.password
+    }
+    this.props.login(demo)})
   }
 
   handleSubmit(e) {
@@ -106,6 +111,7 @@ class SignupForm extends React.Component {
               <br/>
               <input type="submit" value="Sign up" className="signup-form-submit-btn"/>
               <button 
+                className="demo" 
                 onClick={this.handleDemo}
               >
                 Demo mode
