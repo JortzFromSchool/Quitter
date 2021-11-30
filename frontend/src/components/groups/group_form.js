@@ -36,7 +36,7 @@ class GroupForm extends React.Component{
     return (
       <div className="create-group-modal">
         <div className="create-group-header">
-          <div>{formType}</div>
+          <div className="form-type">{formType}</div>
           <div onClick={closeModal} className='x'>X</div>
         </div>
           <div className='form-container'>
@@ -68,9 +68,9 @@ class GroupForm extends React.Component{
                 </select>
             </div>
             <div className="group-form-text">
-              <p>Set up a group around a habit 
-              creating accountability towards quitting<br />
-              <span className="together">together</span></p>
+              <p>Set up a group around a habit, 
+              creating accountability towards<br/> 
+              <span className="quitting">Quitting</span></p>
 
               <img className="logo-group-form" src={MainLogo} />
             </div>
