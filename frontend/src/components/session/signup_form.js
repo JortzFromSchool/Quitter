@@ -111,7 +111,7 @@ class SignupForm extends React.Component {
               <br/>
               <input type="submit" value="Sign up" className="signup-form-submit-btn"/>
               <button 
-                className="demo" 
+                className="demo2" 
                 onClick={this.handleDemo}
               >
                 Demo mode

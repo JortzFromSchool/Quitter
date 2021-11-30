@@ -52,3 +52,41 @@
 .signup-form-input.last {
     border-bottom-right-radius: 10px;
 }
+
+.demo {
+  margin-left: 37px;
+  background: rgb(254, 185, 57);
+  border-radius: 10%;
+  border: 1px solid white;
+  padding: 5px 5px;
+  color: white;
+  cursor: pointer;
+  font-weight: 300;
+  text-decoration: none;
+  font-size: 14px;
+}
+
+.demo:hover {
+  position: relative;
+  top: 1px;
+  background: orange;
+}
+
+.demo2 {
+  margin-left: 25px;
+  background: rgb(254, 185, 57);
+  border-radius: 10%;
+  border: 1px solid white;
+  padding: 5px 5px;
+  color: white;
+  cursor: pointer;
+  font-weight: 300;
+  text-decoration: none;
+  font-size: 14px;
+}
+
+.demo2:hover {
+  position: relative;
+  top: 1px;
+  background: orange;
+}
