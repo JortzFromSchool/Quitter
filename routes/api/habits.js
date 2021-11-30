@@ -42,10 +42,11 @@ router.post('/user/:user_id',
 router.delete('/:habit_id/user/:user_id', async function(req, res, next){
   let user = await User.findOne({ _id: req.params.user_id }).then(user => user);
   const habit_index = user.habits.indexOf({_id: req.params.habit_id});
-  user.habits.splice(habit_index, 1);
-  Habit.findByIdAndRemove({_id: req.params.habit_id});
-  user.save();
-  res.json(user);
+  res.json(habit_index);
+  // user.habits.splice(habit_index, 1);
+  // Habit.findByIdAndRemove({_id: req.params.habit_id});
+  // user.save();
+  // res.json(user);
 });
 
 module.exports = router;
