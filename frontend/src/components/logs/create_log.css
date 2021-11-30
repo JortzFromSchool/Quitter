@@ -128,8 +128,7 @@
   height: 60px;
   text-shadow: 1px 1px lightgray;
   font-family: 'Montserrat', sans-serif;
-  color: orangered;
-  text-align-last: center;
+
 }
 
 .log-textarea:focus{

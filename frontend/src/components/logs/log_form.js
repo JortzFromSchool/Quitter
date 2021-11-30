@@ -26,9 +26,13 @@ class LogForm extends React.Component {
   updateDateOrTime(field){
     switch (field) {
       case 'date':
-        return e => this.updateLogtime(e.currentTarget.value, this.state.time);
+        return e => {
+          this.updateLogtime(e.currentTarget.value, this.state.time)
+        }
       case 'time':
-        return e => this.updateLogtime(this.state.date, e.currentTarget.value);
+        return e => {
+          this.updateLogtime(this.state.date, e.currentTarget.value)
+        }
       default:
         return null;
     }
@@ -51,7 +55,6 @@ class LogForm extends React.Component {
     }
     const log = Object.assign({}, newLog);
     this.props.processForm(log).then(err => {
-      console.log(err);
       if (err && err.type !== "RECEIVE_LOG_ERRORS" ) {
         (this.props.fetchUserLogsByHabit(this.state.user, this.state.habitId)).then(this.props.closeModal).then(this.props.wipeLogErrors)
       }
@@ -84,7 +87,7 @@ class LogForm extends React.Component {
           <div className="desc-textarea-container">
             <p className="description">Description:</p>
             <textarea
-              placeholder="log your bad habits here..." 
+              placeholder=" log your bad habits here..."
               value={this.state.description}
               onChange={this.update('description')}
               className="log-textarea"
@@ -116,42 +119,6 @@ class LogForm extends React.Component {
           </div>
         </form>
       </div>
-      // <div className="log-form-container">
-      //   <form onSubmit={this.handleSubmit} className="log-form-box">
-      //     {/* <i class="fas fa-pencil-alt"></i> */}
-      //     <div onClick={this.props.closeModal} className="close-x">X</div>
-      //     {this.renderErrors()}
-      //     <div className="log-form">
-           
-      //       <div className="log-inputs">
-      //         <label className="log-input-header">Description:
-      //           <textarea type="text"
-      //             value={this.state.description}
-      //             onChange={this.update('description')}
-      //             className="log-input"
-      //           />
-      //         </label>
-      //           <div className="text-area-container">
-      //           <label className="log-input-header">Time:
-      //             <input type="time"
-      //               value={this.state.time}
-      //               onChange={this.updateDateOrTime('time')}
-      //               className="log-input desc"
-      //             />
-      //           </label>
-      //           <label className="log-input-header">Date:
-      //             <input type="date"
-      //               value={this.state.date}
-      //               onChange={this.updateDateOrTime('date')}
-      //               className="log-input"
-      //             />
-      //           </label>
-      //         </div>
-      //       </div>
-      //       <input className="log-submit" type="submit" value={this.props.formType} />
-      //     </div>
-      //   </form>
-      // </div>
     );
   }
 }
