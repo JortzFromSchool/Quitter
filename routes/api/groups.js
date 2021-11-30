@@ -25,9 +25,9 @@ router.patch('/add_user/:user_id/group/:group_id', async (req, res) => {
     let user = await User.findOne({ _id: req.params.user_id }).then(user => user)
     
     let group = await Group.findOne({ _id: req.params.group_id }).then(group => group)
-    group.users.push({ _id: user.id, handle: user.handle })
+    group.users[user.id] = { _id: user.id, handle: user.handle }
     group.save()
-    user.groups = user.groups.concat({ _id: group.id, name: group.name })
+    user.groups[group.id] = { _id: group.id, name: group.name }
     user.save()
     res.json(group)
 })
@@ -35,28 +35,28 @@ router.patch('/add_user/:user_id/group/:group_id', async (req, res) => {
 router.patch('/remove_user/:user_id/group/:group_id', async (req, res) => {
   let user = await User.findOne({ _id: req.params.user_id }).then(user => user)
   let group = await Group.findOne({ _id: req.params.group_id }).then(group => group)
-  // const user_index = group.users.indexOf({ _id: user.id, handle: user.handle })
-  // group.users.splice(user_index, 1)
-  // group.save()
-  const group_index = user.groups.indexOf({ _id: req.params.group_id })
-  res.json(group_index);
-  // user.groups.splice(group_index, 1)
-  // user.save()
-  // res.json(group)
+  delete group.users[user.id];
+  group.save();
+  delete user.groups[group.id];
+  user.save();
+  res.json(group)
 })
 
 router.post('/',
     passport.authenticate('jwt', { session: false }),
     (req, res) => {
-  
+      
       const newGroup = new Group({
         name: req.body.name,
         habitId: req.body.habitId,
-        users: [{ _id: req.user.id, handle: req.user.handle }],
+        users: {[req.user.id]: { _id: req.user.id, handle: req.user.handle }},
         admin: req.user.id
       });
   
-      newGroup.save().then(group => res.json(group));
+      newGroup.save();
+      req.user.groups[newGroup.id] = {_id: newGroup.id, name: newGroup.name};
+      req.user.save();
+      res.json(req.user);
     }
   );
 
