@@ -22,9 +22,21 @@ router.get('/:id', (req, res) => {
         );
 });
 
-router.post('/',
+// router.post('/',
+//     passport.authenticate('jwt', { session: false }),
+//     (req, res) => {
+  
+//       const newHabit = new Habit({
+//         name: req.body.name
+//       });
+  
+//       newHabit.save().then(habit => res.json(habit));
+//     }
+//   );
+
+router.post('/user/:user_id',
     passport.authenticate('jwt', { session: false }),
-    (req, res) => {
+    async (req, res) => {
   
       const newHabit = new Habit({
         name: req.body.name
@@ -33,5 +45,11 @@ router.post('/',
       newHabit.save().then(habit => res.json(habit));
     }
   );
+
+router.delete('/:id', function(req, res, next){
+  Habit.findByIdAndRemove({_id: req.params.id}).then(function(habit){
+    res.send(habit);
+  });
+});
 
 module.exports = router;
