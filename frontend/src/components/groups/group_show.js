@@ -12,7 +12,7 @@ class GroupShow extends React.Component{
             .then(() => (this.props.fetchAdmin(this.props.group.admin)))
             .then(() => this.props.fetchHabits())
             .then(() =>{
-                return this.props.group.users.forEach(user => {
+                return Object.values(this.props.group.users).forEach(user => {
                 this.props.fetchUserLogsByUser(user._id, this.props.group.habitId);
                 this.props.fetchUser(user._id);
             })
@@ -30,7 +30,7 @@ class GroupShow extends React.Component{
         .then(() => (this.props.wipeLogsByHabit()))
         .then(() => (this.props.fetchGroup(this.props.match.params.groupId)))
         .then(() => {
-            return this.props.group.users.forEach(user => {
+            return Object.values(this.props.group.users).forEach(user => {
             this.props.fetchUserLogsByUser(user._id, this.props.group.habitId);
             this.props.fetchUser(user._id);
             })
@@ -43,7 +43,7 @@ class GroupShow extends React.Component{
         .then(() => (this.props.wipeLogsByHabit()))
         .then(() => (this.props.fetchGroup(this.props.match.params.groupId)))
         .then(() => {
-            return this.props.group.users.forEach(user => {
+            return Object.values(this.props.group.users).forEach(user => {
             this.props.fetchUserLogsByUser(user._id, this.props.group.habitId);
             this.props.fetchUser(user._id);
             })
@@ -55,7 +55,7 @@ class GroupShow extends React.Component{
     whichButton() {
         const {group, currentUser} = this.props;
         let flag = false;
-        group.users.forEach(elem => {
+        Object.values(group.users).forEach(elem => {
             if(elem._id === currentUser.id) {
                 flag = true;
             }
@@ -82,8 +82,8 @@ class GroupShow extends React.Component{
         if(!group){
             return null;
         }
-        let usersLoaded = (Object.keys(users).length === this.props.group.users.length);
-        let logsLoaded = (Object.keys(logs).length === this.props.group.users.length);
+        let usersLoaded = (Object.keys(users).length === Object.values(this.props.group.users).length);
+        let logsLoaded = (Object.keys(logs).length === Object.values(this.props.group.users).length);
         if(group && admin && habits && logsLoaded && usersLoaded) {
             return(<div>
                     <div className="group-show-name">

@@ -6,7 +6,7 @@ const GroupSchema = new Schema({
       type: String,
       required: true
     },
-    users: [{type: Object}],
+    users: {type: Object},
     habitId: {
       type: String,
       required: true
