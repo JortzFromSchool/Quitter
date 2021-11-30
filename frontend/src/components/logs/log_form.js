@@ -83,7 +83,8 @@ class LogForm extends React.Component {
         <form onSubmit={this.handleSubmit} className="textarea-time-date-container">
           <div className="desc-textarea-container">
             <p className="description">Description:</p>
-            <textarea 
+            <textarea
+              placeholder="log your bad habits here..." 
               value={this.state.description}
               onChange={this.update('description')}
               className="log-textarea"
