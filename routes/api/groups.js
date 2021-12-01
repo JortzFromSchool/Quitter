@@ -21,11 +21,6 @@ router.get('/:id', (req, res) => {
 });
 
 router.patch('/add_user/:user_id/group/:group_id', async (req, res) => {
-    // const { errors, isValid } = validateAddUserInput(req.body);
-
-    // if (!isValid) {
-    //     return res.status(400).json(errors);
-    // }
 
     let user = await User.findOne({ _id: req.params.user_id }).then(user => user)
     
@@ -35,19 +30,24 @@ router.patch('/add_user/:user_id/group/:group_id', async (req, res) => {
     user.groups = user.groups.concat({ _id: group.id, name: group.name })
     user.save()
     res.json(group)
-
 })
 
 router.patch('/remove_user/:user_id/group/:group_id', async (req, res) => {
   let user = await User.findOne({ _id: req.params.user_id }).then(user => user)
   let group = await Group.findOne({ _id: req.params.group_id }).then(group => group)
-  const user_index = group.users.indexOf({ _id: user.id, handle: user.handle })
-  group.users.splice(user_index, 1)
-  group.save()
-  const group_index = user.groups.indexOf({ _id: req.params.group_id })
-  user.groups.splice(group_index, 1)
-  user.save()
-  res.json(group)
+  for (let i = 0; i < group.users.length; i++) {
+    if (req.params.user_id === group.users[i]._id) {
+      group.users.splice(i, 1)
+    }
+  }
+  group.save();
+  for (let i = 0; i < user.groups.length; i++) {
+    if (req.params.group_id === user.groups[i]._id) {
+      user.groups.splice(i, 1)
+    }
+  }
+  user.save();
+  res.json(group);
 })
 
 router.post('/',
@@ -61,7 +61,9 @@ router.post('/',
         admin: req.user.id
       });
   
-      newGroup.save().then(group => res.json(group));
+      newGroup.save();
+      req.user.groups = req.user.groups.concat({ _id: newGroup.id, name: newGroup.name });
+      req.user.save();
     }
   );
 

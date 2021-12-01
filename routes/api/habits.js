@@ -4,6 +4,7 @@ const mongoose = require('mongoose');
 const passport = require('passport');
 
 const Habit = require('../../models/Habit');
+const User = require('../../models/User');
 
 router.get("/test", (req, res) => res.json({ msg: "This is the habits route" }));
 
@@ -22,16 +23,32 @@ router.get('/:id', (req, res) => {
         );
 });
 
-router.post('/',
+router.post('/user/:user_id',
     passport.authenticate('jwt', { session: false }),
-    (req, res) => {
-  
+    async (req, res) => {
+      let user = await User.findOne({ _id: req.params.user_id }).then(user => user)
+
       const newHabit = new Habit({
         name: req.body.name
       });
   
-      newHabit.save().then(habit => res.json(habit));
+      newHabit.save();
+      user.habits.push({_id: newHabit.id, name: newHabit.name});
+      user.save();
+      res.json(user);
     }
   );
+
+router.delete('/:habit_id/user/:user_id', async function(req, res, next){
+  let user = await User.findOne({ _id: req.params.user_id }).then(user => user);
+  for (let i = 0; i < user.habits.length; i++) {
+    if (user.habits[i]._id === req.params.habit_id) {
+      user.habits.splice(i, 1);
+    }
+  }
+  Habit.findByIdAndRemove({_id: req.params.habit_id});
+  user.save();
+  res.json(user);
+});
 
 module.exports = router;

@@ -32,6 +32,8 @@
     flex-direction: column;
     margin-bottom: 20%;
     margin: 2% 20%;
+    border-bottom: 1px solid gray;
+    padding-bottom: 2%;
 }
 
 .log-show {
@@ -59,12 +61,6 @@
     text-decoration: none;
     font-size: 14px;
     font-family: 'Montserrat', sans-serif;
-}
-
-
-.time-until-date {
-    color:#F7941C;
-    font-size: 20px;
 }
 
 .log-show-label {
