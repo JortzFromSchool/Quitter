@@ -28,7 +28,8 @@ class GroupForm extends React.Component{
   handleSubmit(e){
     e.preventDefault();
     this.props.processForm(this.state)
-      .then(() => (this.props.fetchGroups())).then(this.props.closeModal);
+      .then(() => (this.props.fetchGroups()))
+      .then(this.props.closeModal);
   }
 
   render() {
@@ -59,7 +60,9 @@ class GroupForm extends React.Component{
                                         return(
                                           <option 
                                             key={`habit-option-${habit._id}`} 
-                                            value={habit._id}>{habit.name}
+                                            value={habit._id}
+                                          >
+                                            {habit.name}
                                           </option>
                                           )
                                         }

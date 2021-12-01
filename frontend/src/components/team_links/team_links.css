@@ -1,0 +1,118 @@
+.creators-container{
+ display: flex;
+ align-items: center;
+ justify-content: center;
+ width: 100vw;
+ height:100vh;
+ 
+}
+
+.cards-container{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.two-devs{
+  display:flex;
+  margin-bottom: 40px;
+}
+
+.flip-card{
+  background: transparent;
+  width: 300px;
+  height: 300px;
+  margin: 0 20px;
+  border: 1px solid transparent;
+  border-radius: 10px;
+  perspective: 1000px;
+  object-fit: cover;
+}
+
+.flip-card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  transition: transform 0.8s;
+  transform-style: preserve-3d;
+}
+
+.flip-card:hover .flip-card-inner {
+  transform: rotateY(180deg);
+  /* cursor: pointer; */
+}
+
+.flip-card-front, .flip-card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  border-radius: 10px;
+}
+
+.flip-card-front img{
+  width: 100%;
+  height: 100%;
+  border-radius: 10px;
+}
+
+.flip-card-front .g{
+  width: 90%;
+  height: 100%;
+  border-radius: 10px;
+}
+
+.flip-card-front {
+  background-color:black;
+  /* color: black; */
+}
+
+.flip-card-back {
+  background-color:orange;
+  color: white;
+  transform: rotateY(180deg);
+}
+
+.links-container a{
+  margin-top: 10px;
+  text-decoration: none;
+  color: blue;
+  font-weight: 700;
+  font-size: 20px;
+  display:flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.links-container{
+  margin-top: 30px;
+}
+
+.two-links{
+  display: flex;
+  justify-content: center;
+}
+
+h4 {
+  font-size: 35px;
+  margin-top: 20px;
+  margin-bottom: 10px;
+  font-weight: 500;
+}
+
+.team{
+  color: black;
+  font-weight: 700;
+  font-size: 20px;
+}
+
+.link{
+  font-size: 35px;
+  color:white;
+  margin: 10px;
+}

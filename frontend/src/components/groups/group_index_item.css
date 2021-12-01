@@ -52,3 +52,9 @@
   text-decoration: none;
   font-size: 17px;
 }
+
+.people{
+  position: absolute;
+  font-size: 40px;
+  top: 55%;
+}
