@@ -14,7 +14,8 @@ const UserSchema = new Schema({
       type: String,
       required: true
     },
-    groups: [{type: Object}]
+    groups: [{type: Object}],
+    habits: [{type: Object}]
   }, {
     timestamps: true
   })
