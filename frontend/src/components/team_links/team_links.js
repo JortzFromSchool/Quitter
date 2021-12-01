@@ -3,6 +3,7 @@ import './team_links.css'
 import NeilPic from '../../assets/neil_img.png';
 import GeorgePic from '../../assets/george_img.jpeg';
 import JortzPic from '../../assets/jortz_img.jpg';
+import MatteoPic from '../../assets/matteo_img.jpeg';
 
 class TeamLinks extends React.Component{
   render() {
@@ -77,7 +78,7 @@ class TeamLinks extends React.Component{
           <div className="flip-card">
             <div className="flip-card-inner">
               <div className="flip-card-front">
-                <img src={JortzPic} alt="Jortz_Avatar" />
+                <img src={MatteoPic} alt="Jortz_Avatar" />
               </div>
               <div className="flip-card-back">
                 <h4>Matteo Rossant</h4>

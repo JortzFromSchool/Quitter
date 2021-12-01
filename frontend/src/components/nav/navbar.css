@@ -6,6 +6,22 @@
     margin-right: 20%;
     height: 75px;
     border-bottom: 1px solid #F7941C;
+    position: relative;
+}
+
+.creators{
+  font-size: 21px;
+  position:absolute;
+  font-weight: 900;
+  color: black;
+  bottom: -1020%;
+  right: -25%;
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+.creators:hover{
+  text-shadow: 2px 2px lightgray;
+  color:orange;
 }
 
 #nav-bar-logo {
