@@ -28,9 +28,11 @@ class Profile extends React.Component {
     render() {
         const logsLoaded = Object.keys(this.props.logsByHabit).length > 0;
         if (!logsLoaded) {
-            return (<div>
-                        <div>This user has no Logs</div>
-                        {this.props.habitForm()}
+            return (<div className="no-logs-habit-container">
+                        <div className="no-logs-profile">
+                          This user has no Habits...
+                        </div>
+                          {this.props.habitForm()}
                     </div>)
         } else {
             return (
