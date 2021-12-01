@@ -40,17 +40,12 @@ router.patch('/remove_user/:user_id/group/:group_id', async (req, res) => {
       group.users.splice(i, 1)
     }
   }
-  // const user_index = group.users.indexOf({ _id: user.id, handle: user.handle })
-  // group.users.splice(user_index, 1)
   group.save();
-  // const group_index = user.groups.indexOf({ _id: req.params.group_id })
-  // res.json(group_index);
   for (let i = 0; i < user.groups.length; i++) {
     if (req.params.group_id === user.groups[i]._id) {
       user.groups.splice(i, 1)
     }
   }
-  // user.groups.splice(group_index, 1)
   user.save();
   res.json(group);
 })
