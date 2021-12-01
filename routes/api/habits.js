@@ -35,7 +35,7 @@ router.post('/user/:user_id',
       newHabit.save();
       user.habits.push({_id: newHabit.id, name: newHabit.name});
       user.save();
-      res.json(user);
+      res.json(newHabit);
     }
   );
 
