@@ -2,6 +2,7 @@ import React from 'react';
 import { closeModal } from '../../actions/modal_actions';
 import { connect } from 'react-redux';
 import  GroupFormContainer from '../groups/group_form_container';
+import HabitFormContainer from '../habits/habit_form_container';
 import CreateLogFormContainer from "../logs/create_log_form_container";
 import './modal.css'
 
@@ -16,6 +17,9 @@ function Modal({modal, closeModal}) {
       break;
     case 'group':
       component = <GroupFormContainer /> 
+      break;
+    case 'habit':
+      component = <HabitFormContainer />
       break;
     default:
       return null;
