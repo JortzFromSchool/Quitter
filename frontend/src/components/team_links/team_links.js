@@ -91,7 +91,7 @@ class TeamLinks extends React.Component{
                     <a href="https://angel.co/u/jonathan-ortiz-1" target="blank">
                       <i class="fab fa-angellist link"></i>
                     </a>
-                    <a href="https://github.com/JortzFromSchool" target="blank">
+                    <a href="https://www.jonathandortiz.com/" target="blank">
                       <i class="fas fa-user-tie link"></i>
                     </a>
                   </div>
