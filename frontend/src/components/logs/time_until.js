@@ -68,7 +68,7 @@ class TimeUntil extends React.Component {
             let days = parseInt(remainingMinsAfterWeeks / 60 / 24)
             let hrs = parseInt(remainingMinsAfterDays / 60)
 
-            return <div>
+            return <div className='avg-time-proper'>
                 {yrs} years,&nbsp;
                 {months} months,&nbsp;
                 {weeks} weeks,&nbsp;
@@ -87,7 +87,7 @@ class TimeUntil extends React.Component {
             let days = parseInt(remainingMinsAfterWeeks / 60 / 24)
             let hrs = parseInt(remainingMinsAfterDays / 60)
 
-            return <div>
+            return <div className='avg-time-proper'>
                 {months} months,&nbsp;
                 {weeks} weeks,&nbsp;
                 {days} days,&nbsp;
@@ -103,7 +103,7 @@ class TimeUntil extends React.Component {
             let days = parseInt(remainingMinsAfterWeeks / 60 / 24)
             let hrs = parseInt(remainingMinsAfterDays / 60);
 
-            return <div>
+            return <div className='avg-time-proper'>
                 {weeks} months,&nbsp;
                 {days} days,&nbsp;
                 {hrs} hrs, and&nbsp;
@@ -117,7 +117,7 @@ class TimeUntil extends React.Component {
             let days = parseInt(avgDiffInMins / 60 / 24)
             let hrs = parseInt(remainingMinsAfterDays / 60)
 
-            return <div>
+            return <div className='avg-time-proper'>
                 {days} days,&nbsp;
                 {hrs} hrs, and&nbsp;
                 {remainingMinsAfterHrs.toFixed()} mins
@@ -127,12 +127,12 @@ class TimeUntil extends React.Component {
 
             let remainingMinsAfterHrs = avgDiffInMins % (60);
 
-            return <div>
+            return <div className='avg-time-proper'>
                 {hrs} hrs and&nbsp;
                 {remainingMinsAfterHrs.toFixed()} mins
             </div>
         } else {
-            return <div>
+            return <div className='avg-time-proper'>
                 {avgDiffInMins.toFixed()} mins
             </div>
         }
@@ -149,13 +149,13 @@ class TimeUntil extends React.Component {
         let oldAvgDiffInMins = this.getOldAvg(this.props.logs)
 
         if (this.props.logs.length < 2) {
-            return <div>Stats will appear after another log</div>;
+            return <div id='no-logs-stats'>Stats will appear after another log</div>;
         } else if (this.props.logs.length === 2) {
             if (currentDate < timeUntilLog) {
                 return (
-                    <div>
-                        <p>If you hold off until:<br/><span>{stringTimeUntilLog}</span><br/> You will be on pace to quitting!</p>
-                        <div>
+                    <div className='log-time-msg'>
+                        <p>If you hold off until:<br/><span className='time-until-date'>{stringTimeUntilLog}</span><br/> You will be on pace to quitting!</p>
+                        <div className='avg-time-disp'>
                             Average time between sessions:
                             {this.displayAvgDiff(avgDiffInMins)}
                         </div>
@@ -163,7 +163,7 @@ class TimeUntil extends React.Component {
                 )
             } else {
                 return (
-                        <div>
+                        <div className='log-time-msg'>
                             Average time between sessions:
                             {this.displayAvgDiff(avgDiffInMins)}
                         </div>
@@ -172,32 +172,38 @@ class TimeUntil extends React.Component {
         } else if (this.props.logs.length > 2) {
             if (avgDiffInMins > oldAvgDiffInMins && currentDate >= timeUntilLog) {
                 return (
-                    <div>
+                    <div className='log-time-msg good'>
                         You are on pace to quitting! Keep it up, quitter!
-                        <div>
+                        <div className='avg-time-disp'>
                             Average time between sessions: <br/>
-                            <img className='arrow' src={Up} /> {this.displayAvgDiff(avgDiffInMins)}
+                            <div className='avg-time'>
+                                <img className='arrow' src={Up} /> {this.displayAvgDiff(avgDiffInMins)}
+                            </div>
                         </div>
                     </div>
                 )  
             } else if (avgDiffInMins > oldAvgDiffInMins && currentDate < timeUntilLog) {
                 return (
-                    <div>
+                    <div className='log-time-msg good'>
                         You are on pace to quitting! Keep it up, quitter!
-                        <p>If you hold off until:<br/><span>{stringTimeUntilLog}</span><br/> You will continue to be on pace to quitting!</p>
-                        <div>
+                        <p>If you hold off until:<br/><span className='time-until-date'>{stringTimeUntilLog}</span><br/> You will continue to be on pace to quitting!</p>
+                        <div className='avg-time-disp'>
                             Average time between sessions: <br/>
-                            <img className='arrow' src={Up} /> {this.displayAvgDiff(avgDiffInMins)}
+                            <div className='avg-time'>
+                                <img className='arrow' src={Up} /> {this.displayAvgDiff(avgDiffInMins)}
+                            </div>
                         </div>
                     </div> 
                 )
             } else if (avgDiffInMins <= oldAvgDiffInMins) {
                 return (
-                    <div>
-                        <p>If you hold off until:<br/><span>{stringTimeUntilLog}</span><br/> You will be on pace to quitting!</p>
-                        <div>
+                    <div className='log-time-msg bad'>
+                        <p>If you hold off until:<br/><span className='time-until-date'>{stringTimeUntilLog}</span><br/> You will be on pace to quitting!</p>
+                        <div className='avg-time-disp'>
                             Average time between sessions: <br/>
-                            <img className='arrow' src={Down} /> {this.displayAvgDiff(avgDiffInMins)}
+                            <div className='avg-time'>
+                                <img className='arrow' src={Down} />{this.displayAvgDiff(avgDiffInMins)}
+                            </div>
                         </div>
                     </div> 
                 )
