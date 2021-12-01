@@ -44,6 +44,18 @@ The algorithm was designed in such a way that the user is on a proper course to 
 
 <img width="293" alt="avg decreased" src="https://user-images.githubusercontent.com/59269773/144298591-2d38cb1a-4992-41d7-9140-f0b50f9003f9.png">
 
-Another feature 
+Users on the app can create and join groups based around a particular habit. The creator of the group is the default admin, which holds the authority to delete the group. Within a group show page, all the users and their stats are visible. Logging sessions are possible within the group show page as well, and users can only update their own stats.
+
+<img width="580" alt="Screen Shot 2021-12-01 at 2 29 56 PM" src="https://user-images.githubusercontent.com/8636103/144301007-f3d0c21c-349a-4000-81e9-a63dd7a18253.png">
+
+
+<img width="1157" alt="Screen Shot 2021-12-01 at 2 24 35 PM" src="https://user-images.githubusercontent.com/8636103/144301043-f2864e80-039a-4068-916c-89b40fca913e.png">
+
+The app has two preloaded habits, Drinking and Smoking. Additionally, users can create their own custom habits. These habits are only visible to that user and any users affilated with a group based around the created habit.
 
 ## Bonus
+
+  - Adding the functionality to reinforce good habits
+  - Add a 'request to join group' button, the admin of the group will then approve members to join.
+  - Add functionality to switch the admin of a group
+  - Add a game aspect to app, with the implementation of a points system associated with streaks for bad or good habits. 
