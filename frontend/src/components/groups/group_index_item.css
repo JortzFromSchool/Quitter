@@ -5,6 +5,10 @@
   align-items: center;
 }
 
+/* background-color: #f7b42c;
+background-image: linear-gradient(315deg, #f7b42c 0%, #fc575e 74%); */
+
+
 .groups-index{
   display: flex;
   justify-content: center;
@@ -21,7 +25,8 @@
   margin: 8% 2%;
   padding: 20px;
   border: 0px solid black;
-  background-color: #f7941c;
+  background-color: #fce043;
+  background-image: linear-gradient(315deg, #fce043 0%, #fb7ba2 74%);
   border-radius: 5px;
   color: white;
   font-family: inherit;
@@ -42,15 +47,17 @@
 }
 
 .create-group-btn{
-  background: #F7941C;
-  border-radius: 10%;
+  background-color: #ff4e00;
+  background-image: linear-gradient(315deg, #ff4e00 0%, #ec9f05 74%);
+  border-radius: 25px;
   border: none;
-  padding: 5px 5px;
+  padding: 3px 3px 0 3px;
   color: white;
   cursor: pointer;
   font-weight: 300;
   text-decoration: none;
   font-size: 17px;
+  margin-bottom: 5%;
 }
 
 .people{
