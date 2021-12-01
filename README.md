@@ -1,6 +1,7 @@
-# [Quitter](https://quittr.herokuapp.com/#/)
-
+# Quitter
 The app for breaking bad habits.
+
+[Live link](https://quittr.herokuapp.com/#/)
 
 ## Overview
 
