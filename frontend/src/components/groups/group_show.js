@@ -39,6 +39,7 @@ class GroupShow extends React.Component{
 
     joinGroup(groupId, currentUserId) {
         this.props.addUserToGroup(groupId, currentUserId)
+        .then(() => (this.props.addHabit(this.props.group.habitId)))
         .then(() => (this.props.wipeUsers()))
         .then(() => (this.props.wipeLogsByHabit()))
         .then(() => (this.props.fetchGroup(this.props.match.params.groupId)))
