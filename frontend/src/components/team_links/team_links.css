@@ -4,7 +4,7 @@
  justify-content: center;
  width: 100vw;
  height:100vh;
- background-image: ;
+ 
 }
 
 .cards-container{
@@ -77,10 +77,15 @@
   transform: rotateY(180deg);
 }
 
+.LI{
+  margin-top: 25px;
+}
+
 .links-container a{
   margin-top: 10px;
   text-decoration: none;
-  color: white;
+  color: blue;
+  font-weight: 700;
   font-size: 20px;
   display:flex;
   flex-direction: column;
@@ -89,8 +94,8 @@
 }
 
 h4 {
-  font-size: 25px;
-  margin-top: 10px;
+  font-size: 35px;
+  margin-top: 20px;
   margin-bottom: 10px;
   font-weight: 500;
 }
@@ -98,4 +103,5 @@ h4 {
 .team{
   color: orange;
   font-weight: 700;
+  font-size: 20px;
 }
