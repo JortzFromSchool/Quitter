@@ -36,23 +36,23 @@ router.patch('/remove_user/:user_id/group/:group_id', async (req, res) => {
   let user = await User.findOne({ _id: req.params.user_id }).then(user => user)
   let group = await Group.findOne({ _id: req.params.group_id }).then(group => group)
   for (let i = 0; i < group.users.length; i++) {
-    if (req.params.group_id === group.users[i]._id) {
+    if (req.params.user_id === group.users[i]._id) {
       group.users.splice(i, 1)
     }
   }
   // const user_index = group.users.indexOf({ _id: user.id, handle: user.handle })
   // group.users.splice(user_index, 1)
-  group.save()
+  group.save();
   // const group_index = user.groups.indexOf({ _id: req.params.group_id })
   // res.json(group_index);
   for (let i = 0; i < user.groups.length; i++) {
-    if (req.params.user_id === user.groups[i]._id) {
+    if (req.params.group_id === user.groups[i]._id) {
       user.groups.splice(i, 1)
     }
   }
   // user.groups.splice(group_index, 1)
-  user.save()
-  // res.json(group)
+  user.save();
+  res.json(group);
 })
 
 router.post('/',
@@ -66,7 +66,8 @@ router.post('/',
         admin: req.user.id
       });
   
-      newGroup.save().then(req.user.groups.push({_id: newGroup.id, name: newGroup.name}));
+      newGroup.save();
+      req.user.groups = req.user.groups.concat({ _id: newGroup.id, name: newGroup.name });
       req.user.save();
     }
   );
