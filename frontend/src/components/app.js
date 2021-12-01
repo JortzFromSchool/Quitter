@@ -10,6 +10,7 @@ import ProfileContainer from './profile/profile_container';
 import GroupsIndexContainer from './groups/groups_index_container';
 import GroupShowContainer from './groups/group_show_container';
 import Modal from './modal/modal';
+import CreatorsPage from './creators_page';
 
 
 const App = () => (
@@ -18,6 +19,7 @@ const App = () => (
     <Modal/>
     <Switch>
         <Route exact path="/" component={MainPage} />
+        <Route exact path="/creators" component={CreatorsPage} />
         <ProtectedRoute exact path='/users/:userId/' component={ProfileContainer} />
         <AuthRoute exact path="/login" component={LoginFormContainer} />
         <AuthRoute exact path="/signup" component={SignupFormContainer} />

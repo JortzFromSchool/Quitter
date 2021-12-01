@@ -2,7 +2,6 @@ import React from 'react';
 import { Link } from 'react-router-dom'
 import './navbar.css';
 import NavLogo from '../../assets/quitter-nav-logo2.svg';
-import TeamLinks from '../team_links/team_links';
 
 class NavBar extends React.Component {
   constructor(props) {
@@ -53,8 +52,8 @@ class NavBar extends React.Component {
       return (
         <div id="nav-bar-container">
             <img id="nav-bar-logo" src={NavLogo}/>
+            <Link to="/creators" className="creators">Creators</Link>
             { this.getLinks() }
-            <TeamLinks />
         </div>
       );
   }

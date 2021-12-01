@@ -1,18 +1,30 @@
+.creators-container{
+ display: flex;
+ align-items: center;
+ justify-content: center;
+ width: 100vw;
+ height:100vh;
+ background-image: ;
+}
+
 .cards-container{
   display: flex;
   flex-direction: column;
-  margin-left: 2%;
-  margin-top: 2%;
-  position: absolute;
-  left: -33%;
-  top: 150%;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.two-devs{
+  display:flex;
+  margin-bottom: 40px;
 }
 
 .flip-card{
   background: transparent;
-  width: 150px;
-  height: 120px;
-  margin: 5px 5px 35px 5px;
+  width: 300px;
+  height: 300px;
+  margin: 0 20px;
   border: 1px solid transparent;
   border-radius: 10px;
   perspective: 1000px;
