@@ -40,7 +40,6 @@ class TimeUntil extends React.Component {
             justTimes.push(logTimeIntoDate);
         }
         const sortedTimes = justTimes.sort((a, b) => b - a);
-        this.mostRecentLog = sortedTimes[0];
         const diffs = [];
         let sumOfDiffs = 0;
         for (let i = 2; i < sortedTimes.length; i++) {
@@ -186,7 +185,7 @@ class TimeUntil extends React.Component {
                 return (
                     <div className='log-time-msg good'>
                         You are on pace to quitting! Keep it up, quitter!
-                        <p>If you hold off until:<br/><span className='time-until-date'>{stringTimeUntilLog}</span><br/> You will continue to be on pace to quitting!</p>
+                        <p className='on-pace-time-until'>If you hold off until:<br/><span className='time-until-date'>{stringTimeUntilLog}</span><br/> You will continue to be on pace to quitting!</p>
                         <div className='avg-time-disp'>
                             Average time between sessions: <br/>
                             <div className='avg-time'>
