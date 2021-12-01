@@ -64,6 +64,7 @@ router.post('/',
       newGroup.save();
       req.user.groups = req.user.groups.concat({ _id: newGroup.id, name: newGroup.name });
       req.user.save();
+      res.json(group);
     }
   );
 
