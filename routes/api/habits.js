@@ -51,4 +51,27 @@ router.delete('/:habit_id/user/:user_id', async function(req, res, next){
   res.json(user);
 });
 
+router.patch('/add_habit/:habit_id', 
+  passport.authenticate('jwt', { session: false }),
+  async (req, res) => {
+    let habit = await Habit.findOne({ _id: req.params.habit_id }).then(habit => habit);
+
+    req.user.habits.push({ _id: habit.id, name: habit.name });
+    req.user.save();
+    res.json(req.user);
+  });
+
+router.patch('/remove_habit/:habit_id',
+  passport.authenticate('jwt', { session: false }),
+  async (req, res) => {
+
+    for (let i = 0; i < req.user.habits.length; i++) {
+      if (req.user.habits[i]._id === req.params.habit_id) {
+        req.user.habits.splice(i, 1);
+      }
+    }
+    req.user.save();
+    res.json(req.user);
+  });
+
 module.exports = router;
