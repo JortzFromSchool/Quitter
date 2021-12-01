@@ -1,5 +1,6 @@
 import React from 'react'
 import './group_form.css'
+import MainLogo from '../../assets/quitter-main-logo.svg';
 
 class GroupForm extends React.Component{
   constructor(props){
@@ -35,7 +36,7 @@ class GroupForm extends React.Component{
     return (
       <div className="create-group-modal">
         <div className="create-group-header">
-          <div>{formType}</div>
+          <div className="form-type">{formType}</div>
           <div onClick={closeModal} className='x'>X</div>
         </div>
           <div className='form-container'>
@@ -49,9 +50,9 @@ class GroupForm extends React.Component{
                   placeholder="Group Name"
                 />
                     
-                <select className="create-group-select"name="habit" onChange={this.updateHabitId()}>
+                <select className="create-group-select" name="habit" onChange={this.updateHabitId()}>
                   <option selected disabled>
-                    -- Please Select a Habit --
+                    Please Select a Habit 
                   </option>
                   {
                     habits.map(habit => {
@@ -65,6 +66,13 @@ class GroupForm extends React.Component{
                             )
                   }
                 </select>
+            </div>
+            <div className="group-form-text">
+              <p>Set up a group around a habit, 
+              creating accountability towards<br/> 
+              <span className="quitting">Quitting</span></p>
+
+              <img className="logo-group-form" src={MainLogo} />
             </div>
             <input
               className="create-group-submit" 
