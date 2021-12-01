@@ -19,14 +19,22 @@ class TeamLinks extends React.Component{
                 <h4>Neil Pandya</h4>
                 <p className="team">Frontend Lead</p>
                 <div className='links-container'>
-                  <a className="LI" href="https://www.linkedin.com/in/neil-pandya-610588187/" target="blank">
-                    {/* <i class="fab fa-linkedin"></i> */}
-                    LinkedIn
-                  </a>
-                  <a href="https://github.com/NeilyWitches" target="blank">
-                    <i class="fa fa-github neil"></i>
-                    Github
-                  </a>
+                  <div className="two-links">
+                    <a className="top-link" href="https://www.linkedin.com/in/neil-pandya-610588187/" target="blank">
+                      <i className="fab fa-linkedin link" ></i>
+                    </a>
+                    <a href="https://github.com/NeilyWitches" target="blank">
+                      <i className="fa fa-github link"></i>
+                    </a>
+                  </div>
+                  <div className="two-links">
+                    <a href="https://angel.co/u/neil-pandya-1" target="blank">
+                      <i class="fab fa-angellist link"></i>
+                    </a>
+                    <a href="https://frosty-fermi-9f5bdd.netlify.app/index.html" target="blank">
+                      <i class="fas fa-user-tie link"></i>
+                    </a>
+                  </div>
                 </div>
               </div>
             </div>
@@ -40,14 +48,22 @@ class TeamLinks extends React.Component{
                 <h4>George Tsimis</h4>
                 <p className="team">Flex</p>
                 <div className='links-container'>
-                  <a className="LI" href="https://www.linkedin.com/in/george-tsimis-a5986224/" target="blank">
-                    {/* <i class="fab fa-linkedin"></i> */}
-                    LinkedIn
-                  </a>
-                  <a href="https://github.com/GGMU1986" target="blank">
-                    {/* <i class="fab fa-github"></i> */}
-                    Github
-                  </a>
+                  <div className="two-links">
+                    <a className="LI" href="https://www.linkedin.com/in/george-tsimis-a5986224/" target="blank">
+                      <i class="fab fa-linkedin link"></i> 
+                    </a>
+                    <a href="https://github.com/GGMU1986" target="blank">
+                      <i class="fab fa-github link"></i>
+                    </a>
+                  </div>
+                  <div className="two-links">
+                    <a href="https://angel.co/u/george-tsimis" target="blank">
+                      <i class="fab fa-angellist link"></i>
+                    </a>
+                    <a href="" target="blank">
+                      <i class="fas fa-user-tie link"></i>
+                    </a>
+                  </div>
                 </div>
               </div>
             </div>
@@ -63,14 +79,22 @@ class TeamLinks extends React.Component{
                 <h4>Jonathan Ortiz</h4>
                 <p className="team">Team Lead</p>
                 <div className='links-container'>
-                  <a className="LI" href="https://www.linkedin.com/in/jonathan-ortiz-634b66a3/" target="blank">
-                    {/* <i class="fab fa-linkedin"></i> */}
-                    LinkedIn
-                  </a>
-                  <a href="https://github.com/JortzFromSchool" target="blank">
-                    {/* <i class="fab fa-github"></i> */}
-                    Github
-                  </a>
+                  <div className="two-links">
+                    <a className="LI" href="https://www.linkedin.com/in/jonathan-ortiz-634b66a3/" target="blank">
+                      <i class="fab fa-linkedin link"></i>
+                    </a>
+                    <a href="https://github.com/JortzFromSchool" target="blank">
+                      <i class="fab fa-github link"></i>
+                    </a>
+                  </div>
+                  <div className="two-links">
+                    <a href="https://angel.co/u/jonathan-ortiz-1" target="blank">
+                      <i class="fab fa-angellist link"></i>
+                    </a>
+                    <a href="https://github.com/JortzFromSchool" target="blank">
+                      <i class="fas fa-user-tie link"></i>
+                    </a>
+                  </div>
                 </div>
               </div>
             </div>
@@ -84,14 +108,22 @@ class TeamLinks extends React.Component{
                 <h4>Matteo Rossant</h4>
                 <p className="team">Backend Lead</p>
                 <div className='links-container'>
-                  <a className="LI" href="https://www.linkedin.com/in/matteo-rossant-26ab65106/" target="blank">
-                    {/* <i class="fab fa-linkedin"></i> */}
-                    LinkedIn
-                  </a>
-                  <a href="https://github.com/MRossant" target="blank">
-                    {/* <i class="fab fa-github"></i> */}
-                    Github
-                  </a>
+                  <div className="two-links">
+                    <a className="LI" href="https://www.linkedin.com/in/matteo-rossant-26ab65106/" target="blank">
+                      <i class="fab fa-linkedin link"></i>
+                    </a>
+                    <a href="https://github.com/MRossant" target="blank">
+                      <i class="fab fa-github link"></i>
+                    </a>
+                  </div>
+                  <div className="two-links">
+                    <a href="https://angel.co/u/matteo-rossant-1" target="blank">
+                      <i class="fab fa-angellist link"></i>
+                    </a>
+                    <a href="" target="blank">
+                      <i class="fas fa-user-tie link"></i>
+                    </a>
+                  </div>
                 </div>
               </div>
             </div>

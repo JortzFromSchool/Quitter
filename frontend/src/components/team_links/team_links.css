@@ -42,7 +42,7 @@
 
 .flip-card:hover .flip-card-inner {
   transform: rotateY(180deg);
-  cursor: pointer;
+  /* cursor: pointer; */
 }
 
 .flip-card-front, .flip-card-back {
@@ -72,13 +72,9 @@
 }
 
 .flip-card-back {
-  background-color: black;
+  background-color:orange;
   color: white;
   transform: rotateY(180deg);
-}
-
-.LI{
-  margin-top: 25px;
 }
 
 .links-container a{
@@ -93,6 +89,15 @@
   align-items: center;
 }
 
+.links-container{
+  margin-top: 30px;
+}
+
+.two-links{
+  display: flex;
+  justify-content: center;
+}
+
 h4 {
   font-size: 35px;
   margin-top: 20px;
@@ -101,7 +106,13 @@ h4 {
 }
 
 .team{
-  color: orange;
+  color: black;
   font-weight: 700;
   font-size: 20px;
+}
+
+.link{
+  font-size: 35px;
+  color:white;
+  margin: 10px;
 }
