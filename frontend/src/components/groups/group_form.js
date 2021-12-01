@@ -10,7 +10,13 @@ class GroupForm extends React.Component{
   }
 
   componentDidMount(){
-    this.props.fetchHabits();
+    this.props.fetchUser(this.props.currentUser.id)
+    .then(() => {
+      this.props.users[this.props.currentUser.id].habits.forEach(habit => (
+        this.props.fetchHabit(habit._id)
+      ))
+    })
+    // this.props.fetchHabits();
   }
 
   update(field) {
