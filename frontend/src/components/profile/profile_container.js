@@ -31,7 +31,10 @@ const mapDispatchToProps = dispatch => {
             </button>
           ),
         habitForm: () => (
-            <button onClick={() => dispatch(openModal('habit'))}>
+            <button 
+              className="create-habit" 
+              onClick={() => dispatch(openModal('habit'))}
+            >
                 Create Habit
             </button>
         )
