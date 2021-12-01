@@ -28,6 +28,7 @@ class TimeUntil extends React.Component {
         for (let i = 0; i < diffs.length; i++) {
             sumOfDiffs += diffs[i];
         }
+        this.sumOfAllDiffs = sumOfDiffs;
         const avgDiff = sumOfDiffs / diffs.length;
         return avgDiff;
     }
@@ -139,43 +140,68 @@ class TimeUntil extends React.Component {
     }
 
     render() {
+        const delta = 2*60
         const avgDiffInMins = this.getAvgDiffBetweenLogs(this.props.logs)
-        let numberOfMinsToAdd = avgDiffInMins.toFixed(1) + 30;
+        let numberOfMinsToAdd = (avgDiffInMins + delta)*this.props.logs.length - this.sumOfAllDiffs;
         const currentDate = new Date()
-        let timeUntilLog = new Date(this.mostRecentLog.getTime() + numberOfMinsToAdd*60000);
+        let timeUntilLog = new Date(this.mostRecentLog.getTime() + numberOfMinsToAdd*1000*60);
         let stringTimeUntilLog = timeUntilLog.toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: '2-digit',  hour: 'numeric', hour12: true, minute: 'numeric' });
-        let oldAvg = this.getOldAvg(this.props.logs)
+        let oldAvgDiffInMins = this.getOldAvg(this.props.logs)
 
-        console.log('below is oldAvg')
-        console.log(oldAvg)
-        console.log('below is current avg')
-        console.log(avgDiffInMins)
-
-        if (currentDate < timeUntilLog) {
-            return (
-                <div className="log-time-msg bad">
-                    {avgDiffInMins > oldAvg ?  <div>You are on pace to quitting! Keep it up, quitter!</div> : null}
-                    <p>If you hold off until:<br/><span className="time-until-date">{stringTimeUntilLog}</span><br/> You will be on pace to quitting!</p><br/>
-                    Average time between sessions: <br/>
-                    <div id='average-time'>
-                        {avgDiffInMins > oldAvg ?  <img className='arrow' src={Up} /> : <img className='arrow' src={Down} />}
-                        {this.displayAvgDiff(avgDiffInMins)}
+        if (this.props.logs.length < 2) {
+            return <div>Stats will appear after another log</div>;
+        } else if (this.props.logs.length === 2) {
+            if (currentDate < timeUntilLog) {
+                return (
+                    <div>
+                        <p>If you hold off until:<br/><span>{stringTimeUntilLog}</span><br/> You will be on pace to quitting!</p>
+                        <div>
+                            Average time between sessions:
+                            {this.displayAvgDiff(avgDiffInMins)}
+                        </div>
                     </div>
-                </div>
-            )
-        } else if (this.props.logs.length < 3) {
-            return null;
-        } else {
-            return (
-                <div className="log-time-msg good">
-                    You are on pace to quitting! Keep it up, quitter!
-                    <div id='average-time'>
-                        Average time between sessions: <br/>
-                        {avgDiffInMins > oldAvg ?  <img className='arrow' src={Up} /> : <img className='arrow' src={Down} />}
-                        {this.displayAvgDiff(avgDiffInMins)}
+                )
+            } else {
+                return (
+                        <div>
+                            Average time between sessions:
+                            {this.displayAvgDiff(avgDiffInMins)}
+                        </div>
+                )
+            }
+        } else if (this.props.logs.length > 2) {
+            if (avgDiffInMins > oldAvgDiffInMins && currentDate >= timeUntilLog) {
+                return (
+                    <div>
+                        You are on pace to quitting! Keep it up, quitter!
+                        <div>
+                            Average time between sessions: <br/>
+                            <img className='arrow' src={Up} /> {this.displayAvgDiff(avgDiffInMins)}
+                        </div>
                     </div>
-                </div>
-            ) 
+                )  
+            } else if (avgDiffInMins > oldAvgDiffInMins && currentDate < timeUntilLog) {
+                return (
+                    <div>
+                        You are on pace to quitting! Keep it up, quitter!
+                        <p>If you hold off until:<br/><span>{stringTimeUntilLog}</span><br/> You will continue to be on pace to quitting!</p>
+                        <div>
+                            Average time between sessions: <br/>
+                            <img className='arrow' src={Up} /> {this.displayAvgDiff(avgDiffInMins)}
+                        </div>
+                    </div> 
+                )
+            } else if (avgDiffInMins <= oldAvgDiffInMins) {
+                return (
+                    <div>
+                        <p>If you hold off until:<br/><span>{stringTimeUntilLog}</span><br/> You will be on pace to quitting!</p>
+                        <div>
+                            Average time between sessions: <br/>
+                            <img className='arrow' src={Down} /> {this.displayAvgDiff(avgDiffInMins)}
+                        </div>
+                    </div> 
+                )
+            }
         }
     }
 };
