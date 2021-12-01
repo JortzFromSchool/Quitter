@@ -69,22 +69,23 @@ class GroupShow extends React.Component{
 
     render() {
           
-        const deleteBtn = this.props.currentUser.id === this.props.admin._id ? (
-          <button 
-            className="delete-group-btn"
-            onClick={() => (this.props.destroyGroup(group._id)
-              .then(() => this.props.history.push('/groups')))}
-          >
-            Delete Group
-          </button>
-        ) : null
-        const {group, admin, habits, users, logs, currentUser} = this.props;
-        if(!group){
-            return null;
-        }
-        let usersLoaded = (Object.keys(users).length === this.props.group.users.length);
-        let logsLoaded = (Object.keys(logs).length === this.props.group.users.length);
-        if(group && admin && habits && logsLoaded && usersLoaded) {
+      const {group, admin, habits, users, logs, currentUser} = this.props;
+
+      if(!group){
+        return null;
+      }
+      let usersLoaded = (Object.keys(users).length === this.props.group.users.length);
+      let logsLoaded = (Object.keys(logs).length === this.props.group.users.length);
+      if(group && admin && habits && logsLoaded && usersLoaded) {
+          const deleteBtn = this.props.currentUser.id === this.props.admin._id ? (
+            <button 
+              className="delete-group-btn"
+              onClick={() => (this.props.destroyGroup(group._id)
+                .then(() => this.props.history.push('/groups')))}
+            >
+              Delete Group
+            </button>
+          ) : null
             return(<div>
                     <div className="group-show-name">
                         {group.name}
