@@ -109,13 +109,15 @@ class SignupForm extends React.Component {
                   className="signup-form-input last"
                 />
               <br/>
-              <input type="submit" value="Sign up" className="signup-form-submit-btn"/>
-              <button 
-                className="demo2" 
-                onClick={this.handleDemo}
-              >
-                Demo mode
-              </button>
+              <div className="login-demo">
+                <input type="submit" value="Sign up" className="signup-form-submit-btn"/>
+                <p 
+                  className="demo2" 
+                  onClick={this.handleDemo}
+                >
+                  Demo mode
+                </p>
+              </div>
               {this.renderErrors()}
             </div>
           </form>
