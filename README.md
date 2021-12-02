@@ -54,9 +54,20 @@ Users on the app can create and join groups based around a particular habit. The
 
 The app has two preloaded habits, Drinking and Smoking. Additionally, users can create their own custom habits. These habits are only visible to that user and any users affilated with a group based around the created habit.
 
+<img width="377" alt="Screen Shot 2021-12-01 at 7 52 39 PM" src="https://user-images.githubusercontent.com/8636103/144338065-94f1a9dd-fdcf-4c05-a773-0b053f198dee.png">
+
 ## Bonus
 
   - Adding the functionality to reinforce good habits
   - Add a 'request to join group' button, the admin of the group will then approve members to join.
   - Add functionality to switch the admin of a group
   - Add a game aspect to app, with the implementation of a points system associated with streaks for bad or good habits. 
+
+
+## Contributors
+
+<img src="https://user-images.githubusercontent.com/8636103/144338581-4e871223-5a37-4104-aa42-344c506184fb.jpeg" width="200" height="200" />  <img src="https://user-images.githubusercontent.com/8636103/144338609-6f23041d-2495-4ead-9a48-9b7e49043fce.jpeg" width="200" height="200" />  <img src="https://user-images.githubusercontent.com/8636103/144338636-3dbc2011-98cc-4026-889e-49a1053ea09d.jpg" width="200" height="200" />  <img src="https://user-images.githubusercontent.com/8636103/144338767-9b735cce-cd58-40a8-a525-442ce464e5ca.png" width="200" height="200" />
+
+<pre> 
+    George Tsimis           Matteo Rossant           Jonathan Ortiz            Neil Pandya    
+</pre>     
