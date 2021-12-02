@@ -5,12 +5,6 @@ import '../logs/user_show.css';
 class Profile extends React.Component {
 
     componentDidMount() {
-        // this.props.fetchHabits()
-        // .then((action) => {
-        //     Object.values(action.habitsByKey).forEach(habit => {
-        //         this.props.fetchUserLogsByHabit(this.props.currentUser.id, habit._id);
-        //     });
-        // });
         this.props.fetchUser(this.props.currentUser.id)
         .then(() => (
             this.props.users[this.props.currentUser.id].habits.forEach(habit => {
@@ -27,16 +21,16 @@ class Profile extends React.Component {
 
     render() {
         const logsLoaded = Object.keys(this.props.logsByHabit).length > 0;
-        if (!logsLoaded) {
-            return (<div className="no-logs-habit-container">
-                        <div className="no-logs-profile">
-                          This user has no Habits...
-                        </div>
-                          {this.props.habitForm()}
-                    </div>)
-        } else {
+        // if (!logsLoaded) {
+        //     return (<div className="no-logs-habit-container">
+        //                 {/* <div className="no-logs-profile">
+        //                   This user has no Habits...
+        //                 </div> */}
+        //                   {this.props.habitForm()}
+        //             </div>)
+        // } else {
             return (
-                <div>
+                <div className='profile-page'>
                     <h2 className="profile-header">It's quittin' time, {this.props.currentUser.handle}!</h2>
                     {this.props.habitForm()}
                     {Object.keys(this.props.logsByHabit).map(key => {
@@ -51,7 +45,7 @@ class Profile extends React.Component {
                     
                 </div>
             );
-        }
+        // }
     }
 }
 
