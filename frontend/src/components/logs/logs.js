@@ -33,7 +33,7 @@ class Logs extends React.Component {
 
     logBtn() {
       if (this.props.logs.data && this.props.currentUser){
-        if (this.props.logs.data[0].user === this.props.currentUser?.id) {
+        if (this.props.logs.data[0]?.user === this.props.currentUser?.id) {
             return  <div className="log-form-btn">
                       {this.props.logForm(this.props.habit._id)}
                     </div>
@@ -54,10 +54,14 @@ class Logs extends React.Component {
         if (this.props.logs.data.length === 0) {
             return (<div className="no-logs-container">
                         <div>There are no logs for {this.props.habit.name}.</div>
+
                         <div className="log-form-btn">
                             {this.props.logForm(this.props.habit._id)}
                         </div>
                         {this.habitButton()}
+
+                        {this.logBtn()}
+
                     </div>)
         } else {
             const sortedData = this.props.logs.data.sort((a,b) => (a.logTime > b.logTime) ? 1 : -1)
