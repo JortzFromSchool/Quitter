@@ -1,6 +1,8 @@
 import React from 'react';
 import { withRouter } from 'react-router-dom';
 import './login_form.css';
+import './signup_form.css';
+
 
 class LoginForm extends React.Component {
   constructor(props) {
@@ -95,12 +97,12 @@ class LoginForm extends React.Component {
                 <br/>
               <div className="login-demo">
                 <input type="submit" value="Login" className="login-form-submit-btn" />
-                <p 
+                <button 
                   className="demo" 
                   onClick={this.handleDemo}
                 >
                   Demo mode
-                </p>
+                </button>
               </div>
               {this.renderErrors()}
             </div>
