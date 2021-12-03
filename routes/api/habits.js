@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 const mongoose = require('mongoose');
 const passport = require('passport');
+const Group = require('../../models/Group');
 
 const Habit = require('../../models/Habit');
 const User = require('../../models/User');
@@ -27,6 +28,16 @@ router.post('/user/:user_id',
     passport.authenticate('jwt', { session: false }),
     async (req, res) => {
       let user = await User.findOne({ _id: req.params.user_id }).then(user => user)
+
+      // Habit.findOne({name: req.body.name})
+      //   .then(habit => {
+      //     Group.findOne({habit_id: habit.id})
+      //       .then(group => {
+      //         if (group) {
+      //           return res.status(400).json({name: `The group ${group.name} already contains this habit. To add that habit, join ${group.name} or give the habit a different name.`})
+      //         }
+      //       })
+      //   })
 
       const newHabit = new Habit({
         name: req.body.name
