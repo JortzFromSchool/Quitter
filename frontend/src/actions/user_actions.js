@@ -1,4 +1,5 @@
 import { getUser, addHabitToCurrentUser, removeHabitFromCurrentUser } from '../util/user_api_util';
+import { removeHabit } from './habit_actions';
 
 export const RECEIVE_USER = 'RECEIVE_USER';
 export const RECEIVE_ADMIN = 'RECEIVE_ADMIN';
@@ -30,14 +31,15 @@ export const fetchAdmin = adminId => dispatch => (
     .catch(err => console.log(err))
 );
 
-export const addHabit = (habitId) => dispatch => (
+export const addHabitToLoggedInUser = (habitId) => dispatch => (
   addHabitToCurrentUser(habitId)
     .then(user => dispatch(receiveUser(user)))
     .catch(err => console.log(err))
 );
 
-export const removeHabit = (habitId) => dispatch => (
+export const removeHabitFromLoggedInUser = (habitId) => dispatch => (
   removeHabitFromCurrentUser(habitId)
     .then(user => dispatch(receiveUser(user)))
+    .then(() => dispatch(removeHabit(habitId)))
     .catch(err => console.log(err))
 );

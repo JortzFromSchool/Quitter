@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 import { fetchUserLogs, fetchUserLogsByHabit, wipeLogsByHabit } from '../../actions/log_actions';
-import { fetchHabit, fetchHabits } from '../../actions/habit_actions';
-import {fetchUser, wipeUsers} from '../../actions/user_actions';
+import { fetchHabit, fetchHabits, wipeHabits } from '../../actions/habit_actions';
+import {fetchUser, wipeUsers, removeHabitFromLoggedInUser} from '../../actions/user_actions';
 import { openModal } from '../../actions/modal_actions';
 import { receiveAdmin } from '../../actions/user_actions';
 import Profile from './profile';
@@ -24,7 +24,13 @@ const mapDispatchToProps = dispatch => {
         fetchHabit: (habitId) => dispatch(fetchHabit(habitId)),
         fetchUser: (userId) => dispatch(fetchUser(userId)),
         wipeUsers: () => dispatch(wipeUsers()),
+        wipeHabits: () => dispatch(wipeHabits()),
         wipeLogsByHabit: () => dispatch(wipeLogsByHabit()),
+        removeHabitButton: (habitId) => (
+            <button className="remove-habit-btn"
+                onClick={() => dispatch(removeHabitFromLoggedInUser(habitId))}>
+                Remove Habit
+            </button>),
         logForm: (habitId) => (
             <button onClick={() => dispatch(openModal('log', habitId))}>
                 Log Session

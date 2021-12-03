@@ -20,7 +20,7 @@ export const receiveHabits = habits => {
     habitsByKey
 })};
 
-const removeHabit = (habitId) => ({
+export const removeHabit = (habitId) => ({
     type: REMOVE_HABIT,
     habitId
 });
