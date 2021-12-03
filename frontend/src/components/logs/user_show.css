@@ -4,8 +4,18 @@
     align-items: center;
 }
 
-.log-container,.log-form-btn {
-    /* margin-left: 7%; */
+.remove-habit-btn{
+  /* background: #F7941C; */
+  background: red;
+  border-radius: 30px;
+  border: none;
+  padding: 8px 8px;
+  color: white;
+  cursor: pointer;
+  font-weight: 600;
+  text-decoration: none;
+  font-size: 14px;
+  font-family: 'Montserrat', sans-serif;
 }
 
 .no-logs-habits-container{
