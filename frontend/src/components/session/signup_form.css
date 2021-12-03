@@ -55,7 +55,11 @@
 
 .demo {
   margin-right: 2px;
-  color: white;
+  color: orange;
+  border: 1px solid orange;
+  border-radius: 5px;
+  padding: 5px;
+  background-color: white;
   cursor: pointer;
   font-weight: 500;
   text-decoration: none;
@@ -68,25 +72,9 @@
   justify-content: space-between;
 }
 
-.demo:hover {
+/* .demo:hover {
   position: relative;
   top: 1px;
-  font-weight: 900;
-  font-size: 15px;
-}
-
-.demo2 {
-  margin-right: 2px;
-  color: white;
-  cursor: pointer;
-  font-weight: 500;
-  text-decoration: none;
-  font-size: 14px;
-}
-
-.demo2:hover {
-  position: relative;
-  top: 1px;
-  font-weight: 900;
-  font-size: 15px;
-}
+  /* font-weight: 900; */
+  /* font-size: 15px; */
+/* } */
