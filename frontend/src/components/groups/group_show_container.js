@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import { fetchGroup, removeUserFromGroup, addUserToGroup, destroyGroup } from '../../actions/group_actions';
-import { fetchAdmin, fetchUser, wipeUsers, addHabit } from '../../actions/user_actions';
+import { fetchAdmin, fetchUser, wipeUsers, addHabitToLoggedInUser } from '../../actions/user_actions';
 import { fetchUserLogsByUser, wipeLogsByHabit } from '../../actions/log_actions';
 import { fetchHabits } from '../../actions/habit_actions';
 import { openModal } from '../../actions/modal_actions';
@@ -28,7 +28,7 @@ const mDTP = dispatch => ({
   fetchUser: (userId) => dispatch(fetchUser(userId)),
   wipeLogsByHabit: () => dispatch(wipeLogsByHabit()),
   wipeUsers: () => dispatch(wipeUsers()),
-  addHabit: (habitId) => dispatch(addHabit(habitId)),
+  addHabit: (habitId) => dispatch(addHabitToLoggedInUser(habitId)),
   logForm: (habitId) => (
     <button onClick={() => dispatch(openModal('log', habitId))}>
       Log Session

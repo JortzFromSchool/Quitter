@@ -41,6 +41,12 @@ class Logs extends React.Component {
        }
       }
 
+    habitButton() {
+        if (this.props.removeHabit) {
+            return this.props.removeHabit(this.props.habit._id);
+        }
+    }
+
     render() {
         if (!this.props.habit) {
             return null;
@@ -51,6 +57,7 @@ class Logs extends React.Component {
                         <div className="log-form-btn">
                             {this.props.logForm(this.props.habit._id)}
                         </div>
+                        {this.habitButton()}
                     </div>)
         } else {
             const sortedData = this.props.logs.data.sort((a,b) => (a.logTime > b.logTime) ? 1 : -1)
@@ -111,6 +118,7 @@ class Logs extends React.Component {
                             {
                              this.logBtn()
                             }
+                            {this.habitButton()}
                     </div>
                 </div>
             );

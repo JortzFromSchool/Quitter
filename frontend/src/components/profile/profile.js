@@ -17,18 +17,22 @@ class Profile extends React.Component {
     componentWillUnmount() {
         this.props.wipeLogsByHabit();
         this.props.wipeUsers();
+        // this.props.wipeHabits();
     }
+
+    // componentDidUpdate() {
+    //     this.props.wipeHabits()
+    //     // .then(() => (this.props.fetchUser(this.props.currentUser.id)))
+    //     // .then(() => (
+    //     //     this.props.users[this.props.currentUser.id].habits.forEach(habit => {
+    //     //         this.props.fetchHabit(habit._id);
+    //     //         this.props.fetchUserLogsByHabit(this.props.currentUser.id, habit._id)
+    //     //     })
+    //     // ))
+    // }
 
     render() {
         const logsLoaded = Object.keys(this.props.logsByHabit).length > 0;
-        // if (!logsLoaded) {
-        //     return (<div className="no-logs-habit-container">
-        //                 {/* <div className="no-logs-profile">
-        //                   This user has no Habits...
-        //                 </div> */}
-        //                   {this.props.habitForm()}
-        //             </div>)
-        // } else {
             return (
                 <div className='profile-page'>
                     <h2 className="profile-header">It's quittin' time, {this.props.currentUser.handle}!</h2>
@@ -40,7 +44,8 @@ class Profile extends React.Component {
                         habit={this.props.habits.all[key]}
                         logs={this.props.logsByHabit[key]}
                         logForm={this.props.logForm}
-                        fetchUserLogsByHabit={this.props.fetchUserLogsByHabit}/>)
+                        fetchUserLogsByHabit={this.props.fetchUserLogsByHabit}
+                        removeHabit={this.props.removeHabitButton}/>)
                     })}
                     
                 </div>

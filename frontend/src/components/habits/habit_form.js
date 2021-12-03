@@ -50,7 +50,7 @@ class HabitForm extends React.Component {
                     </div>
                     <div className="habit-form-middle-container">
                       <p className="enter-habit">Enter a habit above</p>
-                      <i class="fas fa-hand-point-up finger"></i>
+                      <i className="fas fa-hand-point-up finger"></i>
                     </div>
                     <div className="habit-btn-container">
                         <input className="habit-submit"
