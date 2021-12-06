@@ -83,48 +83,41 @@ class SignupForm extends React.Component {
       <div className="signup-page-container">
         <div className="signup-form-container">
           <h1 className="signup-form-header">Be a Quitter.</h1>
-          <form onSubmit={this.handleSubmit}>
-            <div className="signup-form">
-              <br/>
-                <input type="text"
-                  value={this.state.email}
-                  onChange={this.update('email')}
-                  placeholder="Email"
-                  className="signup-form-input"
-                />
-              <br/>
-                <input type="text"
-                  value={this.state.handle}
-                  onChange={this.update('handle')}
-                  placeholder="Handle"
-                  className="signup-form-input"
-                />
-              <br/>
-                <input type="password"
-                  value={this.state.password}
-                  onChange={this.update('password')}
-                  placeholder="Password"
-                  className="signup-form-input"
-                />
-              <br/>
-                <input type="password"
-                  value={this.state.password2}
-                  onChange={this.update('password2')}
-                  placeholder="Confirm Password"
-                  className="signup-form-input last"
-                />
-              <br/>
-              <div className="login-demo">
-                <input type="submit" value="Sign up" className="signup-form-submit-btn"/>
-                <button 
-                  className="demo" 
-                  onClick={this.handleDemo}
-                >
-                  Demo mode
-                </button>
-              </div>
-              {this.renderErrors()}
-            </div>
+          <form className='form-container' onSubmit={this.handleSubmit}>
+            <input type="text"
+              value={this.state.email}
+              onChange={this.update('email')}
+              placeholder="Email"
+              className="signup-form-input"
+            />
+            <input type="text"
+              value={this.state.handle}
+              onChange={this.update('handle')}
+              placeholder="Handle"
+              className="signup-form-input"
+            />
+            <input type="password"
+              value={this.state.password}
+              onChange={this.update('password')}
+              placeholder="Password"
+              className="signup-form-input"
+            />
+            <input type="password"
+              value={this.state.password2}
+              onChange={this.update('password2')}
+              placeholder="Confirm Password"
+              className="signup-form-input last"
+            />
+          <div className="login-demo">
+            <input type="submit" value="Sign up" className="signup-form-submit-btn"/>
+            <button 
+              className="demo" 
+              onClick={this.handleDemo}
+            >
+              Demo mode
+            </button>
+          </div>
+          {this.renderErrors()}
           </form>
         </div>
       </div>
