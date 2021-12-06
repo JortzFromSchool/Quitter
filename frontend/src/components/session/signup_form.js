@@ -14,17 +14,18 @@ class SignupForm extends React.Component {
     };
     this.handleDemo = this.handleDemo.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
-    this.clearedErrors = false;
+    this.renderErrors = this.renderErrors.bind(this);
+    // this.clearedErrors = false;
   }
 
-  // componentWillReceiveProps(nextProps) {
+  componentWillReceiveProps(nextProps) {
 
-  //   if (this.props.currentUser) {
-  //     this.props.history.push(`/users/${this.props.currentUser.id}`);
-  //   }
+    // if (this.props.currentUser) {
+    //   this.props.history.push(`/users/${this.props.currentUser.id}`);
+    // }
 
-  //   this.setState({errors: nextProps.errors})
-  // }
+    this.setState({errors: nextProps.errors})
+  }
 
   update(field) {
     return e => this.setState({
@@ -53,12 +54,16 @@ class SignupForm extends React.Component {
       password: this.state.password,
       password2: this.state.password2
     };
-
+    
     this.props.signup(user)
-    .then(() => this.props.login({
-      email: this.state.email,
-      password: this.state.password
-    }))
+    .then((res) => {
+      if (res.type === 'RECEIVE_USER_SIGN_IN') {
+        this.props.login({
+          email: user.email,
+          password: user.password
+        })
+      }
+    });
   }
 
   renderErrors() {
@@ -78,48 +83,41 @@ class SignupForm extends React.Component {
       <div className="signup-page-container">
         <div className="signup-form-container">
           <h1 className="signup-form-header">Be a Quitter.</h1>
-          <form onSubmit={this.handleSubmit}>
-            <div className="signup-form">
-              <br/>
-                <input type="text"
-                  value={this.state.email}
-                  onChange={this.update('email')}
-                  placeholder="Email"
-                  className="signup-form-input"
-                />
-              <br/>
-                <input type="text"
-                  value={this.state.handle}
-                  onChange={this.update('handle')}
-                  placeholder="Handle"
-                  className="signup-form-input"
-                />
-              <br/>
-                <input type="password"
-                  value={this.state.password}
-                  onChange={this.update('password')}
-                  placeholder="Password"
-                  className="signup-form-input"
-                />
-              <br/>
-                <input type="password"
-                  value={this.state.password2}
-                  onChange={this.update('password2')}
-                  placeholder="Confirm Password"
-                  className="signup-form-input last"
-                />
-              <br/>
-              <div className="login-demo">
-                <input type="submit" value="Sign up" className="signup-form-submit-btn"/>
-                <button 
-                  className="demo" 
-                  onClick={this.handleDemo}
-                >
-                  Demo mode
-                </button>
-              </div>
-              {this.renderErrors()}
-            </div>
+          <form className='form-container' onSubmit={this.handleSubmit}>
+            <input type="text"
+              value={this.state.email}
+              onChange={this.update('email')}
+              placeholder="Email"
+              className="signup-form-input"
+            />
+            <input type="text"
+              value={this.state.handle}
+              onChange={this.update('handle')}
+              placeholder="Handle"
+              className="signup-form-input"
+            />
+            <input type="password"
+              value={this.state.password}
+              onChange={this.update('password')}
+              placeholder="Password"
+              className="signup-form-input"
+            />
+            <input type="password"
+              value={this.state.password2}
+              onChange={this.update('password2')}
+              placeholder="Confirm Password"
+              className="signup-form-input last"
+            />
+          <div className="login-demo">
+            <input type="submit" value="Sign up" className="signup-form-submit-btn"/>
+            <button 
+              className="demo" 
+              onClick={this.handleDemo}
+            >
+              Demo mode
+            </button>
+          </div>
+          {this.renderErrors()}
           </form>
         </div>
       </div>
