@@ -14,7 +14,8 @@ class SignupForm extends React.Component {
     };
     this.handleDemo = this.handleDemo.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
-    this.clearedErrors = false;
+    this.renderErrors = this.renderErrors.bind(this);
+    // this.clearedErrors = false;
   }
 
   // componentWillReceiveProps(nextProps) {
@@ -74,6 +75,7 @@ class SignupForm extends React.Component {
   }
 
   render() {
+    console.log("errors:", this.state.errors)
     return (
       <div className="signup-page-container">
         <div className="signup-form-container">
@@ -118,7 +120,9 @@ class SignupForm extends React.Component {
                   Demo mode
                 </button>
               </div>
-              {this.renderErrors()}
+              <div className='errors-container'>
+                {this.renderErrors()}
+              </div>
             </div>
           </form>
         </div>

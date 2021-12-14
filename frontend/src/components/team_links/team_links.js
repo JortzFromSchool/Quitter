@@ -4,6 +4,8 @@ import NeilPic from '../../assets/neil_img.png';
 import GeorgePic from '../../assets/george_img.jpeg';
 import JortzPic from '../../assets/jortz_img.jpg';
 import MatteoPic from '../../assets/matteo_img.jpeg';
+import GeorgeFav from '../../assets/george_favicon.png';
+import NeilFav from '../../assets/neil_favicon.png';
 
 class TeamLinks extends React.Component{
   render() {
@@ -32,7 +34,8 @@ class TeamLinks extends React.Component{
                       <i class="fab fa-angellist link"></i>
                     </a>
                     <a href="https://frosty-fermi-9f5bdd.netlify.app/index.html" target="blank">
-                      <i class="fas fa-user-tie link"></i>
+                      <img src={NeilFav} className="personal-site-icon"/>
+                      {/* <i class="fas fa-user-tie link"></i> */}
                     </a>
                   </div>
                 </div>
@@ -61,7 +64,8 @@ class TeamLinks extends React.Component{
                       <i class="fab fa-angellist link"></i>
                     </a>
                     <a href="" target="blank">
-                      <i class="fas fa-user-tie link"></i>
+                      <img src={GeorgeFav} className="personal-site-icon"/>
+                      {/* <i class="fas fa-user-tie link"></i> */}
                     </a>
                   </div>
                 </div>
