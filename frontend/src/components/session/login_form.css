@@ -49,6 +49,8 @@
     font-size: 14px;
 }
 
+
+
 .login-form-input:first-of-type {
     border-top-left-radius: 10px;
 }
@@ -60,6 +62,7 @@
 .session-errors {
     color: red;
     font-weight: 600;
+    /* font-size: 15px; */
 }
 
 .session-errors:first-child {

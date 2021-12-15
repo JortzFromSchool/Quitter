@@ -116,3 +116,23 @@ h4 {
   color:white;
   margin: 10px;
 }
+
+.personal-site-icon{
+  width: 60px;
+  height: auto;
+}
+
+.matteo-personal-site-icon{
+  width: 40px;
+  height: auto;
+}
+
+.jortz-personal-site-icon{
+  width: 40px;
+  height: auto;
+}
+
+.angel{
+  position: relative;
+  right: 10px;
+}

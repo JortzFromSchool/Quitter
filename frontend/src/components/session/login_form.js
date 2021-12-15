@@ -79,7 +79,7 @@ class LoginForm extends React.Component {
         <div className="login-form-container">
           <h1 className="login-form-header">Welcome back, Quitter.</h1>
           <form onSubmit={this.handleSubmit}>
-            <div>
+            <div className="session-input-btn-cont">
                 <input 
                   type="text"
                   value={this.state.email}
@@ -104,7 +104,9 @@ class LoginForm extends React.Component {
                   Demo mode
                 </button>
               </div>
-              {this.renderErrors()}
+              <div className='errors-container'>
+                {this.renderErrors()}
+              </div>
             </div>
           </form>
         </div>
