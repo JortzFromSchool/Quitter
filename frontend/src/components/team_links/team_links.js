@@ -6,6 +6,8 @@ import JortzPic from '../../assets/jortz_img.jpg';
 import MatteoPic from '../../assets/matteo_img.jpeg';
 import GeorgeFav from '../../assets/george_favicon.png';
 import NeilFav from '../../assets/neil_favicon.png';
+import MatteoFav from '../../assets/matteo_favicon.png';
+import JortzFav from '../../assets/jortz_favicon.png';
 
 class TeamLinks extends React.Component{
   render() {
@@ -63,9 +65,8 @@ class TeamLinks extends React.Component{
                     <a href="https://angel.co/u/george-tsimis" target="blank">
                       <i class="fab fa-angellist link"></i>
                     </a>
-                    <a href="" target="blank">
+                    <a href="https://ggmu1986.github.io/" target="blank">
                       <img src={GeorgeFav} className="personal-site-icon"/>
-                      {/* <i class="fas fa-user-tie link"></i> */}
                     </a>
                   </div>
                 </div>
@@ -96,7 +97,7 @@ class TeamLinks extends React.Component{
                       <i class="fab fa-angellist link"></i>
                     </a>
                     <a href="https://www.jonathandortiz.com/" target="blank">
-                      <i class="fas fa-user-tie link"></i>
+                      <img src={JortzFav} className="personal-site-icon"/>
                     </a>
                   </div>
                 </div>
@@ -124,8 +125,8 @@ class TeamLinks extends React.Component{
                     <a href="https://angel.co/u/matteo-rossant-1" target="blank">
                       <i class="fab fa-angellist link"></i>
                     </a>
-                    <a href="" target="blank">
-                      <i class="fas fa-user-tie link"></i>
+                    <a href="http://www.matteocodes.com/" target="blank">
+                      <img src={MatteoFav} className="matteo-personal-site-icon"/>
                     </a>
                   </div>
                 </div>
