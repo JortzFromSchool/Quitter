@@ -65,7 +65,7 @@ class TeamLinks extends React.Component{
                       <i class="fab fa-angellist link"></i>
                     </a>
                     <a href="https://ggmu1986.github.io/" target="blank">
-                      <img src={GeorgeFav} className="personal-site-icon"/>
+                      <img src={GeorgeFav} className="george-personal-site-icon"/>
                     </a>
                   </div>
                 </div>
