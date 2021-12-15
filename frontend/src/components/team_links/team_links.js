@@ -37,7 +37,6 @@ class TeamLinks extends React.Component{
                     </a>
                     <a href="https://frosty-fermi-9f5bdd.netlify.app/index.html" target="blank">
                       <img src={NeilFav} className="personal-site-icon"/>
-                      {/* <i class="fas fa-user-tie link"></i> */}
                     </a>
                   </div>
                 </div>
@@ -94,10 +93,10 @@ class TeamLinks extends React.Component{
                   </div>
                   <div className="two-links">
                     <a href="https://angel.co/u/jonathan-ortiz-1" target="blank">
-                      <i class="fab fa-angellist link"></i>
+                      <i class="fab fa-angellist link angel"></i>
                     </a>
                     <a href="https://www.jonathandortiz.com/" target="blank">
-                      <img src={JortzFav} className="personal-site-icon"/>
+                      <img src={JortzFav} className="jortz-personal-site-icon"/>
                     </a>
                   </div>
                 </div>
@@ -123,7 +122,7 @@ class TeamLinks extends React.Component{
                   </div>
                   <div className="two-links">
                     <a href="https://angel.co/u/matteo-rossant-1" target="blank">
-                      <i class="fab fa-angellist link"></i>
+                      <i class="fab fa-angellist link angel"></i>
                     </a>
                     <a href="http://www.matteocodes.com/" target="blank">
                       <img src={MatteoFav} className="matteo-personal-site-icon"/>

@@ -127,7 +127,12 @@ h4 {
   height: auto;
 }
 
-/* .jortz-personal-site-icon{
+.jortz-personal-site-icon{
   width: 40px;
   height: auto;
-} */
+}
+
+.angel{
+  position: relative;
+  right: 10px;
+}
