@@ -7,6 +7,7 @@ const keys = require('../../config/keys');
 const passport = require('passport');
 const validateRegisterInput = require('../../validation/register');
 const validateLoginInput = require('../../validation/login');
+const { default: axios } = require("axios");
 
 // router.get('/group/:group_id', 
 // (req, res) => {
@@ -57,8 +58,7 @@ router.post('/register', (req, res) => {
                 .then(user => res.json(user))
                 .catch(err => console.log(err));
             })
-          })
-          
+          })          
         }
       })
   });
